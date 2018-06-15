@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 27-Abr-2018 às 04:02
--- Versão do servidor: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Host: 127.0.0.1
+-- Generation Time: 15-Jun-2018 às 23:08
+-- Versão do servidor: 10.1.22-MariaDB
+-- PHP Version: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,26 +34,27 @@ CREATE TABLE `animal` (
   `nome` varchar(255) NOT NULL,
   `descricao` text NOT NULL,
   `nick` varchar(15) NOT NULL,
-  `especie` varchar(255) NOT NULL,
   `sexo` varchar(3) NOT NULL,
-  `nascimento` date NOT NULL
+  `nascimento` date NOT NULL,
+  `senha` varchar(25) NOT NULL,
+  `email` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `animal`
 --
 
-INSERT INTO `animal` (`codigo`, `codigoDono`, `nome`, `descricao`, `nick`, `especie`, `sexo`, `nascimento`) VALUES
-(1, 8, 'Fido', 'Sou um cachorro e mordo todo mundo', 'Fido', 'Cão', 'F', '2015-11-15'),
-(3, 16, 'Bustica', 'Sou um hamster e a unica coisa que eu faco é comer... comer... e comer e dormir mais um pouco para depois comer', 'Bustica', 'Hamster', 'F', '2014-10-04'),
-(4, 10, 'Adam', 'Sou um gato e arranho todos', 'Adam', 'Gato', 'M', '2013-10-05'),
-(5, 4, 'Arizona', 'Cao muito atrevido', 'Arizona', 'Cão', 'F', '2004-12-09'),
-(7, 14, 'Alerta', 'Como mouito e faco tocas no chao', 'Alerta', 'Coelho', 'F', '2017-02-28'),
-(9, 4, 'Alf', 'Sou grande e se mexer comigo a cobra vai fumar', 'Alf', 'Elefante', 'M', '2015-12-25'),
-(11, 6, 'Cumbuca', 'Gosto de cenouras', 'Cumbuca', 'Coelho', 'M', '2013-09-03'),
-(12, 6, 'Cumbuquinha', '', 'Cumbuquinha', 'Coelho', 'M', '2013-09-03'),
-(30, 2, 'Veludo', 'Sou peludo a beça', 'Veludo', 'Cao', 'M', '2011-07-01'),
-(31, 2, 'Veludo', '', 'Vel', 'Cao', 'M', '2011-07-01');
+INSERT INTO `animal` (`codigo`, `codigoDono`, `nome`, `descricao`, `nick`, `sexo`, `nascimento`, `senha`, `email`) VALUES
+(1, 8, 'Fido', 'Sou um cachorro e mordo todo mundo', 'Fido', 'F', '2015-11-15', '', 'fido@gmail.com'),
+(3, 16, 'Bustica', 'Sou um hamster e a unica coisa que eu faco é comer... comer... e comer e dormir mais um pouco para depois comer', 'Bustica', 'F', '2014-10-04', '', ''),
+(4, 10, 'Adam', 'Sou um gato e arranho todos', 'Adam', 'M', '2013-10-05', '', ''),
+(5, 4, 'Arizona', 'Cao muito atrevido', 'Arizona', 'F', '2004-12-09', '', ''),
+(7, 14, 'Alerta', 'Como mouito e faco tocas no chao', 'Alerta', 'F', '2017-02-28', '', ''),
+(9, 4, 'Alf', 'Sou grande e se mexer comigo a cobra vai fumar', 'Alf', 'M', '2015-12-25', '', ''),
+(11, 6, 'Cumbuca', 'Gosto de cenouras', 'Cumbuca', 'M', '2013-09-03', '', ''),
+(12, 6, 'Cumbuquinha', '', 'Cumbuquinha', 'M', '2013-09-03', '', ''),
+(30, 2, 'Veludo', 'Sou peludo a beça', 'Veludo', 'M', '2011-07-01', '', ''),
+(31, 2, 'Veludo', '', 'Vel', 'M', '2011-07-01', '', '');
 
 -- --------------------------------------------------------
 
@@ -156,8 +157,7 @@ INSERT INTO `status` (`codigo`, `codigoAnimal`, `conteudo`, `dataStatus`) VALUES
 -- Indexes for table `animal`
 --
 ALTER TABLE `animal`
-  ADD PRIMARY KEY (`codigo`),
-  ADD KEY `dono_id_fk` (`codigoDono`);
+  ADD PRIMARY KEY (`codigo`);
 
 --
 -- Indexes for table `dono`
@@ -187,34 +187,24 @@ ALTER TABLE `status`
 --
 ALTER TABLE `animal`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
 --
 -- AUTO_INCREMENT for table `dono`
 --
 ALTER TABLE `dono`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
 --
 -- AUTO_INCREMENT for table `interacao`
 --
 ALTER TABLE `interacao`
   MODIFY `codigo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
 --
 -- Constraints for dumped tables
 --
-
---
--- Limitadores para a tabela `animal`
---
-ALTER TABLE `animal`
-  ADD CONSTRAINT `dono_id_fk` FOREIGN KEY (`codigoDono`) REFERENCES `dono` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `status`

@@ -1,13 +1,17 @@
 <?php
+namespace App\Models;
+
 class Animal{
 	
-	private $codigoDono;
+	//private $codigoDono;
 	private $codigo;
 	private $nome;
 	private $especie;
 	private $nascimento;
 	private $descricao;
 	private $sexo;
+	private $nick;
+	private $email;
 	
 	function Animal()
 	{
@@ -36,7 +40,7 @@ class Animal{
 	}
 	
 	public function setNick($pNick){
-		$this->codigo = $pNick;
+		$this->nick = $pNick;
 	}
 
 	public function getNome(){
@@ -51,16 +55,16 @@ class Animal{
 		return $this->descricao;
 	}
 	
-	public function setNome($pDescricao){
+	public function setDescricao($pDescricao){
 		$this->nome = $pDescricao;
 	}
 	
-	public function getEspecie(){
-		return $this->especie;
+	public function getEmail(){
+		return $this->email;
 	}
 	
-	public function setEspecie($pEspecie){
-		$this->especie = $pEspecie;
+	public function setEmail($pEmail){
+		$this->email = $pEmail;
 	}
 
 	public function getSexo(){

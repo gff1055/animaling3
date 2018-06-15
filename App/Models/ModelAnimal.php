@@ -121,6 +121,60 @@ class ModelAnimal
 			return -1;
 	}
 
+	// FUNCAO PARA VERIFICAR SE UM DADO EXISTE NO BANCO
+	public function existe($campo,$dado,$codOcorrencia){
+		$query = "select * from animal where $campo=?";
+		try{
+			if($codOcorrencia == ModelAnimal::NOVO_CADASTRO || $codOcorrencia == ModelAnimal::EXCLUSAO){
+				$result=$this->conex->prepare($query);
+			}
+			else{
+				$query = $query." and codigo<>?";
+				$result=$this->conex->prepare($query);
+				$result->bindValue(2,$codOcorrencia);
+			}
+			//EFETUANDO BIND DE VALORES NA QUERY
+			$result->bindValue(1,$dado);
+			//EXECUCAO DA QUERY COM OS VALORES
+			$result->execute();
+		}catch(PDOException $erro){
+			echo "ERRO: ".$erro->getmessage();
+		}
+		
+		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
+		if($result->rowCount()>0){
+			return true;
+		}
+		
+		//RETORNA SE O USUARIO NAO EXISTE		
+		else{
+			return false;
+		}
+	}
+
+	// verifica se ja tem usuarios com o mesmo nome/email
+	public function verifica($pAnimal, $operacao){
+		if($operacao == ModelAnimal::ALTERACAO_DADOS){
+			$operacao = $pAnimal->getCodigo();
+		}
+
+		//existe o usuario
+		if($this->existe("nick", $pAnimal->getNick(),$operacao)){
+
+			return "Nick existe";
+		}
+
+		//existe o email
+		else if($this->existe("email", $pAnimal->getEmail(),$operacao)){
+			return "Email existe";
+		}
+	
+		else{
+			return "false";
+		}
+		
+	}
+
 
 	public function inserirAnimal($pAnimal){
 		$query = "insert into animal(codigoDono,nome,nick,especie,nascimento,sexo)values(?,?,?,?,?,?)";

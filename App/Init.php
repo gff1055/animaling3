@@ -18,6 +18,14 @@ class Init{
 
 	public function inicializarRotas($pUrlDividida){
 		
+
+		$arrayRotasAux['teste'] = array(
+			'route'=>Init::$urlRoot.'/teste',
+			'controller'=>'controllerTeste',
+			'action'=>'index',
+			'value'=>''
+		);
+
 		$arrayRotasAux['buscaIndex'] = array(
 			'route'=>Init::$urlRoot.'/busca',
 			'controller'=>'controllerBusca',
