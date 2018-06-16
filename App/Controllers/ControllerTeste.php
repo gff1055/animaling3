@@ -17,7 +17,8 @@ class ControllerTeste{
 		$animal->setEmail("fidoumageua@gmail.com");
 
 		//echo $modelAnimal->existe("nick","Fido",ModelAnimal::NOVO_CADASTRO);
-		echo $modelAnimal->verifica($animal, ModelAnimal::NOVO_CADASTRO);
+		//echo $modelAnimal->verifica($animal, ModelAnimal::NOVO_CADASTRO);
+		echo $modelAnimal->geraUsuario();
 
 	}
 }

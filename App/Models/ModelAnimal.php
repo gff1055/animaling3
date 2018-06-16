@@ -59,7 +59,7 @@ class ModelAnimal
 
 
 	// FUNCAO PARA VERIFICAR SE UM DADO EXISTE NO BANCO
-	public function existeAnimal($pAnimal,$codOcorrencia){
+	/*public function existeAnimal($pAnimal,$codOcorrencia){
 
 		$query = "select * from animal where nick=?";
 		try{
@@ -97,7 +97,7 @@ class ModelAnimal
 			echo "nao existe";
 			return false;
 		}
-	}
+	}*/
 
 	
 
@@ -173,6 +173,21 @@ class ModelAnimal
 			return "false";
 		}
 		
+	}
+
+	public function geraUsuario(){
+
+		//preparando e executando a query
+		$result = $this->conex->prepare("select max(codigo) as maiorCodigo from animal");
+		$result->execute();
+		
+		//recebendo o resultado
+		$linha = $result->fetch(\PDO::FETCH_OBJ);
+
+		//gerando o ID do usuario disponivel
+		$userDisp = $linha->maiorCodigo+1;
+		
+		return "user".$userDisp;
 	}
 
 
