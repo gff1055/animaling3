@@ -11,14 +11,25 @@ class ControllerTeste{
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		
 		
-		$animal = new Animal();
-		$animal->setCodigo(1);
-		$animal->setNick("fidoumaegua");
-		$animal->setEmail("fidoumageua@gmail.com");
+		$pAnimal = new Animal();
+		
+		//$animal->setNick("fidoumaegua");
+		//$animal->setEmail("fidoumageua@gmail.com");
 
 		//echo $modelAnimal->existe("nick","Fido",ModelAnimal::NOVO_CADASTRO);
 		//echo $modelAnimal->verifica($animal, ModelAnimal::NOVO_CADASTRO);
-		echo $modelAnimal->geraUsuario();
+
+		//echo $modelAnimal->geraUsuario();
+
+		$pAnimal->setNick("bia2912");
+		$pAnimal->setSenha("291bia2");
+		$pAnimal->setNome("beatriz2");
+		$pAnimal->setNascimento("16-06-2006");
+		$pAnimal->setSexo("F");
+		$pAnimal->setEmail("beatriz2@gmail.com");
+		$pAnimal->setDescricao("");
+
+		echo $modelAnimal->inserirAnimal($pAnimal);
 
 	}
 }

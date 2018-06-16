@@ -160,7 +160,6 @@ class ModelAnimal
 
 		//existe o usuario
 		if($this->existe("nick", $pAnimal->getNick(),$operacao)){
-
 			return "Nick existe";
 		}
 
@@ -170,58 +169,75 @@ class ModelAnimal
 		}
 	
 		else{
-			return "false";
+			return false;
 		}
 		
 	}
 
-	public function geraUsuario(){
-
+	public function geraNick(){
 		//preparando e executando a query
 		$result = $this->conex->prepare("select max(codigo) as maiorCodigo from animal");
 		$result->execute();
-		
 		//recebendo o resultado
 		$linha = $result->fetch(\PDO::FETCH_OBJ);
-
 		//gerando o ID do usuario disponivel
 		$userDisp = $linha->maiorCodigo+1;
-		
 		return "user".$userDisp;
 	}
 
 
 	public function inserirAnimal($pAnimal){
-		$query = "insert into animal(codigoDono,nome,nick,especie,nascimento,sexo)values(?,?,?,?,?,?)";
-		$insercao = $this->gerenciaAnimal($pAnimal,$this::NOVO_CADASTRO,$query);
+		$query = "insert into animal(nome,nick,descricao,nascimento,sexo,senha,email)values(?,?,?,?,?,?,?)";
+		$pAnimal->setNick($this->geraNick());
+		$insercao = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
 		return $insercao;
 	}
 
 
 	public function alterarDadosAnimal($pAnimal){
-		$query = "update animal set codigoDono=?, nome=?,nick=?,especie=?,nascimento=?,sexo=? where codigo=?";
-		$alteracao = $this->gerenciaAnimal($pAnimal,$this::ALTERACAO_DADOS,$query);
+		$query = "update animal set nome=?,nick=?,descricao=?,nascimento=?,sexo=?,senha=?,email=? where codigo=?";
+		$alteracao = $this->gerenciaAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
 		return $alteracao;
+	}
+
+	private function gerenciarAnimal($pAnimal, $query, $op){
+		try{
+			$haErro = $this->verifica($pAnimal, $op);
+			if($haErro)
+				return $haErro;
+			else{
+				$result = null;
+				$result = $this->conex->prepare($query);
+				if($op == ModelAnimal::ALTERACAO_DADOS){
+					$result->bindValue(8,$pAnimal->getCodigo());
+				}
+				$result->bindValue(1,$pAnimal->getNome());
+				$result->bindValue(2,$pAnimal->getNick());
+				$result->bindValue(3,$pAnimal->getDescricao());
+				$result->bindValue(4,$pAnimal->getNascimento());
+				$result->bindValue(5,$pAnimal->getSexo());
+				$result->bindValue(6,$pAnimal->getSenha());
+				$result->bindValue(7,$pAnimal->getEmail());
+				$result->execute();
+				return "Concluido";
+			}
+
+		}catch(PDOException $erro){
+			return "erro: ".$erro->getMessage();
+		}
 	}	
 
 
-	private function gerenciaAnimal($pAnimal, $operacao, $query){
-
+/*	private function gerenciaAnimal($pAnimal, $operacao, $query){
 		$result = null;
-		
 		$haErro=$this->existeAnimal($pAnimal,$operacao);
-
 		if($haErro){
-
 			return $this::NOME_JA_CADASTRADO;
 		}
 
 		else{
-
 			try{
-
 				//print_r($pAnimal);
-
 				$result=$this->conex->getConnection()->prepare($query);
 				$result->bindValue(1,$pAnimal->getCodigoDono());
 				$result->bindValue(2,$pAnimal->getNome());
@@ -229,20 +245,16 @@ class ModelAnimal
 				$result->bindValue(4,$pAnimal->getEspecie());
 				$result->bindValue(5,$pAnimal->getNascimento());
 				$result->bindValue(6,$pAnimal->getSexo());
-
 				if($operacao==$this::ALTERACAO_DADOS){
 					$result->bindValue(7,$pAnimal->getCodigo());
 				}
-
 				$result->execute();
-
 				return $this::OK;
-
 			}catch(PDOException $erro){
 				return "erro: ".$erro->getMessage();
 			}
 		}
-	}
+	}*/
 
 
 	public function excluir($pAnimal)
