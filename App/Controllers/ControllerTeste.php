@@ -21,15 +21,16 @@ class ControllerTeste{
 
 		//echo $modelAnimal->geraUsuario();
 
-		$pAnimal->setNick("bia2912");
-		$pAnimal->setSenha("291bia2");
-		$pAnimal->setNome("beatriz2");
-		$pAnimal->setNascimento("16-06-2006");
-		$pAnimal->setSexo("F");
-		$pAnimal->setEmail("beatriz2@gmail.com");
-		$pAnimal->setDescricao("");
+		$pAnimal->setCodigo(30);
+		$pAnimal->setNick("Veludo");
+		$pAnimal->setSenha("veludo2");
+		$pAnimal->setNome("Veludo");
+		$pAnimal->setNascimento("2011-07-01");
+		$pAnimal->setSexo("M");
+		$pAnimal->setEmail("veludo2@gmail.com");
+		$pAnimal->setDescricao("sou peludo a beça");
 
-		echo $modelAnimal->inserirAnimal($pAnimal);
+		echo $modelAnimal->alterarDadosAnimal($pAnimal);
 
 	}
 }

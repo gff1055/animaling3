@@ -196,7 +196,7 @@ class ModelAnimal
 
 	public function alterarDadosAnimal($pAnimal){
 		$query = "update animal set nome=?,nick=?,descricao=?,nascimento=?,sexo=?,senha=?,email=? where codigo=?";
-		$alteracao = $this->gerenciaAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
+		$alteracao = $this->gerenciarAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
 		return $alteracao;
 	}
 
