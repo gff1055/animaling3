@@ -32,7 +32,7 @@ class ModelAnimal
 
 		//preparando a query do banco de dados
 		$resultado=$this->conex->prepare(
-			"select codigo,codigoDono,nome,nick,especie,sexo,nascimento,descricao
+			"select codigo,nome,nick,sexo,nascimento,descricao
 			from animal
 			where nick=?"
 			);

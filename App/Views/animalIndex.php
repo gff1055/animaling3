@@ -8,7 +8,6 @@ use App\Init;
 	<br>
 	<?php echo $dadosAnimal['nome']?><br>
 	<?php echo $dadosAnimal['sexo']?><br>
-	<?php echo $dadosAnimal['especie']?><br>
 	<?php echo $dadosAnimal['nascimento']?><br>
 	<?php echo $dadosAnimal['descricao']?><br>
 	<br>
