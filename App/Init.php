@@ -26,6 +26,13 @@ class Init{
 			'value'=>''
 		);
 
+		$arrayRotasAux['autenticacao'] = array(
+			'route'=>Init::$urlRoot.'/logon',
+			'controller'=>'controllerIndex',
+			'action'=>'logon',
+			'value'=>''
+		);
+
 		$arrayRotasAux['teste'] = array(
 			'route'=>Init::$urlRoot.'/teste',
 			'controller'=>'controllerTeste',
@@ -40,12 +47,12 @@ class Init{
 			'value'=>''
 		);
 
-		$arrayRotasAux['buscaTemp'] = array(
+		/*$arrayRotasAux['buscaTemp'] = array(
 			'route'=>Init::$urlRoot.'/',
 			'controller'=>'controllerBusca',
 			'action'=>'pagina',
 			'value'=>''
-		);
+		);*/
 
 		$arrayRotasAux['pagProfAnimal'] = array(
 			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3],
@@ -93,7 +100,7 @@ class Init{
 //chamando a funcao associada a rota
 	public function run($url){
 		$achou = 0;
-		foreach($this->rotas as $rota){
+		foreach($this->rotas as $rota){ // percorrendo o array em busca da rota
 			if($rota['route'] == $url && !$achou){
 				$achou=1;
 				$classe = 'App\Controllers\\'.ucfirst($rota['controller']);
