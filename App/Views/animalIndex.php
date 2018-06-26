@@ -10,6 +10,7 @@ use App\Init;
 	<?php echo $dadosAnimal['sexo']?><br>
 	<?php echo $dadosAnimal['nascimento']?><br>
 	<?php echo $dadosAnimal['descricao']?><br>
+	
 	<br>
 </div>
 

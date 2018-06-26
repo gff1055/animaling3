@@ -30,7 +30,7 @@ class Init{
 			'route'=>Init::$urlRoot.'/logon',
 			'controller'=>'controllerIndex',
 			'action'=>'logon',
-			'value'=>''
+			'value'=>$_POST
 		);
 
 		$arrayRotasAux['teste'] = array(
@@ -136,6 +136,7 @@ class Init{
 		}
 		return $con;
 	}
+
 }
 
 
