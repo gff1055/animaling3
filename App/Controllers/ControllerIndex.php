@@ -26,11 +26,16 @@ class ControllerIndex{
 		$senha = $pPost['formSenha'];
 
 		$modelAnimal = new ModelAnimal(Init::getDB());
-		echo $modelAnimal->logar($login,$senha);
-		/*session_start();
-		$_SESSION['login'] = $pPost['formLogin'];
-		header("location: ../public/".$_SESSION['login']);*/
-
+		$isOk = $modelAnimal->logar($login,$senha);
+		if($isOk){
+			session_start();
+			$_SESSION['login'] = $pPost['formLogin'];
+			$_SESSION['senha'] = $pPost['formSenha'];
+			header("location: ../public/".$_SESSION['login']);
+		}
+		else{
+			header("location: ../public?erro=1");	
+		}
 	}
 
 

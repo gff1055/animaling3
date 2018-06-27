@@ -8,4 +8,5 @@ login:<input type="text" name="formLogin"/>
 senha:<input type="password" name="formSenha"/>
 <br>
 <input type="submit" value="Entrar">
+<?php if($_GET['erro']==1) echo "ocorreu um erro"; ?>
 </form>

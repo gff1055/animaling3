@@ -135,14 +135,12 @@ class ModelAnimal
 		
 		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
 		if($result->rowCount()>0){
-			return "existe";
-			return "true";
+			return true;
 		}
 		
 		//RETORNA SE O USUARIO NAO EXISTE		
 		else{
-			return "nao existe";
-			return "false";
+			return false;
 		}
 	}
 
