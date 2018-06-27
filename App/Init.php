@@ -137,6 +137,10 @@ class Init{
 		return $con;
 	}
 
+	public function log(){
+		
+	}
+
 }
 
 

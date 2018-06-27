@@ -12,7 +12,10 @@ class Cabecalho{
 <head>
 <title><?php echo $titulo ?></title>
 </head>
-<body><?php
+<body>
+<?php
+if(isset($_SESSION['login'])) echo "Usuario: ".$_SESSION['login'];
+else echo "OPA<br>";
 	}
 
 
