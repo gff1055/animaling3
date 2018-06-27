@@ -3,6 +3,8 @@
 namespace App\Controllers; //declarando o namespace
 
 use App\Views\Cabecalho;
+use App\Models\ModelAnimal;
+use App\Init;
 
 class ControllerIndex{
 
@@ -20,11 +22,14 @@ class ControllerIndex{
 	}
 
 	public function logon($pPost){
-		echo $pPost['formLogin'];
-		echo $pPost['formSenha'];
-		session_start();
+		$login = $pPost['formLogin'];
+		$senha = $pPost['formSenha'];
+
+		$modelAnimal = new ModelAnimal(Init::getDB());
+		echo $modelAnimal->logar($login,$senha);
+		/*session_start();
 		$_SESSION['login'] = $pPost['formLogin'];
-		header("location: localhost:8080/animaling3/public/".$_SESSION['login']);
+		header("location: ../public/".$_SESSION['login']);*/
 
 	}
 

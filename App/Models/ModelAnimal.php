@@ -121,6 +121,31 @@ class ModelAnimal
 			return -1;
 	}
 
+	public function logar($us,$senh){
+		$query = "select * from animal where nick=? and senha=?";
+		try{
+			$result=$this->conex->prepare($query);
+			$result->bindValue(1,$us); //EFETUANDO BIND DE VALORES NA QUERY
+			$result->bindValue(2,$senh); //EFETUANDO BIND DE VALORES NA QUERY
+
+			$result->execute(); //EXECUCAO DA QUERY COM OS VALORES
+		}catch(PDOException $erro){
+			echo "ERRO: ".$erro->getmessage();
+		}
+		
+		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
+		if($result->rowCount()>0){
+			return "existe";
+			return "true";
+		}
+		
+		//RETORNA SE O USUARIO NAO EXISTE		
+		else{
+			return "nao existe";
+			return "false";
+		}
+	}
+
 	// FUNCAO PARA VERIFICAR SE UM DADO EXISTE NO BANCO
 	public function existe($campo,$dado,$codOcorrencia){
 		$query = "select * from animal where $campo=?";
@@ -141,6 +166,7 @@ class ModelAnimal
 			echo "ERRO: ".$erro->getmessage();
 		}
 		
+
 		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
 		if($result->rowCount()>0){
 			return true;
