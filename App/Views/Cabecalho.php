@@ -14,8 +14,8 @@ class Cabecalho{
 </head>
 <body>
 <?php
-if(isset($_SESSION['login'])) echo "Usuario: ".$_SESSION['login'];
-else echo "OPA<br>";
+//if(isset($_SESSION['login'])) echo "Usuario: ".$_SESSION['login'];
+//else echo "OPA<br>";
 	}
 
 

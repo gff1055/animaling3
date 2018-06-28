@@ -13,6 +13,9 @@ class ControllerAnimal{
 	
 	public function index($nick){
 
+		session_start();
+		$_SESSION['login'] = "gluglu";
+
 		$cab = new Cabecalho($nick);
 
 		$modelAnimal = new ModelAnimal(Init::getDB());
