@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Jun-2018 às 23:08
+-- Generation Time: 28-Jun-2018 às 20:27
 -- Versão do servidor: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -45,16 +45,18 @@ CREATE TABLE `animal` (
 --
 
 INSERT INTO `animal` (`codigo`, `codigoDono`, `nome`, `descricao`, `nick`, `sexo`, `nascimento`, `senha`, `email`) VALUES
-(1, 8, 'Fido', 'Sou um cachorro e mordo todo mundo', 'Fido', 'F', '2015-11-15', '', 'fido@gmail.com'),
-(3, 16, 'Bustica', 'Sou um hamster e a unica coisa que eu faco é comer... comer... e comer e dormir mais um pouco para depois comer', 'Bustica', 'F', '2014-10-04', '', ''),
-(4, 10, 'Adam', 'Sou um gato e arranho todos', 'Adam', 'M', '2013-10-05', '', ''),
-(5, 4, 'Arizona', 'Cao muito atrevido', 'Arizona', 'F', '2004-12-09', '', ''),
-(7, 14, 'Alerta', 'Como mouito e faco tocas no chao', 'Alerta', 'F', '2017-02-28', '', ''),
-(9, 4, 'Alf', 'Sou grande e se mexer comigo a cobra vai fumar', 'Alf', 'M', '2015-12-25', '', ''),
-(11, 6, 'Cumbuca', 'Gosto de cenouras', 'Cumbuca', 'M', '2013-09-03', '', ''),
-(12, 6, 'Cumbuquinha', '', 'Cumbuquinha', 'M', '2013-09-03', '', ''),
-(30, 2, 'Veludo', 'Sou peludo a beça', 'Veludo', 'M', '2011-07-01', '', ''),
-(31, 2, 'Veludo', '', 'Vel', 'M', '2011-07-01', '', '');
+(1, 8, 'Fido', 'Sou um cachorro e mordo todo mundo', 'Fido', 'F', '2015-11-15', 'fido', 'fido@gmail.com'),
+(3, 16, 'Bustica', 'Sou um hamster e a unica coisa que eu faco é comer... comer... e comer e dormir mais um pouco para depois comer', 'Bustica', 'F', '2014-10-04', 'bustica', 'bustica@gmail.com'),
+(4, 10, 'Adam', 'Sou um gato e arranho todos', 'Adam', 'M', '2013-10-05', 'adam', 'adam@gmail.com'),
+(5, 4, 'Arizona', 'Cao muito atrevido', 'Arizona', 'F', '2004-12-09', 'arizona', 'arizona@gmail.com'),
+(7, 14, 'Alerta', 'Como mouito e faco tocas no chao', 'Alerta', 'F', '2017-02-28', 'alerta', 'alerta@gmil.com'),
+(9, 4, 'Alf', 'Sou grande e se mexer comigo a cobra vai fumar', 'Alf', 'M', '2015-12-25', 'alf', 'alf@gmail.com'),
+(11, 6, 'Cumbuca', 'Gosto de cenouras', 'Cumbuca', 'M', '2013-09-03', 'cumbuca', 'cumbuca@gmail.com'),
+(12, 6, 'Cumbuquinha', '', 'Cumbuquinha', 'M', '2013-09-03', 'cumbuquinha', 'cumbuquinha@gmail.com'),
+(30, 2, 'Veludo', 'Sou peludo a beça', 'Veludo', 'M', '2011-07-01', 'veludo', 'veludo@gmail.com'),
+(31, 2, 'Veludo', '', 'Vel', 'M', '2011-07-01', 'veludo2', 'veludo2@gmail.com'),
+(36, 0, 'beatriz', '', 'user33', 'F', '2006-06-16', 'beatriz', 'bia291@gmail.com'),
+(37, 0, 'beatriz2', '', 'user37', 'F', '2006-06-16', 'beatriz2', 'beatriz2@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -186,7 +188,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `animal`
 --
 ALTER TABLE `animal`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `dono`
 --
