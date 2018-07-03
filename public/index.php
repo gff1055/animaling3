@@ -8,6 +8,7 @@ use App\Init;
 
 $init = new Init();
 //echo $init->urlDigit();
+//teste
 
 
 
