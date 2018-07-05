@@ -38,7 +38,11 @@ class ControllerIndex{
 		}
 	}
 
-
+	public function logout(){
+		unset($_SESSION['login']);
+		unset($_SESSION['senha']);
+		header("location: ".Init::$urlRoot);
+	}
 }
 
 ?>

@@ -26,6 +26,13 @@ class Init{
 			'value'=>''
 		);
 
+		$arrayRotasAux['saindo'] = array(
+			'route'=>Init::$urlRoot.'/logout',
+			'controller'=>'controllerIndex',
+			'action'=>'logout',
+			'value'=>''
+		);
+
 		$arrayRotasAux['autenticacao'] = array(
 			'route'=>Init::$urlRoot.'/logon',
 			'controller'=>'controllerIndex',
