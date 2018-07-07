@@ -18,35 +18,42 @@ class ControllerBusca{
 
 		$cab = new Cabecalho();
 
-		$termo = $_POST["pesquisa"];
-		$tipo = $_POST["tipoPesquisa"];
-
-		$cab->abertura("$termo - Pesquisa");
+		if(!empty($_POST["pesquisa"]) || !empty($_POST["tipoPesquisa"])){
 		
-		if($tipo=="Tudo"){
+			$termo = $_POST["pesquisa"];
+			$tipo = $_POST["tipoPesquisa"];
+		
+			$cab->abertura("$termo - Pesquisa");
+		
+			if($tipo=="Tudo"){
 
-			$modelAnimal = new ModelAnimal(Init::getDB());
-			$ocorrenciasAnimal = $modelAnimal->buscarPrincipaisAnimais($termo);
+				$modelAnimal = new ModelAnimal(Init::getDB());
+				$ocorrenciasAnimal = $modelAnimal->buscarPrincipaisAnimais($termo);
 
-			$modelPost = new ModelStatus(Init::getDB());
-			$ocorrenciasPost = $modelPost->buscarPrincipaisStatus($termo);
+				$modelPost = new ModelStatus(Init::getDB());
+				$ocorrenciasPost = $modelPost->buscarPrincipaisStatus($termo);
 
-			include_once "../App/Views/buscaGeral.php";
+				include_once "../App/Views/buscaGeral.php";
+			}
+
+			elseif($tipo=="Animais"){
+				$modelAnimal = new ModelAnimal(Init::getDB());
+				$ocorrenciasAnimal = $modelAnimal->buscarTodosAnimais($termo);
+				include_once "../App/Views/buscarAnimal.php";
+			}
+
+			elseif($tipo=="Posts"){
+				$modelPosts = new ModelStatus(Init::getDB());
+				$ocorrenciasPosts = $modelPosts->buscarTodosStatus($termo);
+				include_once "../App/Views/buscarPosts.php";	
+			}
+
+			else echo "OPA...";
 		}
 
-		elseif($tipo=="Animais"){
-			$modelAnimal = new ModelAnimal(Init::getDB());
-			$ocorrenciasAnimal = $modelAnimal->buscarTodosAnimais($termo);
-			include_once "../App/Views/buscarAnimal.php";
-		}
-
-		elseif($tipo=="Posts"){
-			$modelPosts = new ModelStatus(Init::getDB());
-			$ocorrenciasPosts = $modelPosts->buscarTodosStatus($termo);
-			include_once "../App/Views/buscarPosts.php";	
-		}
-
-		else echo "OPA...";
+		else
+			//header("location: ".Init::$urlRoot);
+			header("location: http://www.facebook.com/search/top/?q=a");		
 
 		$cab->fechamento();
 	}
