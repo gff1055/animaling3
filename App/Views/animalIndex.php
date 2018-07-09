@@ -10,8 +10,8 @@ use App\Init;
 	<?php echo $dadosAnimal['sexo']?><br>
 	<?php echo $dadosAnimal['nascimento']?><br>
 	<?php echo $dadosAnimal['descricao']?><br>
-	<?php echo $dadosAnimal['nick']?><br>
-	<?php echo $_SESSION['login']?><br>
+	<?php echo "dadosAnimal".$dadosAnimal['nick']?><br>
+	<?php echo "SESSION".$_SESSION['login']?><br>
 
 	
 	<br>
@@ -25,6 +25,7 @@ use App\Init;
 </div>
 
 <!--<form method="post" action="../public/<?php echo $dadosAnimal['nick']?>/newpost"> -->
+<!-- verificando se ha alguem ja está logado.-->
 <?php if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {?>
 <form method="post" action="">
 	<input type="text" name="novoPost"/>

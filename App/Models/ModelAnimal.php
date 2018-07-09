@@ -121,8 +121,9 @@ class ModelAnimal
 			return -1;
 	}
 
+	// metodo para fazer o logar no site
 	public function logar($us,$senh){
-		$query = "select * from animal where nick=? and senha=?";
+		$query = "select * from animal where nick=? and binary senha=?";
 		try{
 			$result=$this->conex->prepare($query);
 			$result->bindValue(1,$us); //EFETUANDO BIND DE VALORES NA QUERY

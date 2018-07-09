@@ -26,7 +26,7 @@ class Animal{
 	public function setNick($pNick){$this->nick = $pNick;}
 
 	public function getNome(){return $this->nome;}
-	public function setNome($pNome){$this->nome = $pNome;}
+	public function setNome($pNome){$this->nome = ucfirst($pNome);}
 
 	public function getDescricao(){return $this->descricao;}
 	public function setDescricao($pDescricao){$this->descricao = $pDescricao;}
