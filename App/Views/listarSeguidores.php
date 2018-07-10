@@ -1,7 +1,7 @@
 <?php
 
 if (!$seguidores)
-	echo "Esta conta nao segue ninguem";
+	echo "Esta conta não possui seguidores";
 else{
 	?>
 	<h3>Animais que <?php echo $dadosAnimal['nome']?> segue</h3>
