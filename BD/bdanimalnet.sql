@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Jun-2018 às 20:27
+-- Generation Time: 10-Jul-2018 às 22:17
 -- Versão do servidor: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -134,7 +134,7 @@ CREATE TABLE `status` (
   `codigo` int(11) NOT NULL,
   `codigoAnimal` int(11) DEFAULT NULL,
   `conteudo` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `dataStatus` date NOT NULL
+  `dataStatus` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -142,14 +142,17 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`codigo`, `codigoAnimal`, `conteudo`, `dataStatus`) VALUES
-(1, 4, 'Ola! eu sou o Adam. Esta é a minha primeira postagem', '2017-10-05'),
-(5, 1, 'Homem deve ser tratado como um bom vinho: no escuro, na horizontal, e com rolha na boca. BRINKS', '2017-10-13'),
-(7, 9, 'Se seu problema é dinheiro, e voce não tem dinheiro. Logo voce não tem problema', '2017-10-19'),
-(8, 3, 'TO FALANDO... NÃO ESTOU NÃO!!!!', '2017-10-27'),
-(9, 3, 'DE NOVO VELHO??? TO FALANDO... NÃO ESTOU NÃO!!!!', '2017-10-28'),
-(10, 3, 'DE NOVO VELHO??? TO FALANDO... NÃO ESTOU NÃO!!!!', '2017-10-31'),
-(11, 7, 'Com muito sono...', '2018-03-23'),
-(12, 7, 'Porcaria de sono ja foi embora :(...', '2018-03-23');
+(1, 4, 'Ola! eu sou o Adam. Esta é a minha primeira postagem', '2017-10-05 00:00:00'),
+(5, 1, 'Homem deve ser tratado como um bom vinho: no escuro, na horizontal, e com rolha na boca. BRINKS', '2017-10-13 00:00:00'),
+(7, 9, 'Se seu problema é dinheiro, e voce não tem dinheiro. Logo voce não tem problema', '2017-10-19 00:00:00'),
+(8, 3, 'TO FALANDO... NÃO ESTOU NÃO!!!!', '2017-10-27 00:00:00'),
+(9, 3, 'DE NOVO VELHO??? TO FALANDO... NÃO ESTOU NÃO!!!!', '2017-10-28 00:00:00'),
+(10, 3, 'DE NOVO VELHO??? TO FALANDO... NÃO ESTOU NÃO!!!!', '2017-10-31 00:00:00'),
+(11, 7, 'Com muito sono...', '2018-03-23 00:00:00'),
+(12, 7, 'Porcaria de sono ja foi embora :(...', '2018-03-23 00:00:00'),
+(13, 3, 'a', '2018-07-07 00:00:00'),
+(14, 4, 'e ai', '2018-07-10 17:17:17'),
+(15, 4, 'cala', '2018-07-10 17:17:23');
 
 --
 -- Indexes for dumped tables
@@ -203,7 +206,7 @@ ALTER TABLE `interacao`
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Constraints for dumped tables
 --

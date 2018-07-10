@@ -10,8 +10,8 @@ use App\Init;
 	<?php echo $dadosAnimal['sexo']?><br>
 	<?php echo $dadosAnimal['nascimento']?><br>
 	<?php echo $dadosAnimal['descricao']?><br>
-	<?php echo "dadosAnimal".$dadosAnimal['nick']?><br>
-	<?php echo "SESSION".$_SESSION['login']?><br>
+	<?php //echo "dadosAnimal".$dadosAnimal['nick']?><br>
+	<?php //echo "SESSION".$_SESSION['login']?><br>
 
 	
 	<br>
@@ -19,14 +19,16 @@ use App\Init;
 
 <div>
 	<br>
+	<?php // mostrandp a quantidade de publicações, seguidores e usuarios sendo seguidos?>
 	publicacoes(<?php echo $numeroPosts?>)<br>
 	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores">Seguidores(<?php echo $numeroSeguidores;?>)</a><br>
 	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo">Seguindo(<?php echo $numeroSeguindo;?>)</a>
 </div>
 
-<!--<form method="post" action="../public/<?php echo $dadosAnimal['nick']?>/newpost"> -->
-<!-- verificando se ha alguem ja está logado.-->
-<?php if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {?>
+<?php
+
+// verificando se ha alguem ja está logado.
+if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {?>
 <form method="post" action="">
 	<input type="text" name="novoPost"/>
 	<input type="submit" value="Postar">
@@ -36,10 +38,11 @@ use App\Init;
 
 <div>
 	<?php
-	// exibe as postagens
+
+	// exibindo as postagens
 	if($posts){
 		foreach($posts as $post){
-			?>
+		// exibindo as opções de edicao, exclusão e o post?>
 			<br><br><br>
 			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>"><?php echo $post['nomeAnimal']?></a><br>
 			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>">Editar</a>
@@ -49,7 +52,7 @@ use App\Init;
 			<?php
 		}
 	}
-	else
+	else // no caso de nao haver postagens
 		echo "<br>Nenhuma postagem<br>";
 	?>
 

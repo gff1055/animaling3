@@ -15,19 +15,18 @@ class ControllerAnimal{
 		session_start();
 		$cab = new Cabecalho($nick);
 
+		// carregando os dados do animal
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($nick);
 
-		//carregando lista de seguidores e seguidos
+		// carregando a quantidades de seguidores/seguidos
 		$modelInteracao = new ModelInteracao(Init::getDB());
-
-		//mostrando a quantidades de seguidores/seguidos
 		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
 		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
 		
 		//verificando se ha novas postagens
 		$modelStatus = new ModelStatus(Init::getDB());
-		if(!empty($_POST['novoPost'])){
+		if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
 			$status = new Status();
 			$status->setCodigoAnimal($dadosAnimal['codigo']);
 			$status->setConteudo($_POST['novoPost']);
@@ -69,21 +68,21 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 	
-
+	// metodo para cadastar o post de um usuario
 	public function newpost($pNick){
 
-		$status = new Status();
-		$modelStatus = new ModelStatus(Init::getDB());
+		$status = new Status(); // declarando objeto para o status
+		$modelStatus = new ModelStatus(Init::getDB()); // declarando objeto do model
 
-		$status->setCodigoAnimal($_POST['codAn']);
-		$status->setConteudo($_POST['novPost']);
-		$status->setDataStatus(Status::NOVO_STATUS);
-			
-		$modelStatus->inserirStatus($status);
+		$status->setCodigoAnimal($_POST['codAn']); // objeto status recebendo o codigo do usuario
+		$status->setConteudo($_POST['novPost']); // objeto status recebendo o codigo do post
+		$status->setDataStatus(Status::NOVO_STATUS);// objeto status recebendo a data do post
+		
+		$modelStatus->inserirStatus($status); // inserindo o status n banco de dados
 	}
 
-	//metodo para a exclusao de postagens
-	public function deletarPost($pCodigo){
+	
+	public function deletarPost($pCodigo){ //metodo para a exclusao de postagens
 		$modelStatus = new ModelStatus(Init::getDB());
 		$post = $modelStatus->exibirUmStatus($pCodigo);
 		$modelStatus->excluirStatus($pCodigo);
@@ -94,35 +93,30 @@ class ControllerAnimal{
 	public function atualizarStatus(){
 
 	}
-	
-	//metodo para a listagem dos seguidores
-	public function seguidores($pNick){
-		
-		//carregando informacoes do animal e de seus seguidores
-		$modelAnimal = new ModelAnimal(Init::getDB());
-		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);
-		$modelIntegracao = new ModelInteracao(Init::getDB());
-		$seguidores = $modelIntegracao->listarSeguidores($dadosAnimal['codigo']);
 
-		//exibindo os dados
+	
+	public function seguidores($pNick){ //metodo para a listagem dos seguidores
+		$modelAnimal = new ModelAnimal(Init::getDB());
+		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick); //carregando informacoes do animal
+		$modelIntegracao = new ModelInteracao(Init::getDB());
+		$seguidores = $modelIntegracao->listarSeguidores($dadosAnimal['codigo']); // carregando a lista de seguidores
+		
 		$cab = new Cabecalho();
-		$cab->abertura($dadosAnimal['nome']);
-		include_once "../App/Views/listarSeguidores.php";
+		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
+		include_once "../App/Views/listarSeguidores.php"; // inserindo a pagina que vai listar os seguidores
 		$cab->fechamento();
 	}
 	
-	//metodo para a listagens dos seguidos
-	public function seguindo($pNick){
-		//carregando informacoes do animal e de seus seguidores
+	
+	public function seguindo($pNick){  //metodo para a listagem dos seguidos
 		$modelAnimal = new ModelAnimal(Init::getDB());
-		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);
-		$modelIntegracao = new ModelInteracao(Init::getDB());
+		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick); // carregando informacoes do animal
+		$modelIntegracao = new ModelInteracao(Init::getDB()); // carregando a lista de seguidos
 		$seguidos = $modelIntegracao->listarSeguidos($dadosAnimal['codigo']);
 
-		//exibindo os dados
 		$cab = new Cabecalho();
-		$cab->abertura($dadosAnimal['nome']);
-		include_once "../App/Views/listarSeguidos.php";
+		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
+		include_once "../App/Views/listarSeguidos.php"; // inserindo a pagina que vai listar os seguidos
 		$cab->fechamento();
 	}
 }
