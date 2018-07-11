@@ -136,7 +136,8 @@ class ModelAnimal
 		
 		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
 		if($result->rowCount()>0){
-			return true;
+			$cod = $result->fetch(\PDO::FETCH_ASSOC);
+			return $cod['codigo'];
 		}
 		
 		//RETORNA SE O USUARIO NAO EXISTE		

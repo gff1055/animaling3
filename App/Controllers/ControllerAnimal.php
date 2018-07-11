@@ -23,15 +23,17 @@ class ControllerAnimal{
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
 		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
+
+
 		
-		//verificando se ha novas postagens
+		//verificando se o usuario da sessao postou novas mensagens
 		$modelStatus = new ModelStatus(Init::getDB());
 		if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
 			$status = new Status();
-			$status->setCodigoAnimal($dadosAnimal['codigo']);
-			$status->setConteudo($_POST['novoPost']);
-			$status->setDataStatus(Status::NOVO_STATUS);
-			$modelStatus->inserirStatus($status);	
+			$status->setCodigoAnimal($dadosAnimal['codigo']); // setando codigo do usuario
+			$status->setConteudo($_POST['novoPost']); // setando conteudo do post
+			$status->setDataStatus(Status::NOVO_STATUS); // setando a data do post
+			$modelStatus->inserirStatus($status); // inserindo o status
 		}
 
 		//EXIBINDO TODOS OS POSTS
