@@ -24,10 +24,12 @@ class ControllerAnimal{
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
 		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
-
-		$modelStatus = new ModelStatus(Init::getDB());
-		if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {
 		
+		// declarando objeto do model Status
+		$modelStatus = new ModelStatus(Init::getDB());
+
+		// verificando se pagina atual é a pagina do usuario da sessão
+		if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {
 			$perfilUsuarioSessao = true;
 
 			//verificando se o usuario da sessao postou novas mensagens
@@ -40,7 +42,13 @@ class ControllerAnimal{
 			}
 		}
 
-		else $perfilUsuarioSessao = false;
+		else{
+			$perfilUsuarioSessao = false;
+			$situacao = $modelInteracao->situacaoUsuarios($_SESSION['login'], $dadosAnimal['nick'])
+			switch(){
+
+			}
+		}
 
 		//EXIBINDO TODOS OS POSTS
 		$posts = $modelStatus->exibirTodosStatus($nick);

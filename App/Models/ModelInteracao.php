@@ -44,6 +44,12 @@ class ModelInteracao{
 
 	}
 
+	public function situacaoUsuarios($user1, $user2){
+		if($this->jaSegue($user1, $user2) return 1;
+		elseif($this->jaSegue($user2, $user1) return 2;
+		else return 0;
+	}
+
 	// metodo para contar seguidores
 	public function contSeguidores($pCodigoAnimal){
 		$query="select count(*) as quantidade from interacao where codseguido=?";
