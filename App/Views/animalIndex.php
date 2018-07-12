@@ -28,7 +28,7 @@ use App\Init;
 <?php
 
 // verificando se ha alguem ja está logado.
-if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {?>
+if($perfilUsuarioSessao) {?>
 <form method="post" action="">
 	<input type="text" name="novoPost"/>
 	<input type="submit" value="Postar">

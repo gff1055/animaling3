@@ -19,22 +19,28 @@ class ControllerAnimal{
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($nick);
 
+
 		// carregando a quantidades de seguidores/seguidos
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
 		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
 
-
-		
-		//verificando se o usuario da sessao postou novas mensagens
 		$modelStatus = new ModelStatus(Init::getDB());
-		if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
-			$status = new Status();
-			$status->setCodigoAnimal($dadosAnimal['codigo']); // setando codigo do usuario
-			$status->setConteudo($_POST['novoPost']); // setando conteudo do post
-			$status->setDataStatus(Status::NOVO_STATUS); // setando a data do post
-			$modelStatus->inserirStatus($status); // inserindo o status
+		if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {
+		
+			$perfilUsuarioSessao = true;
+
+			//verificando se o usuario da sessao postou novas mensagens
+			if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
+				$status = new Status();
+				$status->setCodigoAnimal($dadosAnimal['codigo']); // setando codigo do usuario
+				$status->setConteudo($_POST['novoPost']); // setando conteudo do post
+				$status->setDataStatus(Status::NOVO_STATUS); // setando a data do post
+				$modelStatus->inserirStatus($status); // inserindo o status
+			}
 		}
+
+		else $perfilUsuarioSessao = false;
 
 		//EXIBINDO TODOS OS POSTS
 		$posts = $modelStatus->exibirTodosStatus($nick);

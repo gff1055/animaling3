@@ -29,16 +29,16 @@ class ControllerIndex{
 		$senha = $pPost['formSenha']; // carregando a senha digitada
 
 		$modelAnimal = new ModelAnimal(Init::getDB()); // declaracao do objeto de acesso ao banco
-		$codigoSessao = $modelAnimal->logar($login,$senha); // verificando se o usuario e senha digitados existem
+		$isOk = $modelAnimal->logar($login,$senha); // verificando se o usuario e senha digitados existem
+		
 
 		// no caso de existir
-		if($codigoSessao){
+		if($isOk){
 			session_start(); // inciando a sessão
 
 			//os dados de login e senha são passados para a variavel de sessão
 			$_SESSION['login'] = ucfirst(strtolower($pPost['formLogin']));
 			$_SESSION['senha'] = $pPost['formSenha'];
-			$_SESSION['codigo'] = $codigoSessao;
 
 			header("location: ../public/".$_SESSION['login']); // redirecionando para a pagina inicial
 		}
