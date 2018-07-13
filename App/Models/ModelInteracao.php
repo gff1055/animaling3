@@ -9,9 +9,9 @@ class ModelInteracao{
 	private $conex;
 
 	//constante usada para verificar se a alteracao a ser feita no banco é um cadastro
-	const NOVO_STATUS = -1;
-	const EDITANDO_STATUS = -2;
-	const EXCLUSAO = -3;
+	const SEGUINDO = 1;
+	const SEG_VOLTA = 2;
+	const NAO_SEGUE = 3;
 		
 	function __construct($pConex){
 		$this->conex=$pConex;
@@ -45,9 +45,9 @@ class ModelInteracao{
 	}
 
 	public function situacaoUsuarios($user1, $user2){
-		if($this->jaSegue($user1, $user2) return 1;
-		elseif($this->jaSegue($user2, $user1) return 2;
-		else return 0;
+		if($this->jaSegue($user1, $user2)) return $this::SEGUINDO;
+		elseif($this->jaSegue($user2, $user1)) return $this::SEG_VOLTA;
+		else return $this::NAO_SEGUE;
 	}
 
 	// metodo para contar seguidores

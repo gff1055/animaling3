@@ -29,25 +29,32 @@ class ControllerAnimal{
 		$modelStatus = new ModelStatus(Init::getDB());
 
 		// verificando se pagina atual é a pagina do usuario da sessão
-		if((isset($_SESSION['login'])) and ($_SESSION['login'] == $dadosAnimal['nick'])) {
+		if(isset($_SESSION['login'])) {
 			$perfilUsuarioSessao = true;
-
-			//verificando se o usuario da sessao postou novas mensagens
-			if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
-				$status = new Status();
-				$status->setCodigoAnimal($dadosAnimal['codigo']); // setando codigo do usuario
-				$status->setConteudo($_POST['novoPost']); // setando conteudo do post
-				$status->setDataStatus(Status::NOVO_STATUS); // setando a data do post
-				$modelStatus->inserirStatus($status); // inserindo o status
+			if(($_SESSION['login'] == $dadosAnimal['nick'])){
+				//verificando se o usuario da sessao postou novas mensagens
+				if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
+					$status = new Status();
+					$status->setCodigoAnimal($dadosAnimal['codigo']); // setando codigo do usuario
+					$status->setConteudo($_POST['novoPost']); // setando conteudo do post
+					$status->setDataStatus(Status::NOVO_STATUS); // setando a data do post
+					$modelStatus->inserirStatus($status); // inserindo o status
+				}
+			}
+			else{
+				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['login'], $dadosAnimal['nick']);
+				if($situacao == $modelInteracao::SEGUINDO)
+					echo "<br>seguindo<br>";
+				elseif($situacao == $modelInteracao::SEG_VOLTA)
+					echo "<br>seguir de volta<br>";
+				elseif($situacao == $modelInteracao::NAO_SEGUE)
+					echo "<br> seguir <br>";
+				else echo "<BR>ALGO ERRADO <BR>";
 			}
 		}
 
 		else{
 			$perfilUsuarioSessao = false;
-			$situacao = $modelInteracao->situacaoUsuarios($_SESSION['login'], $dadosAnimal['nick'])
-			switch(){
-
-			}
 		}
 
 		//EXIBINDO TODOS OS POSTS
