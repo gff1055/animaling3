@@ -28,21 +28,27 @@ class ControllerAnimal{
 		// declarando objeto do model Status
 		$modelStatus = new ModelStatus(Init::getDB());
 
-		// verificando se pagina atual é a pagina do usuario da sessão
+		// verificando se o usuario que acessou a pagina esta logado
 		if(isset($_SESSION['login'])) {
-			$perfilUsuarioSessao = true;
+
+			$perfilUsuarioSessao = true;	// flag que indica que o acesso é de um usuario logado
+			
+			// verificando se o usuario da sessão esta acessando o proprio perfil
 			if(($_SESSION['login'] == $dadosAnimal['nick'])){
+				
 				//verificando se o usuario da sessao postou novas mensagens
 				if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
 					$status = new Status();
-					$status->setCodigoAnimal($dadosAnimal['codigo']); // setando codigo do usuario
-					$status->setConteudo($_POST['novoPost']); // setando conteudo do post
-					$status->setDataStatus(Status::NOVO_STATUS); // setando a data do post
-					$modelStatus->inserirStatus($status); // inserindo o status
+					$status->setCodigoAnimal($dadosAnimal['codigo']);	// setando codigo do usuario
+					$status->setConteudo($_POST['novoPost']);	// setando conteudo do post
+					$status->setDataStatus(Status::NOVO_STATUS);	// setando a data do post
+					$modelStatus->inserirStatus($status);	// inserindo o status
 				}
 			}
+
+			// verificando se usuario da sessao e o usuario do perfil seguem entre si
 			else{
-				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['login'], $dadosAnimal['nick']);
+				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
 				if($situacao == $modelInteracao::SEGUINDO)
 					echo "<br>seguindo<br>";
 				elseif($situacao == $modelInteracao::SEG_VOLTA)
@@ -52,29 +58,28 @@ class ControllerAnimal{
 				else echo "<BR>ALGO ERRADO <BR>";
 			}
 		}
-
 		else{
 			$perfilUsuarioSessao = false;
 		}
 
-		//EXIBINDO TODOS OS POSTS
+		//Carregando os posts e a quantidade
 		$posts = $modelStatus->exibirTodosStatus($nick);
 		$numeroPosts = $modelStatus->contPosts($nick);
 		
-		//se o animal possuir posts
+		//verificando se o animal possui posts
 		if($dadosAnimal==ModelAnimal::NO_RESULTS){
 			$cab->abertura("Pagina não encontrada");
 			include_once "../App/Views/formBusca.php";
 			include_once "../App/Views/paginaNaoExiste.php";
 		}
-
-		//se o animal nao possui posts
 		else{
 			$cab->abertura($dadosAnimal['nome']." - Página Inicial");
 			include_once "../App/Views/formBusca.php";
 			include_once "../App/Views/animalIndex.php";
 		}
+
 		$cab->fechamento();
+
 	}
 
 	//metodo para visualizacao dos posts

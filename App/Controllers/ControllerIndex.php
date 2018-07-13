@@ -39,6 +39,7 @@ class ControllerIndex{
 			//os dados de login e senha são passados para a variavel de sessão
 			$_SESSION['login'] = ucfirst(strtolower($pPost['formLogin']));
 			$_SESSION['senha'] = $pPost['formSenha'];
+			$_SESSION['id'] = $isOk;
 
 			header("location: ../public/".$_SESSION['login']); // redirecionando para a pagina inicial
 		}
@@ -53,6 +54,7 @@ class ControllerIndex{
 		session_start();
 		unset($_SESSION['login']);
 		unset($_SESSION['senha']);
+		unset($_SESSION['id']);
 		header("location: ".Init::$urlRoot);
 	}
 }

@@ -57,50 +57,6 @@ class ModelAnimal
 		}
 	}	
 
-
-	// FUNCAO PARA VERIFICAR SE UM DADO EXISTE NO BANCO
-	/*public function existeAnimal($pAnimal,$codOcorrencia){
-
-		$query = "select * from animal where nick=?";
-		try{
-
-			
-			if($codOcorrencia == ModelAnimal::NOVO_CADASTRO){
-				$result=$this->conex->getConnection()->prepare($query);
-			}
-
-			else{
-				$query = $query." and codigo<>?";
-				$result=$this->conex->getConnection()->prepare($query);
-				$result->bindValue(2,$pAnimal->getCodigo());
-			}
-
-			//EFETUANDO BIND DE VALORES NA QUERY
-			$result->bindValue(1,$pAnimal->getNick());						
-
-			//EXECUCAO DA QUERY COM OS VALORES
-			$result->execute();
-		}catch(PDOException $erro){
-			echo "ERRO: ".$erro->getmessage();
-		}
-
-
-		
-		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
-		if($result->rowCount()>0){
-			echo "existe";
-			return true;
-		}
-		
-		//RETORNA SE O USUARIO NAO EXISTE		
-		else{
-			echo "nao existe";
-			return false;
-		}
-	}*/
-
-	
-
 	//metodo que retorna o codigo baseado no nick
 	public function getCodFromNick($pNick){
 		try{
