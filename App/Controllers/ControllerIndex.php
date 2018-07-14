@@ -39,9 +39,10 @@ class ControllerIndex{
 			//os dados de login e senha são passados para a variavel de sessão
 			$_SESSION['login'] = ucfirst(strtolower($pPost['formLogin']));
 			$_SESSION['senha'] = $pPost['formSenha'];
-			$_SESSION['id'] = $isOk;
+			$_SESSION['id'] = $isOk['codigo'];
+			echo "<br>SESSION[id] =". $isOk['codigo'];
 
-			header("location: ../public/".$_SESSION['login']); // redirecionando para a pagina inicial
+			header("location: ../public/".$isOk['nick']); // redirecionando para a pagina inicial
 		}
 
 		// no caso de nao existir o usuario e senha digitados

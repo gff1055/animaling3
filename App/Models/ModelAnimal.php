@@ -79,11 +79,12 @@ class ModelAnimal
 
 	// metodo para fazer o logar no site
 	public function logar($us,$senh){
-		$query = "select * from animal where nick=? and binary senha=?";
+		$query = "select nick,codigo from animal where (nick=? or email=?) and binary senha=?";
 		try{
 			$result=$this->conex->prepare($query);
 			$result->bindValue(1,$us); //EFETUANDO BIND DE VALORES NA QUERY
-			$result->bindValue(2,$senh); //EFETUANDO BIND DE VALORES NA QUERY
+			$result->bindValue(2,$us); //EFETUANDO BIND DE VALORES NA QUERY
+			$result->bindValue(3,$senh); //EFETUANDO BIND DE VALORES NA QUERY
 
 			$result->execute(); //EXECUCAO DA QUERY COM OS VALORES
 		}catch(PDOException $erro){
@@ -92,8 +93,8 @@ class ModelAnimal
 		
 		//VERIFICA A QUANTIDADE DE LINHAS RETORNADAS DA EXECUCAO DA QUERY
 		if($result->rowCount()>0){
-			$cod = $result->fetch(\PDO::FETCH_ASSOC);
-			return $cod['codigo'];
+			$check = $result->fetch(\PDO::FETCH_ASSOC);
+			return $check;
 		}
 		
 		//RETORNA SE O USUARIO NAO EXISTE		
