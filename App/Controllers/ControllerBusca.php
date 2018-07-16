@@ -17,6 +17,7 @@ class ControllerBusca{
 	public function index(){
 
 		$cab = new Cabecalho();
+		session_start();	// iniciando a sessao
 
 		if(!empty($_POST["pesquisa"]) || !empty($_POST["tipoPesquisa"])){
 		
@@ -24,6 +25,7 @@ class ControllerBusca{
 			$tipo = $_POST["tipoPesquisa"];
 		
 			$cab->abertura("$termo - Pesquisa");
+			include_once "../App/Views/mostraUsuario.php";	// mostrando o nome do usuario
 		
 			if($tipo=="Tudo"){
 

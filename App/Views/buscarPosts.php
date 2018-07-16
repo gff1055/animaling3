@@ -1,5 +1,6 @@
 <?php
 use App\Init;
+
 ?>
 <form method="Post" action="">
 	<input type="text" name="pesquisa" value="<?php echo $_POST['pesquisa']?>" />

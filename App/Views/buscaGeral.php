@@ -1,9 +1,7 @@
 <?php
 use App\Init;
 
-// exibindo formulario da busca
 ?>
-
 <form method="Post" action="">
 	<input type="text" name="pesquisa" value="<?php echo $_POST['pesquisa']?>"/>
 	<input type="submit" value="Buscar"/>

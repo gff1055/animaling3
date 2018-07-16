@@ -15,6 +15,8 @@ class ControllerAnimal{
 		session_start();
 		$cab = new Cabecalho($nick);
 
+		include_once "../App/Views/mostraUsuario.php"; 	// exibe (ou nao) o nome do usuario logado
+
 		// carregando os dados do animal
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($nick);
@@ -124,6 +126,9 @@ class ControllerAnimal{
 
 	
 	public function seguidores($pNick){ //metodo para a listagem dos seguidores
+
+		session_start();
+
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick); //carregando informacoes do animal
 		$modelIntegracao = new ModelInteracao(Init::getDB());
@@ -131,12 +136,16 @@ class ControllerAnimal{
 		
 		$cab = new Cabecalho();
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
+		include_once "../App/Views/mostraUsuario.php";
 		include_once "../App/Views/listarSeguidores.php"; // inserindo a pagina que vai listar os seguidores
 		$cab->fechamento();
 	}
 	
 	
 	public function seguindo($pNick){  //metodo para a listagem dos seguidos
+
+		session_start();
+
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick); // carregando informacoes do animal
 		$modelIntegracao = new ModelInteracao(Init::getDB()); // carregando a lista de seguidos
@@ -144,6 +153,7 @@ class ControllerAnimal{
 
 		$cab = new Cabecalho();
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
+		include_once "../App/Views/mostraUsuario.php";
 		include_once "../App/Views/listarSeguidos.php"; // inserindo a pagina que vai listar os seguidos
 		$cab->fechamento();
 	}

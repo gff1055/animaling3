@@ -14,6 +14,7 @@ class Cabecalho{
 </head>
 <body>
 <?php
+
 	}
 
 
