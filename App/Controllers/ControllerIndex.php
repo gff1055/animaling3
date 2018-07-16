@@ -37,8 +37,8 @@ class ControllerIndex{
 			session_start(); // inciando a sessão
 
 			//os dados de login e senha são passados para a variavel de sessão
-			$_SESSION['login'] = ucfirst(strtolower($pPost['formLogin']));
-			$_SESSION['senha'] = $pPost['formSenha'];
+			$_SESSION['login'] = ucfirst(strtolower($isOk['nome']));
+			$_SESSION['senha'] = $isOk['senha'];
 			$_SESSION['id'] = $isOk['codigo'];
 			echo "<br>SESSION[id] =". $isOk['codigo'];
 
