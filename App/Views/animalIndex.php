@@ -24,6 +24,7 @@ use App\Init;
 	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo">
 		Seguindo (<?php echo $numeroSeguindo;?>)
 	</a>
+	
 </div>
 
 <?php
@@ -36,7 +37,10 @@ if($perfilUsuarioSessao) {?>
 	
 	</form>
 	<?php
-}?>
+}
+else{
+	?><input type="button" name="btnFollow" class="btnSeguirAparencia" value="<?php echo $relacionamento ?>" />
+<?php } ?>
 
 <div>
 	<?php

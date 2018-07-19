@@ -17,10 +17,9 @@ class ControllerAnimal{
 
 		include_once "../App/Views/mostraUsuario.php"; 	// exibe (ou nao) o nome do usuario logado
 
-		// carregando os dados do animal
+		// carregando os dados do usuario
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($nick);
-
 
 		// carregando a quantidades de seguidores/seguidos
 		$modelInteracao = new ModelInteracao(Init::getDB());
@@ -31,12 +30,18 @@ class ControllerAnimal{
 		$modelStatus = new ModelStatus(Init::getDB());
 
 		// verificando se o usuario que acessou a pagina esta logado
+
+		$perfilUsuarioSessao = null;	// flag que indica que o usuario da sessão esta acessando seu próprio perfil
+
 		if(isset($_SESSION['login'])) {
 
-			$perfilUsuarioSessao = true;	// flag que indica que o acesso é de um usuario logado
-			
 			// verificando se o usuario da sessão esta acessando o proprio perfil
 			if(($_SESSION['login'] == $dadosAnimal['nick'])){
+				$perfilUsuarioSessao = true;
+				
+
+				echo "<br>sessao".$_SESSION['login'];
+				echo "<br>animal".$dadosAnimal['nick'];
 				
 				//verificando se o usuario da sessao postou novas mensagens
 				if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
@@ -52,11 +57,11 @@ class ControllerAnimal{
 			else{
 				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
 				if($situacao == $modelInteracao::SEGUINDO)
-					echo "<br>seguindo<br>";
+					$relacionamento = "seguindo";
 				elseif($situacao == $modelInteracao::SEG_VOLTA)
-					echo "<br>seguir de volta<br>";
+					$relacionamento = "seguir de volta";
 				elseif($situacao == $modelInteracao::NAO_SEGUE)
-					echo "<br> seguir <br>";
+					$relacionamento = "seguir";
 				else echo "<BR>ALGO ERRADO <BR>";
 			}
 		}
@@ -137,6 +142,7 @@ class ControllerAnimal{
 		$cab = new Cabecalho();
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
 		include_once "../App/Views/mostraUsuario.php";
+		include_once "../App/Views/formBusca.php";
 		include_once "../App/Views/listarSeguidores.php"; // inserindo a pagina que vai listar os seguidores
 		$cab->fechamento();
 	}
@@ -154,6 +160,7 @@ class ControllerAnimal{
 		$cab = new Cabecalho();
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
 		include_once "../App/Views/mostraUsuario.php";
+		include_once "../App/Views/formBusca.php";
 		include_once "../App/Views/listarSeguidos.php"; // inserindo a pagina que vai listar os seguidos
 		$cab->fechamento();
 	}
