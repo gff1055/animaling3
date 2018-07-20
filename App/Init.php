@@ -75,6 +75,20 @@ class Init{
 			'value'=>$pUrlDividida[3]
 		);
 
+		$arrayRotasAux['admSeguidores'] = array(
+			'route'=> Init::$urlRoot.'/ger_seguidor',
+			'controller'=> 'controllerAnimal',
+			'action'=> 'opSeguidor',
+			'value'=>''
+		);
+
+		$arrayRotasAux['admSeguidos'] = array(
+			'route'=> Init::$urlRoot.'/ger_seguindo',
+			'controller'=> 'controllerAnimal',
+			'action'=> 'opSeguidor',
+			'value'=>''
+		);
+
 		$arrayRotasAux['seguindo'] = array(
 			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/seguindo',
 			'controller'=>'controllerAnimal',
