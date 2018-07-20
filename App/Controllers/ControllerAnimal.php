@@ -164,6 +164,14 @@ class ControllerAnimal{
 		include_once "../App/Views/listarSeguidos.php"; // inserindo a pagina que vai listar os seguidos
 		$cab->fechamento();
 	}
+
+	public function opSeguidor(){
+
+	}
+
+	public function opSeguindo(){
+		
+	}
 }
 
 

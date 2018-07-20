@@ -76,16 +76,16 @@ class Init{
 		);
 
 		$arrayRotasAux['admSeguidores'] = array(
-			'route'=> Init::$urlRoot.'/ger_seguidor',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opSeguidor',
 			'controller'=> 'controllerAnimal',
 			'action'=> 'opSeguidor',
 			'value'=>''
 		);
 
 		$arrayRotasAux['admSeguidos'] = array(
-			'route'=> Init::$urlRoot.'/ger_seguindo',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opSeguindo',
 			'controller'=> 'controllerAnimal',
-			'action'=> 'opSeguidor',
+			'action'=> 'opSeguindo',
 			'value'=>''
 		);
 

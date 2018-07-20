@@ -39,7 +39,7 @@ if($perfilUsuarioSessao) {?>
 	<?php
 }
 else{
-	?><input type="button" name="btnFollow" class="btnSeguirAparencia" value="<?php echo $relacionamento ?>" />
+	?><input type="button" name="btnFollow" class="btnSeguir" value="<?php echo $relacionamento ?>" />
 <?php } ?>
 
 <div>
