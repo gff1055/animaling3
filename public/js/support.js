@@ -1,6 +1,11 @@
 
+var btnSeguir = document.getElementByClass("btnSeguir");
+btnSeguir.addEventListener("click",function(){
+	btnSeguir.value="clicado";
+})
 
-function CriaRequest(){
+
+/*function CriaRequest(){
 	try{
 		request = new XMLHttpRequest();
 	}catch(IEAtual){
@@ -28,7 +33,7 @@ Funcao para enviar os dados
 **************************/
 
 
-function getDados(){
+/*function labelButton(){
 
 	// Declaracao de variaveis
 	var nome = document.getElementByClass("btnSeguir").value;
@@ -38,7 +43,7 @@ function getDados(){
 	// result.innerHTML = '<img src="progresso1.gif"/>';
 
 	// Iniciar uma requisicao
-	xmlreq.open("GET", "contato.php?txtnome=" + nome, true);
+	xmlreq.open("GET", "contato.php?txtnome", true);
 
 	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
 	xmlreq.onreadystatechange = function(){
@@ -57,4 +62,4 @@ function getDados(){
 
 	xmlreq.send(null);
 
-}
+}*/

@@ -69,4 +69,6 @@ else{
 	?>
 
 </div>
+<script href="../../">
+</script>
 
