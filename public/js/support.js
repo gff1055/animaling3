@@ -2,7 +2,9 @@
 var btnSeguir = document.getElementByClass("btnSeguir");
 btnSeguir.addEventListener("click",function(){
 	btnSeguir.value="clicado";
-})
+});
+
+alert("aaaa");
 
 
 /*function CriaRequest(){

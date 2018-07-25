@@ -69,6 +69,6 @@ else{
 	?>
 
 </div>
-<script href="../../">
+<script src="<?php echo Init::$urlRoot?>/js/support.js">
 </script>
 
