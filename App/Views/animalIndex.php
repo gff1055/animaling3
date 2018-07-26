@@ -69,6 +69,6 @@ else{
 	?>
 
 </div>
-<script src="<?php echo Init::$urlRoot?>/js/support.js">
+<script src="/animaling3/public/js/support.js">
 </script>
 
