@@ -69,6 +69,6 @@ elseif(!$acessoNaoLogado){
 	?>
 
 </div>
-<script src="http://localhost/animaling3/public/js/support.js">
+<script src="../src/js/support.js">
 </script>
 

@@ -1,10 +1,10 @@
 
-var btnSeguir = document.getElementByClass("btnSeguir");
+var btnSeguir = document.getElementsByClassName("btnSeguir");
 btnSeguir.addEventListener("click",function(){
-	btnSeguir.value="clicado";
+	alert("aaaa");
 });
 
-alert("aaaa");
+
 
 
 /*function CriaRequest(){
