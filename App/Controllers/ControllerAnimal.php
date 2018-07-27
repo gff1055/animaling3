@@ -29,17 +29,15 @@ class ControllerAnimal{
 		// declarando objeto do model Status
 		$modelStatus = new ModelStatus(Init::getDB());
 
-		// verificando se o usuario que acessou a pagina esta logado
-
-		$perfilUsuarioSessao = null;	// flag que indica que o usuario da sessão esta acessando seu próprio perfil
+		$acessoNaoLogado = false;	// flag que indica se o usuario que acessou a pagina esta logado
+		$acessoUsuarioSessao = null;	// flag que indica que o usuario da sessão esta acessando seu próprio perfil
 
 		if(isset($_SESSION['login'])) {
-
+			
 			// verificando se o usuario da sessão esta acessando o proprio perfil
 			if(($_SESSION['login'] == $dadosAnimal['nick'])){
-				$perfilUsuarioSessao = true;
+				$acessoUsuarioSessao = true;
 				
-
 				echo "<br>sessao".$_SESSION['login'];
 				echo "<br>animal".$dadosAnimal['nick'];
 				
@@ -55,6 +53,7 @@ class ControllerAnimal{
 
 			// verificando se usuario da sessao e o usuario do perfil seguem entre si
 			else{
+				$acessoUsuarioSessao = false;
 				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
 				if($situacao == $modelInteracao::SEGUINDO)
 					$relacionamento = "seguindo";
@@ -65,8 +64,9 @@ class ControllerAnimal{
 				else echo "<BR>ALGO ERRADO <BR>";
 			}
 		}
+
 		else{
-			$perfilUsuarioSessao = false;
+			$acessoNaoLogado = true;
 		}
 
 		//Carregando os posts e a quantidade

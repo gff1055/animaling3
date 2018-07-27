@@ -30,7 +30,7 @@ use App\Init;
 <?php
 
 // verificando se ha alguem ja está logado.
-if($perfilUsuarioSessao) {?>
+if($acessoUsuarioSessao) {?>
 	<form method="post" action="">
 		<input type="text" name="novoPost"/>
 		<input type="submit" value="Postar">
@@ -38,7 +38,7 @@ if($perfilUsuarioSessao) {?>
 	</form>
 	<?php
 }
-else{
+elseif(!$acessoNaoLogado){
 	?><input type="button" name="btnFollow" class="btnSeguir" value="<?php echo $relacionamento ?>" />
 <?php } ?>
 
@@ -69,6 +69,6 @@ else{
 	?>
 
 </div>
-<script src="/animaling3/public/js/support.js">
+<script src="http://localhost/animaling3/public/js/support.js">
 </script>
 

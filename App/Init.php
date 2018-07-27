@@ -14,6 +14,7 @@ class Init{
 		$urlDividida = $this->getParamRoute($urlAcessada);
 		$this->inicializarRotas($urlDividida);
 		$this->run($urlAcessada);
+		echo print_r($urlDividida);
 	}
 
 	public function inicializarRotas($pUrlDividida){
