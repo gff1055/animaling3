@@ -39,7 +39,7 @@ if($acessoUsuarioSessao) {?>
 	<?php
 }
 elseif(!$acessoNaoLogado){
-	?><input type="button" name="btnFollow" class="btnSeguir" value="<?php echo $relacionamento ?>" />
+	?><input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
 <?php } ?>
 
 <div>

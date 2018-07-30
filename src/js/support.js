@@ -1,13 +1,9 @@
 
-var btnSeguir = document.getElementsByClassName("btnSeguir");
-btnSeguir.addEventListener("click",function(){
-	alert("aaaa");
-});
+var btnSeguir = document.getElementById("btnSeguir");
+btnSeguir.addEventListener("click", labelButton());
 
 
-
-
-/*function CriaRequest(){
+function CriaRequest(){
 	try{
 		request = new XMLHttpRequest();
 	}catch(IEAtual){
@@ -35,17 +31,17 @@ Funcao para enviar os dados
 **************************/
 
 
-/*function labelButton(){
+function labelButton(){
 
 	// Declaracao de variaveis
-	var nome = document.getElementByClass("btnSeguir").value;
+	var nome = document.getElementById("btnSeguir").value;
 	var xmlreq = CriaRequest();
 
 	// Exibi a mensagem de progresso
 	// result.innerHTML = '<img src="progresso1.gif"/>';
 
 	// Iniciar uma requisicao
-	xmlreq.open("GET", "contato.php?txtnome", true);
+	xmlreq.open("GET", "/animaling3/public/opseguidor", true);
 
 	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
 	xmlreq.onreadystatechange = function(){
@@ -55,13 +51,14 @@ Funcao para enviar os dados
 
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
-				result.innerHTML = xmlreq.responseText;
+				alert(xmlreq.responseText);
+				nome.value = xmlreq.responseText;
 			}else{
-				result.innerHTML = "Erro: "+ xmlreq.statusText;
+				//result.innerHTML = "Erro: "+ xmlreq.statusText;
 			}
 		}
 	};
 
 	xmlreq.send(null);
 
-}*/
+}
