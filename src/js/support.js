@@ -1,6 +1,8 @@
 
 var btnSeguir = document.getElementById("btnSeguir");
-btnSeguir.addEventListener("click", labelButton());
+btnSeguir.addEventListener("click", function btnSeguirClick(){
+	labelButton();
+});
 
 
 function CriaRequest(){
@@ -23,8 +25,6 @@ function CriaRequest(){
 	else
 		return request;
 }
-
-
 
 /**************************
 Funcao para enviar os dados
