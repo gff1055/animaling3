@@ -1,7 +1,11 @@
 
 var btnSeguir = document.getElementById("btnSeguir");
+var hdnPerfil = document.getElementById("hdnPerfil");
+var hdnUsuario = document.getElementById("hdnUsuario");
+
 btnSeguir.addEventListener("click", function btnSeguirClick(){
-	labelButton();
+	alert(hdnPerfil.value);
+	alert(hdnUsuario.value);
 });
 
 

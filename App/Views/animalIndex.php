@@ -39,7 +39,10 @@ if($acessoUsuarioSessao) {?>
 	<?php
 }
 elseif(!$acessoNaoLogado){
-	?><input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
+	?>
+	<input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
+	<input type="hidden" id=hdnPerfil value="<?php echo $dadosAnimal['nick'] ?>">
+	<input type="hidden" id=hdnUsuario value="<?php echo $_SESSION['login'] ?>">
 <?php } ?>
 
 <div>
