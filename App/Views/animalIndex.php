@@ -29,7 +29,7 @@ use App\Init;
 
 <?php
 
-// verificando se ha alguem ja está logado.
+// verificando se quem esta acessando o perfil é o proprio usuario
 if($acessoUsuarioSessao) {?>
 	<form method="post" action="">
 		<input type="text" name="novoPost"/>
@@ -38,6 +38,8 @@ if($acessoUsuarioSessao) {?>
 	</form>
 	<?php
 }
+
+// se não for o usuario, verifica se o usuario em questão é um usuário logado.
 elseif(!$acessoNaoLogado){
 	?>
 	<input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />

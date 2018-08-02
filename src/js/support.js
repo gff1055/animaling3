@@ -1,11 +1,10 @@
 
 var btnSeguir = document.getElementById("btnSeguir");
-var hdnPerfil = document.getElementById("hdnPerfil");
-var hdnUsuario = document.getElementById("hdnUsuario");
+var hdnPerfil = document.getElementById("hdnPerfil").value;
+var hdnUsuario = document.getElementById("hdnUsuario").value;
 
 btnSeguir.addEventListener("click", function btnSeguirClick(){
-	alert(hdnPerfil.value);
-	alert(hdnUsuario.value);
+	labelButton(hdnPerfil, hdnUsuario);
 });
 
 
@@ -35,17 +34,19 @@ Funcao para enviar os dados
 **************************/
 
 
-function labelButton(){
+function labelButton(sessaoUsuario, perfilUsuario){
 
 	// Declaracao de variaveis
 	var nome = document.getElementById("btnSeguir").value;
 	var xmlreq = CriaRequest();
+	var url = "/localhost/animaling3/public/"+perfilUsuario+"/opseguidor";
 
 	// Exibi a mensagem de progresso
 	// result.innerHTML = '<img src="progresso1.gif"/>';
 
 	// Iniciar uma requisicao
-	xmlreq.open("GET", "/animaling3/public/opseguidor", true);
+	xmlreq.open("GET", url , true);
+	alert(url);
 
 	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
 	xmlreq.onreadystatechange = function(){
