@@ -3,8 +3,15 @@ var btnSeguir = document.getElementById("btnSeguir");
 var hdnPerfil = document.getElementById("hdnPerfil").value;
 var hdnUsuario = document.getElementById("hdnUsuario").value;
 
-btnSeguir.addEventListener("click", function btnSeguirClick(){
-	labelButton(hdnPerfil, hdnUsuario);
+btnSeguir.addEventListener(
+	"click",
+	function btnSeguirClick(){
+		labelButton(hdnPerfil, hdnUsuario);
+	}
+);
+
+btnSeguir.addEventListener("onload", function btnSeguirLoad(){
+
 });
 
 
@@ -33,33 +40,28 @@ function CriaRequest(){
 Funcao para enviar os dados
 **************************/
 
-
+/*Metodo que muda o valor do button ao seguir ou deixar de seguir alguem*/
 function labelButton(sessaoUsuario, perfilUsuario){
 
 	// Declaracao de variaveis
-	var nome = document.getElementById("btnSeguir").value;
-	var xmlreq = CriaRequest();
-	var url = "/localhost/animaling3/public/"+perfilUsuario+"/opseguidor";
+	var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
+	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
+	var url = "/animaling3/public/"+perfilUsuario+"/opseguidor";	// url que enviara as informações
 
-	// Exibi a mensagem de progresso
-	// result.innerHTML = '<img src="progresso1.gif"/>';
-
-	// Iniciar uma requisicao
-	xmlreq.open("GET", url , true);
-	alert(url);
+	xmlreq.open("GET", url , true);	// Iniciando uma requisicao
 
 	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
-	xmlreq.onreadystatechange = function(){
+	xmlreq.onreadystatechange =
+	function(){
 
 		// Verifica se foi concluido com sucesso e a cnexao fechada(readyState = 4)
 		if(xmlreq.readyState == 4){
 
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
-				alert(xmlreq.responseText);
-				nome.value = xmlreq.responseText;
+				nome.value = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
 			}else{
-				//result.innerHTML = "Erro: "+ xmlreq.statusText;
+				nome.value = "ERROR:"
 			}
 		}
 	};

@@ -166,11 +166,11 @@ class ControllerAnimal{
 	}
 
 	public function opSeguidor(){
-		return "seguidor";
+		echo "seguidor";
 	}
 
 	public function opSeguindo(){
-		return "seguido";
+		echo "seguido";
 	}
 }
 

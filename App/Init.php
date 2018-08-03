@@ -14,7 +14,6 @@ class Init{
 		$urlDividida = $this->getParamRoute($urlAcessada);
 		$this->inicializarRotas($urlDividida);
 		$this->run($urlAcessada);
-		echo print_r($urlDividida);
 	}
 
 	public function inicializarRotas($pUrlDividida){
@@ -77,7 +76,7 @@ class Init{
 		);
 
 		$arrayRotasAux['admSeguidores'] = array(
-			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opSeguidor',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguidor',
 			'controller'=> 'controllerAnimal',
 			'action'=> 'opSeguidor',
 			'value'=>''
@@ -91,7 +90,7 @@ class Init{
 		);
 
 		$arrayRotasAux['admSeguidos'] = array(
-			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opSeguindo',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',
 			'controller'=> 'controllerAnimal',
 			'action'=> 'opSeguindo',
 			'value'=>''
