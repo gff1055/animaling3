@@ -1,12 +1,12 @@
 
 var btnSeguir = document.getElementById("btnSeguir");
+var hdnSessaoUsuario = document.getElementById("hdnSessaoUsuario").value;
 var hdnPerfil = document.getElementById("hdnPerfil").value;
-var hdnUsuario = document.getElementById("hdnUsuario").value;
 
 btnSeguir.addEventListener(
 	"click",
 	function btnSeguirClick(){
-		labelButton(hdnPerfil, hdnUsuario);
+		labelButton(hdnSessaoUsuario, hdnPerfil);
 	}
 );
 

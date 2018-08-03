@@ -166,8 +166,9 @@ class ControllerAnimal{
 	}
 
 	public function gersegs(){
-		echo $_GET['user'];
-		echo $_GET['prof'];
+		//$modelInteracao = new ModelInteracao(Init::getDB());
+		echo "user: ".$_GET['user'];
+		echo "prof: ".$_GET['prof'];
 	}
 
 	public function opSeguindo(){
