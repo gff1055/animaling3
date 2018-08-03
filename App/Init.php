@@ -76,9 +76,9 @@ class Init{
 		);
 
 		$arrayRotasAux['admSeguidores'] = array(
-			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguidor',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/gersegs',
 			'controller'=> 'controllerAnimal',
-			'action'=> 'opSeguidor',
+			'action'=> 'gersegs',
 			'value'=>''
 		);
 
@@ -89,12 +89,12 @@ class Init{
 			'value'=>$pUrlDividida[3]
 		);
 
-		$arrayRotasAux['admSeguidos'] = array(
+		/*$arrayRotasAux['admSeguidos'] = array(
 			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',
 			'controller'=> 'controllerAnimal',
 			'action'=> 'opSeguindo',
 			'value'=>''
-		);
+		);*/
 
 		// Verifica se o endereco possui mais subdominios
 		if(count($pUrlDividida)==5)

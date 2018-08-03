@@ -165,8 +165,9 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 
-	public function opSeguidor(){
-		echo "seguidor";
+	public function gersegs(){
+		echo $_GET['user'];
+		echo $_GET['prof'];
 	}
 
 	public function opSeguindo(){
