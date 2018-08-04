@@ -2,16 +2,17 @@
 var btnSeguir = document.getElementById("btnSeguir");
 var hdnSessaoUsuario = document.getElementById("hdnSessaoUsuario").value;
 var hdnPerfil = document.getElementById("hdnPerfil").value;
+var tagBody = document.getElementsByTagName("body")[0];
 
 btnSeguir.addEventListener(
 	"click",
 	function btnSeguirClick(){
-		labelButton(hdnSessaoUsuario, hdnPerfil);
+		labelButton("click", hdnSessaoUsuario, hdnPerfil);
 	}
 );
 
-btnSeguir.addEventListener("onload", function btnSeguirLoad(){
-
+tagBody.addEventListener("onload", function btnSeguirLoad(){
+	labelButton(hdnSessaoUsuario, hdnPerfil);
 });
 
 

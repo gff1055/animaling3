@@ -166,9 +166,16 @@ class ControllerAnimal{
 	}
 
 	public function gersegs(){
-		//$modelInteracao = new ModelInteracao(Init::getDB());
-		echo "user: ".$_GET['user'];
-		echo "prof: ".$_GET['prof'];
+		$modelInteracao = new ModelInteracao(Init::getDB());
+		$temp = $modelInteracao->situacaoUsuarios($_GET['user'], $_GET['prof']);
+		if($temp == $modelInteracao::SEGUINDO)
+			echo "Seguindo";
+		elseif($temp == $modelInteracao::SEG_VOLTA)
+			echo "Seguir de volta";
+		elseif($temp == $modelInteracao::NAO_SEGUE)
+			echo "Seguir";
+		else
+			echo "ERROR: ";
 	}
 
 	public function opSeguindo(){
