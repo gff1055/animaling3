@@ -7,12 +7,14 @@ var tagBody = document.getElementsByTagName("body")[0];
 btnSeguir.addEventListener(
 	"click",
 	function btnSeguirClick(){
-		labelButton("click", hdnSessaoUsuario, hdnPerfil);
+		labelButton(hdnSessaoUsuario, hdnPerfil);
 	}
 );
 
-tagBody.addEventListener("onload", function btnSeguirLoad(){
-	labelButton(hdnSessaoUsuario, hdnPerfil);
+tagBody.addEventListener(
+	"onload",
+	function btnSeguirLoad(){
+		labelButton(hdnSessaoUsuario, hdnPerfil);
 });
 
 
@@ -47,7 +49,7 @@ function labelButton(sessaoUsuario, perfilUsuario){
 	// Declaracao de variaveis
 	var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
-	var url = "/animaling3/public/"+perfilUsuario+"/gersegs?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url que enviara as informações
+	var url = "/animaling3/public/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url que enviara as informações
 
 	xmlreq.open("GET", url , true);	// Iniciando uma requisicao
 

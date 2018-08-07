@@ -165,7 +165,7 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 
-	public function gersegs(){
+	public function followstate(){
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$temp = $modelInteracao->situacaoUsuarios($_GET['user'], $_GET['prof']);
 		if($temp == $modelInteracao::SEGUINDO)
@@ -176,6 +176,9 @@ class ControllerAnimal{
 			echo "Seguir";
 		else
 			echo "ERROR: ";
+	}
+
+	public function followmanage(){
 	}
 
 	public function opSeguindo(){
