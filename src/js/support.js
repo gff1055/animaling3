@@ -6,15 +6,15 @@ var tagBody = document.getElementsByTagName("body")[0];
 
 btnSeguir.addEventListener(
 	"click",
-	function btnSeguirClick(){
-		labelButton(hdnSessaoUsuario, hdnPerfil);
+	function fncBtnFollowClick(){
+		clickFollowButton(hdnSessaoUsuario, hdnPerfil);
 	}
 );
 
 tagBody.addEventListener(
 	"onload",
-	function btnSeguirLoad(){
-		labelButton(hdnSessaoUsuario, hdnPerfil);
+	function fncBtnFollowLoad(){
+		loadLabelButton(hdnSessaoUsuario, hdnPerfil);
 });
 
 
@@ -44,7 +44,7 @@ Funcao para enviar os dados
 **************************/
 
 /*Metodo que muda o valor do button ao seguir ou deixar de seguir alguem*/
-function labelButton(sessaoUsuario, perfilUsuario){
+function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 	// Declaracao de variaveis
 	var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
