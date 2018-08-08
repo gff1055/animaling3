@@ -83,9 +83,9 @@ class Init{
 		);
 
 		$arrayRotasAux['admSeguidores'] = array(
-			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/followmanage',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/someactionfollow',
 			'controller'=> 'controllerAnimal',
-			'action'=> 'followmanage',
+			'action'=> 'someactionfollow',
 			'value'=>''
 		);
 

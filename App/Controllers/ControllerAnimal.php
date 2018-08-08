@@ -178,7 +178,10 @@ class ControllerAnimal{
 			echo "ERROR: ";
 	}
 
-	public function followmanage(){
+	public function someactionfollow(){
+		echo "<br>".$_GET['state'];
+		echo "<br>"."usuario da sessao: ".$_GET['user'];
+		echo "<br>"."usuario do perfil: ".$_GET['prof'];
 	}
 
 	public function opSeguindo(){

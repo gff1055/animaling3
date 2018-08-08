@@ -8,7 +8,7 @@ var aux = null;
 btnSeguir.addEventListener(
 	"click",
 	function fncBtnFollowClick(){
-		runFollowButton(hdnSessaoUsuario, hdnPerfil);
+		runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);
 	}
 );
 
@@ -87,15 +87,15 @@ function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 **/
 
-/*
-function runFollowButton(sessionUser, profileUser){
+
+function runFollowButton(aux, sessionUser, profileUser){
 
 	// Declaracao de variaveis
-	var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
+	//var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
-	var url = "/animaling3/public/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url que enviara as informações
+	var url = "/animaling3/public/"+profileUser+"/someactionfollow?&state="+aux+"&user="+sessionUser+"&prof="+profileUser;	// url que enviara as informações
 
-	xmlreq.open("GET", url , true);	// Iniciando uma requisicao
+	xmlreq.open("GET", url, true);	// Iniciando uma requisicao
 
 	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
 	xmlreq.onreadystatechange =
@@ -106,13 +106,15 @@ function runFollowButton(sessionUser, profileUser){
 
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
-				nome.value = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
+				alert("OK :)");
+				alert(xmlreq.responseText);
+				//nome.value = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
 			}else{
-				nome.value = "ERROR:"
+				nome.value = "ERROR:";
 			}
 		}
 	};
 
-	xmlreq.send(null);*/
+	xmlreq.send(null);
 
 }
