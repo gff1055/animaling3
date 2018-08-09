@@ -165,6 +165,7 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 
+	/* metodo acionado quando o usuario acessa '/followstate' */
 	public function followstate(){
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$temp = $modelInteracao->situacaoUsuarios($_GET['user'], $_GET['prof']);
@@ -178,10 +179,15 @@ class ControllerAnimal{
 			echo "ERROR: ";
 	}
 
+	/*metodo acionado quando o usuario acessa /someactionfollow */
 	public function someactionfollow(){
 		echo "<br>".$_GET['state'];
 		echo "<br>"."usuario da sessao: ".$_GET['user'];
 		echo "<br>"."usuario do perfil: ".$_GET['prof'];
+
+		$modelFollow = new ModelInteracao(Init::getDB());
+		
+
 	}
 
 	public function opSeguindo(){
