@@ -181,11 +181,24 @@ class ControllerAnimal{
 
 	/*metodo acionado quando o usuario acessa /someactionfollow */
 	public function someactionfollow(){
-		echo "<br>".$_GET['state'];
-		echo "<br>"."usuario da sessao: ".$_GET['user'];
-		echo "<br>"."usuario do perfil: ".$_GET['prof'];
+		
+		$varUser = $_GET['user'];
+		$varProf = $_GET['prof'];
+		$varState = $_GET['state'];
 
 		$modelFollow = new ModelInteracao(Init::getDB());
+		if($varState == "seguindo"){
+			echo "você é ".$varUser." e quer dar unfollow em ".$varProf;
+		}
+		elseif($varState == "seguir de volta"){
+			echo "você é ".$varUser." e quer seguir ".$varProf.". ELE JA TE SEGUE. ELE VAI GOSTAR";
+		}
+		elseif($varState == "seguir"){
+			echo "você é ".$varUser." e quer seguir ".$varProf;
+		}
+		else{
+			echo "ERROR: Erro interno do servidor";
+		}
 		
 
 	}

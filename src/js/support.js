@@ -5,6 +5,7 @@ var hdnPerfil = document.getElementById("hdnPerfil").value;
 var tagBody = document.getElementsByTagName("body")[0];
 var aux = null;
 
+/* Adicionando evento quando usuario clicar no botao seguir */
 btnSeguir.addEventListener(
 	"click",
 	function fncBtnFollowClick(){
@@ -12,6 +13,7 @@ btnSeguir.addEventListener(
 	}
 );
 
+/* Adicionando evento quando usuario acessar o perfil de outro usuario */
 tagBody.addEventListener(
 	"onload",
 	function fncBtnFollowLoad(){
@@ -44,7 +46,7 @@ function CriaRequest(){
 Funcao para enviar os dados
 **************************/
 
-/*Metodo que muda o valor do button ao seguir ou deixar de seguir alguem*/
+/*Metodo que muda o valor do button (seguir/seguir de volta/seguindo) */
 function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 	// Declaracao de variaveis
@@ -87,7 +89,7 @@ function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 **/
 
-
+/* Metodo que chama os metodos para seguir/deixar de seguir um usuario */
 function runFollowButton(aux, sessionUser, profileUser){
 
 	// Declaracao de variaveis
