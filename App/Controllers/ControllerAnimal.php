@@ -193,13 +193,18 @@ class ControllerAnimal{
 			echo "você é ".$sessionUser." e quer dar unfollow em ".$profileUser;
 		}
 		elseif($usersState == "seguir de volta"){
-			echo "você é ".$sessionUser." e quer seguir ".$profileUser.". ELE JA TE SEGUE. ELE VAI GOSTAR";
+			//echo "você é ".$sessionUser." e quer seguir ".$profileUser.". ELE JA TE SEGUE. ELE VAI GOSTAR";
 			$relation->setCodigoSeguido($profileUser);
 			$relation->setCodigoSeguidor($sessionUser);
 			$modelFollow->adicionarSeguidor($relation);
+			return "seguindo";
 		}
 		elseif($usersState == "seguir"){
-			echo "você é ".$sessionUser." e quer seguir ".$profileUser;
+			$relation->setCodigoSeguido($profileUser);
+			$relation->setCodigoSeguidor($sessionUser);
+			$modelFollow->adicionarSeguidor($relation);
+			echo "seguindo";
+			//echo "você é ".$sessionUser." e quer seguir ".$profileUser;
 		}
 		else{
 			echo "ERROR: Erro interno do servidor";

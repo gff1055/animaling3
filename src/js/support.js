@@ -10,7 +10,6 @@ btnSeguir.addEventListener(
 	"click",
 	function fncBtnFollowClick(){
 		runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);
-		loadLabelButton(hdnSessaoUsuario, hdnPerfil);
 	}
 );
 
@@ -109,9 +108,7 @@ function runFollowButton(aux, sessionUser, profileUser){
 
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
-				alert("OK :)");
-				alert(xmlreq.responseText);
-				//nome.value = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
+				btnSeguir.value = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
 			}else{
 				nome.value = "ERROR:";
 			}
