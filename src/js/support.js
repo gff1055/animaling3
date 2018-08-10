@@ -10,6 +10,7 @@ btnSeguir.addEventListener(
 	"click",
 	function fncBtnFollowClick(){
 		runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);
+		loadLabelButton(hdnSessaoUsuario, hdnPerfil);
 	}
 );
 

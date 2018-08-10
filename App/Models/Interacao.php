@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Interacao{
 	
 	private $codigo;

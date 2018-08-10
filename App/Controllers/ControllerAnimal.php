@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\ModelAnimal;
 use App\Models\ModelStatus;
 use App\Models\ModelInteracao;
+use App\Models\Interacao;
 use App\Models\Status;
 use App\Views\Cabecalho;
 use App\Init;
@@ -182,19 +183,23 @@ class ControllerAnimal{
 	/*metodo acionado quando o usuario acessa /someactionfollow */
 	public function someactionfollow(){
 		
-		$varUser = $_GET['user'];
-		$varProf = $_GET['prof'];
-		$varState = $_GET['state'];
+		$sessionUser = $_GET['user'];
+		$profileUser = $_GET['prof'];
+		$usersState = $_GET['state'];
 
 		$modelFollow = new ModelInteracao(Init::getDB());
-		if($varState == "seguindo"){
-			echo "você é ".$varUser." e quer dar unfollow em ".$varProf;
+		$relation = new Interacao();
+		if($usersState == "seguindo"){
+			echo "você é ".$sessionUser." e quer dar unfollow em ".$profileUser;
 		}
-		elseif($varState == "seguir de volta"){
-			echo "você é ".$varUser." e quer seguir ".$varProf.". ELE JA TE SEGUE. ELE VAI GOSTAR";
+		elseif($usersState == "seguir de volta"){
+			echo "você é ".$sessionUser." e quer seguir ".$profileUser.". ELE JA TE SEGUE. ELE VAI GOSTAR";
+			$relation->setCodigoSeguido($profileUser);
+			$relation->setCodigoSeguidor($sessionUser);
+			$modelFollow->adicionarSeguidor($relation);
 		}
-		elseif($varState == "seguir"){
-			echo "você é ".$varUser." e quer seguir ".$varProf;
+		elseif($usersState == "seguir"){
+			echo "você é ".$sessionUser." e quer seguir ".$profileUser;
 		}
 		else{
 			echo "ERROR: Erro interno do servidor";
