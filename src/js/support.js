@@ -1,5 +1,7 @@
 
 var btnSeguir = document.getElementById("btnSeguir");
+var countFollowing = document.getElementById("countFollowing");
+//var countFollower = document.getElementById("countFollower");
 var hdnSessaoUsuario = document.getElementById("hdnSessaoUsuario").value;
 var hdnPerfil = document.getElementById("hdnPerfil").value;
 var tagBody = document.getElementsByTagName("body")[0];
@@ -109,8 +111,13 @@ function runFollowButton(aux, sessionUser, profileUser){
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
 				btnSeguir.value = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
+				//if(btnSeguir.value == "seguindo")
+				//	alert(countFollowing.innerHTML;
+				//	alert(countFollowing.innerHTML + 1);
+				//else if(btnSeguir.value == "seguir")
+				//	countFollower = countFollower + 1;
 			}else{
-				nome.value = "ERROR:";
+				btnSeguir.value = "ERROR:";
 			}
 		}
 	};

@@ -17,12 +17,12 @@ use App\Init;
 	<br>
 	<?php // mostrandp a quantidade de publicações, seguidores e usuarios sendo seguidos?>
 	publicacoes (<?php echo $numeroPosts?>)<br>
-	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores">
-		Seguidores (<?php echo $numeroSeguidores;?>)
+	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores" id="countFollowers">
+		Seguidores <span id="countFollower">(<?php echo $numeroSeguidores;?>)</span>
 	</a>
 	<br>
-	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo">
-		Seguindo (<?php echo $numeroSeguindo;?>)
+	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo" id="countFollowing">
+		Seguindo <span id="countFollowing">(<?php echo $numeroSeguindo;?>)</span>
 	</a>
 	
 </div>
