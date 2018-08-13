@@ -96,6 +96,13 @@ class Init{
 			'value'=>$pUrlDividida[3]
 		);
 
+		$arrayRotasAux['countFollow'] = array(
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/countfollow',
+			'controller' => 'controllerAnimal',
+			'action' => 'countFollow',
+			'value' => ''
+		);
+
 		/*$arrayRotasAux['admSeguidos'] = array(
 			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',
 			'controller'=> 'controllerAnimal',

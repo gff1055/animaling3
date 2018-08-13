@@ -215,8 +215,15 @@ class ControllerAnimal{
 		else{
 			echo "ERROR: Erro interno do servidor";
 		}
-		
 
+	}
+
+	public function countFollow($type, $user){
+		$contArrAux = $this->countInteractions($user);
+		if($type=="seguindo")
+			echo $contArrAux['followings'];
+		elseif ($type=="seguidor")
+			echo $contArrAux['followers'];
 	}
 
 	public function opSeguindo(){
