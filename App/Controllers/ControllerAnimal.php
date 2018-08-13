@@ -22,28 +22,27 @@ class ControllerAnimal{
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($nick);
 
-		// carregando a quantidades de seguidores/seguidos
-		$modelInteracao = new ModelInteracao(Init::getDB());
-		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
-		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
+		$modelInteracao = new ModelInteracao(Init::getDB());	// declaracao de variaval para acesso a tabela de Interacoes(seguidores seguidos)
+
+		$count = $this->countInteractions($dadosAnimal['codigo']);	// variavel recebe array que contem a quantidade de seguidores e seguidos de um usuario
 		
-		// declarando objeto do model Status
-		$modelStatus = new ModelStatus(Init::getDB());
+		$modelStatus = new ModelStatus(Init::getDB());	// declarando variavel para acesso a tabela de Status no banco
 
-		$acessoNaoLogado = false;	// flag que indica se o usuario que acessou a pagina esta logado
-		$acessoUsuarioSessao = null;	// flag que indica que o usuario da sessão esta acessando seu próprio perfil
 
+		$acessoNaoLogado = false;	// flag que indica se o acesso a página é de alguem logado
+		$acessoUsuarioSessao = null;	// flag que indica se o usuario da sessão esta acessando seu próprio perfil
+
+		/*
+		Testando se o acesso é de alguem logado
+		*/
 		if(isset($_SESSION['login'])) {
 			
-			// verificando se o usuario da sessão esta acessando o proprio perfil
+			/*Testando se é o usuario da sessão esta acessando o proprio perfil*/
 			if(($_SESSION['login'] == $dadosAnimal['nick'])){
 				$acessoUsuarioSessao = true;
-				
-				echo "<br>sessao".$_SESSION['login'];
-				echo "<br>animal".$dadosAnimal['nick'];
-				
-				//verificando se o usuario da sessao postou novas mensagens
-				if(!empty($_POST['novoPost'])){ // se houver nova postagem, ela é cadastrada
+								
+				/*Testando se o usuario postou novas mesnagens*/
+				if(!empty($_POST['novoPost'])){
 					$status = new Status();
 					$status->setCodigoAnimal($dadosAnimal['codigo']);	// setando codigo do usuario
 					$status->setConteudo($_POST['novoPost']);	// setando conteudo do post
@@ -52,7 +51,7 @@ class ControllerAnimal{
 				}
 			}
 
-			// verificando se usuario da sessao e o usuario do perfil seguem entre si
+			// Testando a situacao do usuario do perfil e da sessão(se eles seguem entre si ou não)
 			else{
 				$acessoUsuarioSessao = false;
 				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
@@ -126,11 +125,18 @@ class ControllerAnimal{
 		include_once "../App/Views/excluiPost.php";		
 	}
 	
-	public function atualizarStatus(){
-
+	
+	public function countInteractions($user){
+		// carregando a quantidades de seguidores/seguidos
+		$modelInteracao = new ModelInteracao(Init::getDB());
+		return array(
+			'followings' => $modelInteracao->contSeguidos($user),
+			'followers' => $modelInteracao->contSeguidores($user)
+		);
+//		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
+//		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
 	}
 
-	
 	public function seguidores($pNick){ //metodo para a listagem dos seguidores
 
 		session_start();
