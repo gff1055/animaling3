@@ -192,6 +192,7 @@ class ControllerAnimal{
 		$sessionUser = $_GET['user'];
 		$profileUser = $_GET['prof'];
 		$usersState = $_GET['state'];
+		$arrayData;
 
 		$modelFollow = new ModelInteracao(Init::getDB());
 		$relation = new Interacao();
@@ -209,7 +210,12 @@ class ControllerAnimal{
 			$relation->setCodigoSeguido($profileUser);
 			$relation->setCodigoSeguidor($sessionUser);
 			$modelFollow->adicionarSeguidor($relation);
-			echo "seguindo";
+			$arrayData = array(
+				'indexState' => 'seguindo',
+				'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
+			);
+			$arrayJsonData = json_encode($arrayData);
+			echo $arrayJsonData;
 			//echo "você é ".$sessionUser." e quer seguir ".$profileUser;
 		}
 		else{

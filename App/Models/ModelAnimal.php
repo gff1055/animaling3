@@ -211,35 +211,6 @@ class ModelAnimal
 	}	
 
 
-/*	private function gerenciaAnimal($pAnimal, $operacao, $query){
-		$result = null;
-		$haErro=$this->existeAnimal($pAnimal,$operacao);
-		if($haErro){
-			return $this::NOME_JA_CADASTRADO;
-		}
-
-		else{
-			try{
-				//print_r($pAnimal);
-				$result=$this->conex->getConnection()->prepare($query);
-				$result->bindValue(1,$pAnimal->getCodigoDono());
-				$result->bindValue(2,$pAnimal->getNome());
-				$result->bindValue(3,$pAnimal->getNick());
-				$result->bindValue(4,$pAnimal->getEspecie());
-				$result->bindValue(5,$pAnimal->getNascimento());
-				$result->bindValue(6,$pAnimal->getSexo());
-				if($operacao==$this::ALTERACAO_DADOS){
-					$result->bindValue(7,$pAnimal->getCodigo());
-				}
-				$result->execute();
-				return $this::OK;
-			}catch(PDOException $erro){
-				return "erro: ".$erro->getMessage();
-			}
-		}
-	}*/
-
-
 	public function excluir($pAnimal)
 	{
 		$excluido = false;
@@ -264,7 +235,7 @@ class ModelAnimal
 		$query = "
 			select nome,descricao,nick
 			from animal
-			where nome like ?
+			where upper(nome) like ?
 			limit 3";
 		return $this->buscarAnimal($termo, $query);	
 				
@@ -275,7 +246,7 @@ class ModelAnimal
 		$query = "
 			select nome,descricao,nick
 			from animal
-			where nome like ?";
+			where upper(nome) like ?";
 		return $this->buscarAnimal($termo, $query);					
 	}
 

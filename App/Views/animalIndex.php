@@ -18,7 +18,7 @@ use App\Init;
 	<?php // mostrandp a quantidade de publicações, seguidores e usuarios sendo seguidos?>
 	publicacoes (<?php echo $numeroPosts?>)<br>
 	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores">
-		Seguidores (<?php echo $count['followers']?>)
+		Seguidores (<span id="countFollowers"><?php echo $count['followers']?></span>)
 	</a>
 	<br>
 	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo" >
@@ -39,7 +39,7 @@ if($acessoUsuarioSessao) {?>
 	<?php
 }
 
-// se não for o usuario, verifica se o acesso é de um usuário logado.
+// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.
 elseif(!$acessoNaoLogado){
 	?>
 	<input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
