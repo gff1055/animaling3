@@ -168,7 +168,7 @@ class ModelStatus{
 		from animal as a
 		inner join status as s
 		on a.codigo = s.codigoAnimal
-		where upper(a.nome) like ? or upper(s.conteudo) like ?
+		where lower(a.nome) like lower(?) or lower(s.conteudo) like lower(?)
 		order by s.dataStatus DESC
 		limit 3";
 		return $this->buscarStatus($termo, $query);
@@ -180,7 +180,7 @@ class ModelStatus{
 		from animal as a
 		inner join status as s
 		on a.codigo = s.codigoAnimal
-		where upper(a.nome) like ? or upper(s.conteudo) like ?
+		where lower(a.nome) like lower(?) or lower(s.conteudo) like lower(?)
 		order by s.dataStatus DESC";
 		return $this->buscarStatus($termo, $query);	
 	}
