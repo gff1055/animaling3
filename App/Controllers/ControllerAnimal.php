@@ -54,14 +54,15 @@ class ControllerAnimal{
 			// Testando a situacao do usuario do perfil e o usuario da sessão (se eles seguem entre si ou não)
 			else{
 				$acessoUsuarioSessao = false;
-				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
+				$relacionamento = $this->labelSituationUsers($_SESSION['id'], $dadosAnimal['codigo']);
+				/*$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
 				if($situacao == $modelInteracao::SEGUINDO)
 					$relacionamento = "seguindo";
 				elseif($situacao == $modelInteracao::SEG_VOLTA)
 					$relacionamento = "seguir de volta";
 				elseif($situacao == $modelInteracao::NAO_SEGUE)
 					$relacionamento = "seguir";
-				else echo "<BR>ALGO ERRADO <BR>";
+				else echo "<BR>ALGO ERRADO <BR>";*/
 			}
 		}
 
@@ -87,6 +88,20 @@ class ControllerAnimal{
 
 		$cab->fechamento();
 
+	}
+
+
+	public function labelSituationUsers($user1, $user2){
+		$modelInteracao = new ModelInteracao(Init::getDB());
+		$temp = $modelInteracao->situacaoUsuarios($user1, $user2);
+		if($temp == $modelInteracao::SEGUINDO)
+			return "Seguindo";
+		elseif($temp == $modelInteracao::SEG_VOLTA)
+			return "Seguir de volta";
+		elseif($temp == $modelInteracao::NAO_SEGUE)
+			return "Seguir";
+		else
+			return "ERROR: ";
 	}
 
 	//metodo para visualizacao dos posts
@@ -180,7 +195,9 @@ class ControllerAnimal{
 	/* metodo acionado quando o usuario acessa '/followstate' */
 	public function followstate(){
 		$modelInteracao = new ModelInteracao(Init::getDB());
-		$temp = $modelInteracao->situacaoUsuarios($_GET['user'], $_GET['prof']);
+		$temp = $this->labelSituationUsers($_SESSION['id'], $dadosAnimal['codigo']);
+		echo $temp;
+		/*$temp = $modelInteracao->situacaoUsuarios($_GET['user'], $_GET['prof']);
 		if($temp == $modelInteracao::SEGUINDO)
 			echo "Seguindo";
 		elseif($temp == $modelInteracao::SEG_VOLTA)
@@ -188,7 +205,7 @@ class ControllerAnimal{
 		elseif($temp == $modelInteracao::NAO_SEGUE)
 			echo "Seguir";
 		else
-			echo "ERROR: ";
+			echo "ERROR: ";*/
 	}
 
 	/*metodo acionado quando o usuario acessa /someactionfollow */
@@ -204,27 +221,29 @@ class ControllerAnimal{
 		/*
 			Verificando o status dos usuarios (se eles seguem entre si ou nao)
 		*/
-		if($usersState == "seguindo"){
+		if($usersState == "Seguindo"){
 			echo "você é ".$sessionUser." e quer dar unfollow em ".$profileUser;
 		}
 
-		elseif($usersState == "seguir de volta"){
+		/*elseif($usersState == "seguir de volta"){
 			//echo "você é ".$sessionUser." e quer seguir ".$profileUser.". ELE JA TE SEGUE. ELE VAI GOSTAR";
 			$relation->setCodigoSeguido($profileUser);
 			$relation->setCodigoSeguidor($sessionUser);
 			$modelFollow->adicionarSeguidor($relation);
 			return "seguindo";
-		}
+		}*/
 
-		elseif($usersState == "seguir"){
-			/*Enviando o codigo dos seguidor e do seguido*/
+		elseif($usersState == "Seguir" || $usersState == "Seguir de volta"){
+
+			/*Setando o codigo do seguidor e do seguido no objeto*/
 			$relation->setCodigoSeguido($profileUser);
 			$relation->setCodigoSeguidor($sessionUser);
-			$modelFollow->adicionarSeguidor($relation);	//adicionando o status dos dois
+
+			$modelFollow->adicionarSeguidor($relation);	//adicionando a nova ligacao no banco de dados
 			
-			/*montando o array que enviara os dados(situacao de seguidores e quanto seguidores o usuario possui) ao navegador*/
+			/*montando o array que enviara os dados (situacao e quantos seguidores o usuario possui) ao navegador*/
 			$arrayData = array(
-				'indexState' => 'seguindo',
+				'indexState' => 'Seguindo',
 				'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
 			);
 
