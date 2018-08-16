@@ -29,7 +29,7 @@ class ControllerAnimal{
 		$modelStatus = new ModelStatus(Init::getDB());	// declarando variavel para acesso a tabela de Status no banco
 
 
-		$acessoNaoLogado = false;	// flag que indica se o acesso a página é de alguem logado
+		$acessoNaoLogado = false;	// flag que indica se o acesso a página é de alguem nao logado
 		$acessoUsuarioSessao = null;	// flag que indica se o usuario da sessão esta acessando seu próprio perfil
 
 		/*
@@ -51,7 +51,7 @@ class ControllerAnimal{
 				}
 			}
 
-			// Testando a situacao do usuario do perfil e da sessão(se eles seguem entre si ou não)
+			// Testando a situacao do usuario do perfil e o usuario da sessão (se eles seguem entre si ou não)
 			else{
 				$acessoUsuarioSessao = false;
 				$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
@@ -137,7 +137,11 @@ class ControllerAnimal{
 //		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
 	}
 
-	public function seguidores($pNick){ //metodo para a listagem dos seguidores
+
+	/*
+		metodo para a listagem dos seguidores
+	*/
+	public function seguidores($pNick){ 
 
 		session_start();
 
@@ -150,15 +154,16 @@ class ControllerAnimal{
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
 		include_once "../App/Views/mostraUsuario.php";
 		include_once "../App/Views/formBusca.php";
-		include_once "../App/Views/listarSeguidores.php"; // inserindo a pagina que vai listar os seguidores
+		include_once "../App/Views/listarSeguidores.php";	// inserindo a pagina que vai listar os seguidores
 		$cab->fechamento();
 	}
 	
 	
-	public function seguindo($pNick){  //metodo para a listagem dos seguidos
-
+	/*
+		Metodo para a listagem dos seguidos
+	*/
+	public function seguindo($pNick){
 		session_start();
-
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick); // carregando informacoes do animal
 		$modelIntegracao = new ModelInteracao(Init::getDB()); // carregando a lista de seguidos
@@ -189,16 +194,20 @@ class ControllerAnimal{
 	/*metodo acionado quando o usuario acessa /someactionfollow */
 	public function someactionfollow(){
 		
-		$sessionUser = $_GET['user'];
-		$profileUser = $_GET['prof'];
-		$usersState = $_GET['state'];
-		$arrayData;
-
-		$modelFollow = new ModelInteracao(Init::getDB());
-		$relation = new Interacao();
+		$sessionUser = $_GET['user'];	// recebendo o codigo do usuario da sessao
+		$profileUser = $_GET['prof'];	// recebendo o codigo do usuario do perfil
+		$usersState = $_GET['state'];	// recebendo o status do relacionamento dos dois usuarios
+		$arrayData = null;	// array responsavel por armazenar os dados requisitados pelos clientes
+		$modelFollow = new ModelInteracao(Init::getDB());	// declaracao de objeto para acesso à classe model
+		$relation = new Interacao();	// declaracao de variavel para acesso aos registros
+		
+		/*
+			Verificando o status dos usuarios (se eles seguem entre si ou nao)
+		*/
 		if($usersState == "seguindo"){
 			echo "você é ".$sessionUser." e quer dar unfollow em ".$profileUser;
 		}
+
 		elseif($usersState == "seguir de volta"){
 			//echo "você é ".$sessionUser." e quer seguir ".$profileUser.". ELE JA TE SEGUE. ELE VAI GOSTAR";
 			$relation->setCodigoSeguido($profileUser);
@@ -206,17 +215,22 @@ class ControllerAnimal{
 			$modelFollow->adicionarSeguidor($relation);
 			return "seguindo";
 		}
+
 		elseif($usersState == "seguir"){
+			/*Enviando o codigo dos seguidor e do seguido*/
 			$relation->setCodigoSeguido($profileUser);
 			$relation->setCodigoSeguidor($sessionUser);
-			$modelFollow->adicionarSeguidor($relation);
+			$modelFollow->adicionarSeguidor($relation);	//adicionando o status dos dois
+			
+			/*montando o array que enviara os dados(situacao de seguidores e quanto seguidores o usuario possui) ao navegador*/
 			$arrayData = array(
 				'indexState' => 'seguindo',
 				'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
 			);
-			$arrayJsonData = json_encode($arrayData);
-			echo $arrayJsonData;
-			//echo "você é ".$sessionUser." e quer seguir ".$profileUser;
+
+			$arrayJsonData = json_encode($arrayData);	//	codificando array que enviará os dados em formato JSON
+
+			echo $arrayJsonData; // array em formato JSON sendo apresentada
 		}
 		else{
 			echo "ERROR: Erro interno do servidor";
@@ -224,13 +238,13 @@ class ControllerAnimal{
 
 	}
 
-	public function countFollow($type, $user){
+/*	public function countFollow($type, $user){
 		$contArrAux = $this->countInteractions($user);
 		if($type=="seguindo")
 			echo $contArrAux['followings'];
 		elseif ($type=="seguidor")
 			echo $contArrAux['followers'];
-	}
+	}*/
 
 	public function opSeguindo(){
 		echo "seguido";

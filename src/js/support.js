@@ -1,10 +1,10 @@
 
-var btnSeguir = document.getElementById("btnSeguir");
-var countFollowers = document.getElementById("countFollowers");
-var hdnSessaoUsuario = document.getElementById("hdnSessaoUsuario").value;
-var hdnPerfil = document.getElementById("hdnPerfil").value;
-var tagBody = document.getElementsByTagName("body")[0];
-var aux = null;
+var btnSeguir = document.getElementById("btnSeguir");	// variavel recebe referencia do botao seguir
+var countFollowers = document.getElementById("countFollowers");	//	variavel recebe a quantidade de seguidores
+var hdnSessaoUsuario = document.getElementById("hdnSessaoUsuario").value;	// variavel recebe o codigo do usuario da sessao
+var hdnPerfil = document.getElementById("hdnPerfil").value;	// variavel recebendo o codigo do usuario do perfil
+var tagBody = document.getElementsByTagName("body")[0];	// variavel recebendo a referencia da tag body
+var aux = null;	// variavel auxiliar
 
 /* Adicionando evento quando usuario clicar no botao seguir */
 btnSeguir.addEventListener(
@@ -21,7 +21,7 @@ tagBody.addEventListener(
 		loadLabelButton(hdnSessaoUsuario, hdnPerfil);
 });
 
-
+/* Funcao que cria a requisicao e testa o suporte a ajax */
 function CriaRequest(){
 	try{
 		request = new XMLHttpRequest();
@@ -43,8 +43,9 @@ function CriaRequest(){
 		return request;
 }
 
+
 /**************************
-Funcao para enviar os dados
+Funcao para carregar os dados
 **************************/
 
 /*Metodo que muda o valor do button (seguir/seguir de volta/seguindo) */
@@ -53,11 +54,11 @@ function loadLabelButton(sessaoUsuario, perfilUsuario){
 	// Declaracao de variaveis
 	var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
-	var url = "/animaling3/public/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url que enviara as informações
+	var url = "/animaling3/public/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url para onde serão enviadas as informações
 
 	xmlreq.open("GET", url , true);	// Iniciando uma requisicao
 
-	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
+	// Atribui uma funcao para ser executada sempre que houver uma mudance de estado
 	xmlreq.onreadystatechange =
 	function(){
 
@@ -72,35 +73,20 @@ function loadLabelButton(sessaoUsuario, perfilUsuario){
 			}
 		}
 	};
-
 	xmlreq.send(null);
-
 }
 
 
-/**
-
--> runFollowButton(aux, sessionUser, profileUser)
-
--> someoperationfollow
-	GET
-		aux(loadLabelButton)
-		sessionUser
-		profileUser
-
-**/
-
-/* Metodo que chama os metodos para seguir/deixar de seguir um usuario */
+/* Metodo que insere os novos seguidores e atualiza a quantidade destes */
 function runFollowButton(aux, sessionUser, profileUser){
 
 	// Declaracao de variaveis
-	//var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
 	var url = "/animaling3/public/"+profileUser+"/someactionfollow?&state="+aux+"&user="+sessionUser+"&prof="+profileUser;	// url que enviara as informações
 
 	xmlreq.open("GET", url, true);	// Iniciando uma requisicao
 
-	// Atribui uma funcao para ser executada sempre que houver uma mudance de ado
+	// Atribui uma funcao para ser executada sempre que houver uma mudance de estado
 	xmlreq.onreadystatechange =
 	function(){
 
@@ -109,14 +95,9 @@ function runFollowButton(aux, sessionUser, profileUser){
 
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
-				dataServer = JSON.parse(xmlreq.responseText); 	// o botão recebe o novo status do relacionamento dos usuarios
-				btnSeguir.value = dataServer.indexState;
-				countFollowers.innerHTML = dataServer.indexCountFollowers;
-				//if(btnSeguir.value == "seguindo")
-				//	alert(countFollowing.innerHTML;
-				//	alert(countFollowing.innerHTML + 1);
-				//else if(btnSeguir.value == "seguir")
-				//	countFollower = countFollower + 1;
+				dataServer = JSON.parse(xmlreq.responseText); 	// dataServer recebendo resposta da operacao do servidor
+				btnSeguir.value = dataServer.indexState; //	elemento do botao seguir recebe o novo relacionamento
+				countFollowers.innerHTML = dataServer.indexCountFollowers;	// atualizando a quantidade de seguidores
 			}else{
 				btnSeguir.value = "ERROR:";
 			}
