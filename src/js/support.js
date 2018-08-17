@@ -10,7 +10,15 @@ var aux = null;	// variavel auxiliar
 btnSeguir.addEventListener(
 	"click",
 	function fncBtnFollowClick(){
-		runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);
+		if(btnSeguir.value == "Seguindo"){
+			continueExecution = confirm("Deseja deixar de seguir este usuario?");
+			if(continueExecution == true)
+				runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);
+		}
+		else{
+			runFollowButton("Seguindo", hdnSessaoUsuario, hdnPerfil);
+		}
+		
 	}
 );
 
@@ -52,7 +60,6 @@ Funcao para carregar os dados
 function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 	// Declaracao de variaveis
-	var nome = document.getElementById("btnSeguir");	// recebendo referencia do botao seguir
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
 	var url = "/animaling3/public/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url para onde serão enviadas as informações
 
@@ -67,9 +74,9 @@ function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
-				nome.value = aux = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
+				btnSeguir.value = aux = xmlreq.responseText; 	// o botão recebe o novo status do relacionamento dos usuarios
 			}else{
-				nome.value = "ERROR:"
+				btnSeguir.value = "ERROR:"
 			}
 		}
 	};
