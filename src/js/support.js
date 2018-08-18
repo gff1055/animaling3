@@ -12,13 +12,10 @@ btnSeguir.addEventListener(
 	function fncBtnFollowClick(){
 		if(btnSeguir.value == "Seguindo"){
 			continueExecution = confirm("Deseja deixar de seguir este usuario?");
-			if(continueExecution == true)
-				runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);
+			if(continueExecution == false)
+				return false;				
 		}
-		else{
-			runFollowButton("Seguindo", hdnSessaoUsuario, hdnPerfil);
-		}
-		
+		runFollowButton(btnSeguir.value, hdnSessaoUsuario, hdnPerfil);		
 	}
 );
 
@@ -103,7 +100,7 @@ function runFollowButton(aux, sessionUser, profileUser){
 			// Verifica se o arquivo foi encontrado com sucesso
 			if(xmlreq.status == 200){
 				dataServer = JSON.parse(xmlreq.responseText); 	// dataServer recebendo resposta da operacao do servidor
-				btnSeguir.value = dataServer.indexState; //	elemento do botao seguir recebe o novo relacionamento
+				btnSeguir.value = dataServer.indexNewState; //	elemento do botao seguir recebe o novo relacionamento
 				countFollowers.innerHTML = dataServer.indexCountFollowers;	// atualizando a quantidade de seguidores
 			}else{
 				btnSeguir.value = "ERROR:";

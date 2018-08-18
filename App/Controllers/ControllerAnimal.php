@@ -222,7 +222,14 @@ class ControllerAnimal{
 			Verificando o status dos usuarios (se eles seguem entre si ou nao)
 		*/
 		if($usersState == "Seguindo"){
-			echo "você é ".$sessionUser." e quer dar unfollow em ".$profileUser;
+			$arrayData = array(
+				'indexNewState' => 'Seguir',
+				'indexCountFollowers' => 'we'	//$modelFollow->contSeguidores($profileUser)
+			);
+
+			$arrayJsonData = json_encode($arrayData);	//	codificando array que enviará os dados em formato JSON
+
+			echo $arrayJsonData; // array em formato JSON sendo apresentada
 		}
 
 		/*elseif($usersState == "seguir de volta"){
@@ -243,7 +250,7 @@ class ControllerAnimal{
 			
 			/*montando o array que enviara os dados (situacao e quantos seguidores o usuario possui) ao navegador*/
 			$arrayData = array(
-				'indexState' => 'Seguindo',
+				'indexNewState' => 'Seguindo',
 				'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
 			);
 
