@@ -148,7 +148,22 @@ class ModelInteracao{
 		}	
 	}
 
+	public function newsFeed($codeSessionUser){
+		try{
+			$query = "
+			select seguido.nome, status.dataStatus, status.codigoAnimal, status.conteudo, status.dataStatus
+			from animal as seguido
+			inner join status on status.codigoAnimal = seguido.codigo
+			inner join interacao on interacao.codSeguido = seguido.codigo
+			where interacao.codseguidor = ?";
+			$result = $this->conex->prepare($query);
+			$result->bindValue(1, $session);
+			$resulç
+		}
+		catch{
 
+		}
+	}
 
 	public function excluirSeguidor($pInteracao){
 
@@ -172,10 +187,7 @@ class ModelInteracao{
 		}catch(PDOException $e){
 			return "<br>ERRO: ".$e->getMessage();
 		}
-
 	}
-
-	
 }
 
 ?>
