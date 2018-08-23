@@ -18,8 +18,17 @@ class ControllerIndex{
 
 	// pagina inicial
 	public function index(){
-		$this->cab->abertura("Animaling - Entre ou cadastre-se"); // cabecalho da pagina
-		include_once "../App/Views/login.php"; // conteudo
+		session_start();
+		if(isset($_SESSION['login'])){
+			$titleBar = "Animaling";
+			$page = "../App/Views/newsfeed.php";
+		}
+		else{
+			$titleBar = "Animaling - Entre ou cadastre-se";
+			$page = "../App/Views/login.php";
+		}
+		$this->cab->abertura($titleBar); // cabecalho da pagina
+		include_once $page; // conteudo
 		$this->cab->fechamento(); // fechando a pagina
 	}
 

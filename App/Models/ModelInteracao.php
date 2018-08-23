@@ -156,12 +156,21 @@ class ModelInteracao{
 			inner join status on status.codigoAnimal = seguido.codigo
 			inner join interacao on interacao.codSeguido = seguido.codigo
 			where interacao.codseguidor = ?";
+			$arrayData = array();
 			$result = $this->conex->prepare($query);
-			$result->bindValue(1, $session);
-			$resulç
+			$result->bindValue(1, $codeSessionUser);
+			$result->execute();
+			$row = array();;
+			if($result->rowCount()>0){
+				while($row=$result->fetch(\PDO::FETCH_ASSOC)){
+					array_push($row, $arrayData);
+				}
+			}
+			else $row = 0;
+			return $row;
 		}
-		catch{
-
+		catch(PDOException $erro){
+			return "ERRO: ".$e->getMessage();
 		}
 	}
 
