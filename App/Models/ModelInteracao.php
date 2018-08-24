@@ -162,7 +162,7 @@ class ModelInteracao{
 			$result->execute();
 			$row = array();;
 			if($result->rowCount()>0){
-				while($row=$result->fetch(\PDO::FETCH_ASSOC)){
+				while($arrayData=$result->fetch(\PDO::FETCH_ASSOC)){
 					array_push($row, $arrayData);
 				}
 			}

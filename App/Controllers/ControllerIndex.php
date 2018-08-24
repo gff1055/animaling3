@@ -5,6 +5,7 @@ namespace App\Controllers; //declarando o namespace
 // declarando as classes
 use App\Views\Cabecalho;
 use App\Models\ModelAnimal;
+use App\Models\ModelInteracao;
 use App\Init;
 
 
@@ -20,6 +21,9 @@ class ControllerIndex{
 	public function index(){
 		session_start();
 		if(isset($_SESSION['login'])){
+			$arrayNewsFeed = array();
+			$objInteraction = new ModelInteracao(Init::getDB());
+			$arrayNewsFeed = $objInteraction->newsFeed($_SESSION['id']);
 			$titleBar = "Animaling";
 			$page = "../App/Views/newsfeed.php";
 		}
