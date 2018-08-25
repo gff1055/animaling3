@@ -32,9 +32,7 @@ class ControllerAnimal{
 		$acessoNaoLogado = false;	// flag que indica se o acesso a página é de alguem nao logado
 		$acessoUsuarioSessao = null;	// flag que indica se o usuario da sessão esta acessando seu próprio perfil
 
-		/*
-		Testando se o acesso é de alguem logado
-		*/
+		/*Testando se o acesso é de alguem logado*/
 		if(isset($_SESSION['login'])) {
 			
 			/*Testando se é o usuario da sessão esta acessando o proprio perfil*/
@@ -55,14 +53,6 @@ class ControllerAnimal{
 			else{
 				$acessoUsuarioSessao = false;
 				$relacionamento = $this->labelSituationUsers($_SESSION['id'], $dadosAnimal['codigo']);
-				/*$situacao = $modelInteracao->situacaoUsuarios($_SESSION['id'], $dadosAnimal['codigo']);
-				if($situacao == $modelInteracao::SEGUINDO)
-					$relacionamento = "seguindo";
-				elseif($situacao == $modelInteracao::SEG_VOLTA)
-					$relacionamento = "seguir de volta";
-				elseif($situacao == $modelInteracao::NAO_SEGUE)
-					$relacionamento = "seguir";
-				else echo "<BR>ALGO ERRADO <BR>";*/
 			}
 		}
 
@@ -91,6 +81,7 @@ class ControllerAnimal{
 	}
 
 
+	/*Meotodo que mostra a situacao de dois usuarios qualquer (Se seguem ou nao entre si)*/
 	public function labelSituationUsers($user1, $user2){
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$temp = $modelInteracao->situacaoUsuarios($user1, $user2);
@@ -103,6 +94,7 @@ class ControllerAnimal{
 		else
 			return "ERROR: ";
 	}
+
 
 	//metodo para visualizacao dos posts
 	public function verPost($codigo){
@@ -117,6 +109,7 @@ class ControllerAnimal{
 		include_once "../App/Views/exibePost.php";
 		$cab->fechamento();
 	}
+
 	
 	// metodo para cadastar o post de um usuario
 	public function newpost($pNick){
@@ -141,21 +134,17 @@ class ControllerAnimal{
 	}
 	
 	
-	public function countInteractions($user){
+	/*public function countInteractions($user){
 		// carregando a quantidades de seguidores/seguidos
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		return array(
 			'followings' => $modelInteracao->contSeguidos($user),
 			'followers' => $modelInteracao->contSeguidores($user)
 		);
-//		$numeroSeguidores = $modelInteracao->contSeguidores($dadosAnimal['codigo']);
-//		$numeroSeguindo = $modelInteracao->contSeguidos($dadosAnimal['codigo']);
-	}
+	}*/
 
 
-	/*
-		metodo para a listagem dos seguidores
-	*/
+	/* metodo para a listagem dos seguidores */
 	public function seguidores($pNick){ 
 
 		session_start();
@@ -174,9 +163,7 @@ class ControllerAnimal{
 	}
 	
 	
-	/*
-		Metodo para a listagem dos seguidos
-	*/
+	/* Metodo para a listagem dos seguidos */
 	public function seguindo($pNick){
 		session_start();
 		$modelAnimal = new ModelAnimal(Init::getDB());
@@ -192,21 +179,14 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 
+
 	/* metodo acionado quando o usuario acessa '/followstate' */
 	public function followstate(){
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		$temp = $this->labelSituationUsers($_SESSION['id'], $dadosAnimal['codigo']);
 		echo $temp;
-		/*$temp = $modelInteracao->situacaoUsuarios($_GET['user'], $_GET['prof']);
-		if($temp == $modelInteracao::SEGUINDO)
-			echo "Seguindo";
-		elseif($temp == $modelInteracao::SEG_VOLTA)
-			echo "Seguir de volta";
-		elseif($temp == $modelInteracao::NAO_SEGUE)
-			echo "Seguir";
-		else
-			echo "ERROR: ";*/
 	}
+
 
 	/*metodo acionado quando o usuario acessa /someactionfollow */
 	public function someactionfollow(){
@@ -218,59 +198,30 @@ class ControllerAnimal{
 		$modelFollow = new ModelInteracao(Init::getDB());	// declaracao de objeto para acesso à classe model
 		$relation = new Interacao();	// declaracao de variavel para acesso aos registros
 		
-		/*
-			Verificando o status dos usuarios (se eles seguem entre si ou nao)
-		*/
+		/*Setando o codigo do seguidor e do seguido no objeto*/
+			$relation->setCodigoSeguido($profileUser);
+			$relation->setCodigoSeguidor($sessionUser);
+
+		/* Verificando o status dos usuarios (se eles seguem entre si ou nao) */
 		if($usersState == "Seguindo"){
-			$arrayData = array(
-				'indexNewState' => 'Seguir',
-				'indexCountFollowers' => 'we'	//$modelFollow->contSeguidores($profileUser)
-			);
-
-			$arrayJsonData = json_encode($arrayData);	//	codificando array que enviará os dados em formato JSON
-
-			echo $arrayJsonData; // array em formato JSON sendo apresentada
+			$modelFollow->excluirSeguidor($relation);	//adicionando a nova ligacao no banco de dados
 		}
-
-		/*elseif($usersState == "seguir de volta"){
-			//echo "você é ".$sessionUser." e quer seguir ".$profileUser.". ELE JA TE SEGUE. ELE VAI GOSTAR";
-			$relation->setCodigoSeguido($profileUser);
-			$relation->setCodigoSeguidor($sessionUser);
-			$modelFollow->adicionarSeguidor($relation);
-			return "seguindo";
-		}*/
-
 		elseif($usersState == "Seguir" || $usersState == "Seguir de volta"){
-
-			/*Setando o codigo do seguidor e do seguido no objeto*/
-			$relation->setCodigoSeguido($profileUser);
-			$relation->setCodigoSeguidor($sessionUser);
-
 			$modelFollow->adicionarSeguidor($relation);	//adicionando a nova ligacao no banco de dados
-			
-			/*montando o array que enviara os dados (situacao e quantos seguidores o usuario possui) ao navegador*/
-			$arrayData = array(
-				'indexNewState' => 'Seguindo',
-				'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
-			);
-
-			$arrayJsonData = json_encode($arrayData);	//	codificando array que enviará os dados em formato JSON
-
-			echo $arrayJsonData; // array em formato JSON sendo apresentada
 		}
 		else{
 			echo "ERROR: Erro interno do servidor";
+			return false;
 		}
 
-	}
+		$arrayData = array(
+			'indexNewState' => $this->labelSituationUsers($sessionUser, $profileUser),
+			'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
+		);
+		$arrayJsonData = json_encode($arrayData);	//	codificando array que enviará os dados em formato JSON
+		echo $arrayJsonData; // array em formato JSON sendo apresentada
 
-/*	public function countFollow($type, $user){
-		$contArrAux = $this->countInteractions($user);
-		if($type=="seguindo")
-			echo $contArrAux['followings'];
-		elseif ($type=="seguidor")
-			echo $contArrAux['followers'];
-	}*/
+	}
 
 	public function opSeguindo(){
 		echo "seguido";
