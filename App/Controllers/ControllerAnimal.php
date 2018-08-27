@@ -134,14 +134,14 @@ class ControllerAnimal{
 	}
 	
 	
-	/*public function countInteractions($user){
+	public function countInteractions($user){
 		// carregando a quantidades de seguidores/seguidos
 		$modelInteracao = new ModelInteracao(Init::getDB());
 		return array(
 			'followings' => $modelInteracao->contSeguidos($user),
 			'followers' => $modelInteracao->contSeguidores($user)
 		);
-	}*/
+	}
 
 
 	/* metodo para a listagem dos seguidores */

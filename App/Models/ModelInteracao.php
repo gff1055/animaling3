@@ -151,7 +151,7 @@ class ModelInteracao{
 	public function newsFeed($codeSessionUser){
 		try{
 			$query = "
-			select seguido.nome, status.dataStatus, status.codigoAnimal, status.conteudo, status.dataStatus
+			select seguido.nome as name, status.dataStatus as date, status.codigoAnimal as code, status.conteudo as content
 			from animal as seguido
 			inner join status on status.codigoAnimal = seguido.codigo
 			inner join interacao on interacao.codSeguido = seguido.codigo
