@@ -3,8 +3,8 @@
 use App\Init;
 
 // mostra o nome do usuario logado
-if (isset($_SESSION['login'])){?>
-		<a href="<?php echo Init::$urlRoot?>/<?php echo $_SESSION['login']?>">Home</a>
+if (isset($_SESSION['login'])){
+		echo "Usuário: ".$_SESSION['login'];?>
 		<a href="<?php echo Init::$urlRoot?>/logout">Fazer Logoff</a>
 <?php }
 else
