@@ -27,7 +27,7 @@ class ControllerBusca{
 			$cab->abertura("$termo - Pesquisa");
 			include_once "../App/Views/mostraUsuario.php";	// mostrando o nome do usuario
 		
-			if($tipo=="Tudo"){
+			/*if($tipo=="Tudo"){
 
 				$modelAnimal = new ModelAnimal(Init::getDB());
 				$ocorrenciasAnimal = $modelAnimal->buscarPrincipaisAnimais($termo);
@@ -51,7 +51,7 @@ class ControllerBusca{
 			}
 
 			else echo "OPA...";
-		}
+		}*/
 
 		else
 			//header("location: ".Init::$urlRoot);
