@@ -72,7 +72,7 @@ class ControllerAnimal{
 		}
 		else{
 			$cab->abertura($dadosAnimal['nome']." - Página Inicial");
-			include_once "../App/Views/formBusca.php";
+			//include_once "../App/Views/formBusca.php";
 			include_once "../App/Views/animalIndex.php";
 		}
 

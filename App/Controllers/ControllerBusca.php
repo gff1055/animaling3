@@ -27,10 +27,11 @@ class ControllerBusca{
 			$cab->abertura("$termo - Pesquisa");
 			include_once "../App/Views/mostraUsuario.php";	// mostrando o nome do usuario
 		
-			/*if($tipo=="Tudo"){
+			if($tipo=="Tudo"){
 
 				$modelAnimal = new ModelAnimal(Init::getDB());
-				$ocorrenciasAnimal = $modelAnimal->buscarPrincipaisAnimais($termo);
+				//$ocorrenciasAnimal = $modelAnimal->buscarPrincipaisAnimais($termo);
+				$ocorrenciasAnimal = $modelAnimal->buscarTodosAnimais($termo);
 
 				$modelPost = new ModelStatus(Init::getDB());
 				$ocorrenciasPost = $modelPost->buscarPrincipaisStatus($termo);
@@ -38,7 +39,7 @@ class ControllerBusca{
 				include_once "../App/Views/buscaGeral.php";
 			}
 
-			elseif($tipo=="Animais"){
+			/*elseif($tipo=="Animais"){
 				$modelAnimal = new ModelAnimal(Init::getDB());
 				$ocorrenciasAnimal = $modelAnimal->buscarTodosAnimais($termo);
 				include_once "../App/Views/buscarAnimal.php";
@@ -48,10 +49,10 @@ class ControllerBusca{
 				$modelPosts = new ModelStatus(Init::getDB());
 				$ocorrenciasPosts = $modelPosts->buscarTodosStatus($termo);
 				include_once "../App/Views/buscarPosts.php";	
-			}
+			}*/
 
 			else echo "OPA...";
-		}*/
+		}
 
 		else
 			//header("location: ".Init::$urlRoot);
