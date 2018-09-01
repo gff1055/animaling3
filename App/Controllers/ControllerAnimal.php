@@ -157,7 +157,7 @@ class ControllerAnimal{
 		$cab = new Cabecalho();
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
 		include_once "../App/Views/mostraUsuario.php";
-		include_once "../App/Views/formBusca.php";
+		//include_once "../App/Views/formBusca.php";
 		include_once "../App/Views/listarSeguidores.php";	// inserindo a pagina que vai listar os seguidores
 		$cab->fechamento();
 	}
@@ -174,7 +174,7 @@ class ControllerAnimal{
 		$cab = new Cabecalho();
 		$cab->abertura($dadosAnimal['nome']); // inserindo o cabecalho com o nome do usuario
 		include_once "../App/Views/mostraUsuario.php";
-		include_once "../App/Views/formBusca.php";
+		//include_once "../App/Views/formBusca.php";
 		include_once "../App/Views/listarSeguidos.php"; // inserindo a pagina que vai listar os seguidos
 		$cab->fechamento();
 	}
