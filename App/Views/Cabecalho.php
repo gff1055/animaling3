@@ -21,7 +21,6 @@ class Cabecalho{
 	public function fechamento(){
 		?>
 </body>
-<script src="../src/js/search.js"></script>
 </html>
 		<?php
 	}

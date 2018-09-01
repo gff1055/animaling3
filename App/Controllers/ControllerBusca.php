@@ -27,7 +27,7 @@ class ControllerBusca{
 			$cab->abertura("$termo - Pesquisa");
 			include_once "../App/Views/mostraUsuario.php";	// mostrando o nome do usuario
 		
-			if($tipo=="Tudo"){
+			//if($tipo=="Tudo"){
 
 				$modelAnimal = new ModelAnimal(Init::getDB());
 				//$ocorrenciasAnimal = $modelAnimal->buscarPrincipaisAnimais($termo);
@@ -37,7 +37,7 @@ class ControllerBusca{
 				$ocorrenciasPost = $modelPost->buscarPrincipaisStatus($termo);
 
 				include_once "../App/Views/buscaGeral.php";
-			}
+			//}
 
 			/*elseif($tipo=="Animais"){
 				$modelAnimal = new ModelAnimal(Init::getDB());

@@ -38,3 +38,4 @@ if (!$possuiResultados){
 }
 ?>
 </div>
+<script src="../src/js/search.js"></script>

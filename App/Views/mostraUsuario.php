@@ -9,7 +9,7 @@ if (isset($_SESSION['login'])){
 		<form method="Post" action="<?php echo Init::$urlRoot?>/busca">
 			<input type="text" name="pesquisa" id = "txtTerm"/>
 			<input type="button" value="Buscar" id = "btnSearch"/>
-			<input type="hidden" name="tipoPesquisa" value="Tudo">
+			<!--<input type="hidden" name="tipoPesquisa" value="Tudo"> -->
 		</form>
 	<?php
 	}

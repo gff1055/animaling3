@@ -10,7 +10,7 @@ btnSearch.addEventListener(
 
 function CriaRequest(){
 	try{
-		request = new XMLHttpRequest
+		request = new XMLHttpRequest();
 	}catch(IEAtual){
 		try{
 			request = new ActiveObject("MSxml2.HMLHTTP");
@@ -21,4 +21,15 @@ function CriaRequest(){
 				request=false;
 		}
 	}
+
+	if(!request)
+		alert("Seu navegador nao suporta ajax");
+	else
+		return request;
 }
+
+
+function showData(term){
+	var url = "/animaling3/public/"+profileUser+"/someactionfollow?&state="+aux+"&user="+sessionUser+"&prof="+profileUser;	// url que enviara as informações
+}
+
