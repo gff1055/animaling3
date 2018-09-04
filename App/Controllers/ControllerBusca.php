@@ -61,6 +61,10 @@ class ControllerBusca{
 		$cab->fechamento();
 	}
 
+	public function getSearch(){
+		echo "it wortks";
+	}
+
 }
 
 ?>

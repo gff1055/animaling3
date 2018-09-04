@@ -1,10 +1,11 @@
 var btnSearch = document.getElementById('btnSearch');
-var txtTerm = document.getElementById('txtTerm');
+var txtTermSearch = document.getElementById('txtTermSearch');
+var spaceResult = document.getElementById('spaceResult');
 
 btnSearch.addEventListener(
 	"click",
 	function clickSearch(){
-		alert("OI");
+		;
 	}
 );
 
@@ -30,6 +31,10 @@ function CriaRequest(){
 
 
 function showData(term){
-	var url = "/animaling3/public/"+profileUser+"/someactionfollow?&state="+aux+"&user="+sessionUser+"&prof="+profileUser;	// url que enviara as informações
+	var url = "/animaling3/public/getsearch";	//url que enviara as informações
+	xmlReq = criaRequest();
+	xmlreq.open("GET", url, true);
+	xmlReq
+
 }
 

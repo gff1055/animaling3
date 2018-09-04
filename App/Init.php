@@ -54,6 +54,13 @@ class Init{
 			'value'=>''
 		);
 
+		$arrayRotasAux['getSearch'] = array(
+			'route' => Init::$urlRoot.'/getsearch',
+			'controller' => 'controllerBusca',
+			'action' => 'getSearch',
+			'value' => ''
+		);
+
 		/*$arrayRotasAux['buscaTemp'] = array(
 			'route'=>Init::$urlRoot.'/',
 			'controller'=>'controllerBusca',

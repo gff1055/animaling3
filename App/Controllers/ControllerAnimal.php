@@ -16,7 +16,7 @@ class ControllerAnimal{
 		session_start();
 		$cab = new Cabecalho($nick);
 
-		include_once "../App/Views/mostraUsuario.php"; 	// exibe (ou nao) o nome do usuario logado
+		
 
 		// carregando os dados do usuario
 		$modelAnimal = new ModelAnimal(Init::getDB());
@@ -63,15 +63,17 @@ class ControllerAnimal{
 		//Carregando os posts e a quantidade
 		$posts = $modelStatus->exibirTodosStatus($nick);
 		$numeroPosts = $modelStatus->contPosts($nick);
-		
+
 		//verificando se o animal possui posts
 		if($dadosAnimal==ModelAnimal::NO_RESULTS){
 			$cab->abertura("Pagina não encontrada");
-			include_once "../App/Views/formBusca.php";
+			include_once "../App/Views/mostraUsuario.php"; 	// exibe (ou nao) o nome do usuario logado
+			//include_once "../App/Views/formBusca.php";
 			include_once "../App/Views/paginaNaoExiste.php";
 		}
 		else{
 			$cab->abertura($dadosAnimal['nome']." - Página Inicial");
+			include_once "../App/Views/mostraUsuario.php"; 	// exibe (ou nao) o nome do usuario logado
 			//include_once "../App/Views/formBusca.php";
 			include_once "../App/Views/animalIndex.php";
 		}
