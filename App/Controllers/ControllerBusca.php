@@ -19,10 +19,10 @@ class ControllerBusca{
 		$cab = new Cabecalho();
 		session_start();	// iniciando a sessao
 
-		if(!empty($_POST["pesquisa"]) || !empty($_POST["tipoPesquisa"])){
+		if(!empty($_GET["pesquisa"])){
 		
-			$termo = $_POST["pesquisa"];
-			$tipo = $_POST["tipoPesquisa"];
+			$termo = $_GET["pesquisa"];
+			//$tipo = $_POST["tipoPesquisa"];
 		
 			$cab->abertura("$termo - Pesquisa");
 			include_once "../App/Views/mostraUsuario.php";	// mostrando o nome do usuario
@@ -49,9 +49,9 @@ class ControllerBusca{
 				$modelPosts = new ModelStatus(Init::getDB());
 				$ocorrenciasPosts = $modelPosts->buscarTodosStatus($termo);
 				include_once "../App/Views/buscarPosts.php";	
-			}*/
+			
 
-			else echo "OPA...";
+			else echo "OPA...";*/
 		}
 
 		else

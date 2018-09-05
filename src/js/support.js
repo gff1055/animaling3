@@ -5,6 +5,7 @@ var hdnSessaoUsuario = document.getElementById("hdnSessaoUsuario").value;	// var
 var hdnPerfil = document.getElementById("hdnPerfil").value;	// variavel recebendo o codigo do usuario do perfil
 var tagBody = document.getElementsByTagName("body")[0];	// variavel recebendo a referencia da tag body
 var aux = null;	// variavel auxiliar
+var urlRoot = "/animaling3/public";
 
 /* Adicionando evento quando usuario clicar no botao seguir */
 btnSeguir.addEventListener(
@@ -58,7 +59,8 @@ function loadLabelButton(sessaoUsuario, perfilUsuario){
 
 	// Declaracao de variaveis
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
-	var url = "/animaling3/public/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url para onde serão enviadas as informações
+	var url = urlRoot+"/"+perfilUsuario+"/followstate?&user="+sessaoUsuario+"&prof="+perfilUsuario;	// url para onde serão enviadas as informações
+
 
 	xmlreq.open("GET", url , true);	// Iniciando uma requisicao
 
@@ -86,7 +88,7 @@ function runFollowButton(aux, sessionUser, profileUser){
 
 	// Declaracao de variaveis
 	var xmlreq = CriaRequest();	// Request a ser usado no processo de requisicao dos usuarios
-	var url = "/animaling3/public/"+profileUser+"/someactionfollow?&state="+aux+"&user="+sessionUser+"&prof="+profileUser;	// url que enviara as informações
+	var url = urlRoot+"/"+profileUser+"/someactionfollow?&state="+aux+"&user="+sessionUser+"&prof="+profileUser;	// url que enviara as informações
 
 	xmlreq.open("GET", url, true);	// Iniciando uma requisicao
 

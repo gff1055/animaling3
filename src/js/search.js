@@ -1,6 +1,7 @@
 var btnSearch = document.getElementById('btnSearch');
 var txtTermSearch = document.getElementById('txtTermSearch');
 var spaceResult = document.getElementById('spaceResult');
+var urlRoot = "/animaling3/public";
 
 btnSearch.addEventListener(
 	"click",
@@ -31,10 +32,28 @@ function CriaRequest(){
 
 
 function showData(term){
-	var url = "/animaling3/public/getsearch";	//url que enviara as informações
-	xmlReq = criaRequest();
-	xmlreq.open("GET", url, true);
-	xmlReq
+	
+	var url = urlRoot+"/getsearch";	//url que enviara as informações
+	var xmlreq = criaRequest();	// Request a ser usado no processo de requisicao da pagina
+
+	xmlreq.open("GET", url, true);	// Iniciando uma requisicao
+
+	// Atribui uma funcao para ser executada sempre que houver uma mudanca de estado
+	xmlreq.onreadystatechange = 
+	function(){
+		
+		// Veririfca se foi concluido com sucesso a conexao fechada (reayState = 4)
+		if(xmlreq.readyState == 4){
+
+			// Verifica se o arquivo foi encontrado com sucesso
+			if(xmlreq.status == 200)
+				alert("OI");
+			else
+				btnSearch.value = "ERROR";
+		}
+	};
+
+	xmlreq.send(null);
 
 }
 
