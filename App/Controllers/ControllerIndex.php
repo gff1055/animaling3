@@ -32,6 +32,7 @@ class ControllerIndex{
 			$page = "../App/Views/login.php";
 		}
 		$this->cab->abertura($titleBar); // cabecalho da pagina
+		include_once "../App/Views/mostraUsuario.php";
 		include_once $page; // conteudo
 		$this->cab->fechamento(); // fechando a pagina
 	}
