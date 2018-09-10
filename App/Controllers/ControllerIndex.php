@@ -29,7 +29,7 @@ class ControllerIndex{
 		}
 		else{
 			$titleBar = "Animaling - Entre ou cadastre-se";
-			$page = null;
+			$page = "../App/Views/formCadastro.php";
 		}
 		$this->cab->abertura($titleBar); // cabecalho da pagina
 		include_once "../App/Views/mostraUsuario.php";
