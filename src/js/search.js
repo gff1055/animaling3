@@ -6,7 +6,6 @@ var urlRoot = "/animaling3/public";
 btnSearch.addEventListener(
 	"click",
 	function clickSearch(){
-		;
 	}
 );
 
