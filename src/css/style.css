@@ -1,0 +1,19 @@
+*{
+	font-family: Verdana;
+	margin: 10px;
+}
+
+#logo{
+	font-family: "Snap ITC";
+	font-size: 12px;
+}
+
+.formField{
+	display: inline-block;
+	width: 200px;
+	text-align: right;
+}
+
+#formLogin{
+	float: right;
+}
