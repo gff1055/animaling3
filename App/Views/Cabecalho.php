@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Views;
+use App\Init;
 
 
 class Cabecalho{
@@ -12,8 +13,8 @@ class Cabecalho{
 <head>
 <title><?php echo $titulo ?></title>
 
-<link rel="stylesheet" href="../src/css/style.css"/>
-<link rel="stylesheet" href="../src/css/reset.css"/>
+<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/style.css'?>"/>
+
 </head>
 <body>
 <?php

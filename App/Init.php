@@ -7,6 +7,7 @@ class Init{
 	private $rotas;
 	private $con;
 	public static $urlRoot='/animaling3/public';
+	public static $urlSources = '/animaling3';
 	public $rotaVar=3;
 
 	function __construct(){
