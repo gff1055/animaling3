@@ -3,8 +3,9 @@ use App\Init;
 ?>
 <br>
 <hr>
-<h1>Abra uma conta</h1>
-<form action="<?php echo Init::$urlRoot?>/logon" method="post">
+<span id = "logo">Animaling</span>
+<h6>Abra uma conta</h6>
+<form action="<?php echo Init::$urlRoot?>/signup" method="post">
 
 	<label for="name" class="formField">Nome:</label>
 	<input type="text" id="name" name="name"/>
@@ -19,7 +20,7 @@ use App\Init;
 	<input type="password" id="checkPassword" name="checkPassword"/>
 	<br><br>
 	<label for="dateBirth" class="formField">Data de nascimento:</label>
-	<input type="text" id="dateBirth" name="dateBirth"/>
+	<input type="date" id="dateBirth" name="dateBirth"/>
 	<br><br>
 	<label for="genre" class="formField">Sexo:</label>
 	<select>

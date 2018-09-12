@@ -53,6 +53,16 @@ class ControllerIndex{
 		$this->cab->fechamento();
 	}
 
+	public function signup(){
+		$name = $_POST['name'];
+		$name = $_POST['email'];
+		$name = $_POST['password'];
+		$name = $_POST['checkPassword'];
+		$name = $_POST['birthDate'];
+		$name = $_POST['genre'];
+
+	}
+
 	// metodo para o processo de logon
 	public function logon($pPost){
 		$login = $pPost['formLogin']; // carregando o login digitado
