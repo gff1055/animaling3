@@ -29,11 +29,11 @@ class ControllerIndex{
 		}
 		else{
 			$titleBar = "Animaling - Entre ou cadastre-se";
-			$page = "../App/Views/formCadastro.php";
+			//$page = "../App/Views/formCadastro.php";
 		}
 		$this->cab->abertura($titleBar); // cabecalho da pagina
 		include_once "../App/Views/mostraUsuario.php";
-		if($page) include_once $page; // conteudo
+		if(isset($page)) include_once $page; // conteudo
 		$this->cab->fechamento(); // fechando a pagina
 	}
 

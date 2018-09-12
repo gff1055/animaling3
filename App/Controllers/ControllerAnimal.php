@@ -16,8 +16,6 @@ class ControllerAnimal{
 		session_start();
 		$cab = new Cabecalho($nick);
 
-		
-
 		// carregando os dados do usuario
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		$dadosAnimal = $modelAnimal->exibirDadosAnimal($nick);

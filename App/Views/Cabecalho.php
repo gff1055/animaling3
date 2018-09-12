@@ -11,7 +11,9 @@ class Cabecalho{
 <html>
 <head>
 <title><?php echo $titulo ?></title>
-<link rel="stylesheet" href="../src/css/style.css">
+
+<link rel="stylesheet" href="../src/css/style.css"/>
+<link rel="stylesheet" href="../src/css/reset.css"/>
 </head>
 <body>
 <?php
