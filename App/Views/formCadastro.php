@@ -28,5 +28,5 @@ use App\Init;
 	</select>
 	<br><br>
 	
-	<input type="submit" />
+	<input type="submit" value="Cadastrar" class="styleButton"/>
 </form>

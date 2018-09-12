@@ -13,7 +13,9 @@ class Cabecalho{
 <head>
 <title><?php echo $titulo ?></title>
 
+<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/reset.css'?>"/>
 <link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/style.css'?>"/>
+
 
 </head>
 <body>

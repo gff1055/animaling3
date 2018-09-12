@@ -1,11 +1,12 @@
 *{
-	font-family: Verdana, 'sans-serif';
+	font-family: Arial, 'sans-serif';
 	margin: 1px;
 }
 
 #logo{
 	font-family: "Snap ITC";
-	font-size: 12px;
+	font-size: 20px;
+	color: green;
 }
 
 .formField{
@@ -14,6 +15,8 @@
 	text-align: right;
 }
 
-#formLogin{
-	float: right;
+.styleButton{
+	display: inline-block;
+	text-align: right;
 }
+

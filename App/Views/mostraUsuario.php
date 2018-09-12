@@ -22,8 +22,11 @@ if (isset($_SESSION['login'])){?>
 else
 	{
 	?>
-	<!--<a href="<?php echo Init::$urlRoot?>">Login</a>-->
-	<span id = "logo">Animaling</span>
+	<a href="<?php echo Init::$urlRoot?>">Login</a>
+	
+	<!-- Adicionar na pagina inicial -->
+	
+	<!--<span id = "logo">Animaling</span>
 	<form action="<?php echo Init::$urlRoot?>/logon" method="post" id="formLogin">
 	
 		<label for="name">Login/Email:</label>
@@ -40,5 +43,5 @@ else
 	
 		<input type="submit" value="Entrar">
 		<?php if(!empty($_GET['erro'])) echo "ocorreu um erro"; ?>
-	</form>
+	</form>-->
 <?php }?>

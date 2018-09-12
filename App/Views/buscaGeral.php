@@ -9,7 +9,7 @@ $possuiResultados = 0; // flag para a existencia ou nao de resultados
 
 //testando se a busca retornou algum resultado
 if($ocorrenciasAnimal){
-	echo "<h3>Animais</h3>";
+	echo "<br><h3>Busca por ".$termo."</h3>";
 	foreach($ocorrenciasAnimal as $animal){ // percorrendo os resultados
 		echo
 		"<br><a href=".Init::$urlRoot."/".$animal['nick']."><b>".$animal['nome']."</b></a>

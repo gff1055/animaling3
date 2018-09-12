@@ -19,22 +19,38 @@ class ControllerIndex{
 
 	// pagina inicial
 	public function index(){
+		$arrMountPage = array();	// iniciando array para montagem da pagina
+
 		session_start();
-		if(isset($_SESSION['login'])){
-			$arrayNewsFeed = array();
-			$objInteraction = new ModelInteracao(Init::getDB());
-			$arrayNewsFeed = $objInteraction->newsFeed($_SESSION['id']);
-			$titleBar = "Animaling";
-			$page = "../App/Views/newsfeed.php";
+		if(isset($_SESSION['login'])){	// verificando se tem alguem logado
+			$arrayNewsFeed = array();	// iniciando array que conterá as postagens dos amigos do usuario logado
+			$objInteraction = new ModelInteracao(Init::getDB());	// declaracao de objeto de acesso à tabela de interação
+			$arrayNewsFeed = $objInteraction->newsFeed($_SESSION['id']);	//array recebe as postagens dos amigos do usuario logado
+			$titleBar = "Animaling";	//	Barra de titulo
+
+			/*Alimentando Array que montará as páginas na tela*/
+			$arrMountPage[] = "../App/Views/mostraUsuario.php";
+			$arrMountPage[] = "../App/Views/newsfeed.php";
+			//$page = "../App/Views/newsfeed.php";
 		}
-		else{
+		else{	// Acesso vem de alguem que não está logado
 			$titleBar = "Animaling - Entre ou cadastre-se";
-			//$page = "../App/Views/formCadastro.php";
+			
+			$arrMountPage[] = "../App/Views/formLogin.php";
 		}
 		$this->cab->abertura($titleBar); // cabecalho da pagina
-		include_once "../App/Views/mostraUsuario.php";
-		if(isset($page)) include_once $page; // conteudo
+		foreach($arrMountPage as $mountPage){
+			include_once $mountPage;
+		};
+		//include_once "../App/Views/mostraUsuario.php";
+		//if(isset($page)) include_once $page; // conteudo
 		$this->cab->fechamento(); // fechando a pagina
+	}
+
+	public function register(){
+		$this->cab->abertura("Cadastre-se");
+		include_once "../App/Views/formCadastro.php";
+		$this->cab->fechamento();
 	}
 
 	// metodo para o processo de logon

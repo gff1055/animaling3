@@ -76,6 +76,6 @@ elseif(!$acessoNaoLogado){
 	?>
 
 </div>
-<script src="../src/js/support.js">
+<script src="<?php echo Init::$urlSources.'/src/js/support.js'?>">
 </script>
 
