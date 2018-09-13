@@ -187,7 +187,8 @@ class ModelAnimal
 		try{
 			$haErro = $this->verifica($pAnimal, $op);
 			if($haErro)
-				return $haErro;
+				//return $haErro;
+				return false;
 			else{
 				$result = null;
 				$result = $this->conex->prepare($query);
@@ -202,11 +203,12 @@ class ModelAnimal
 				$result->bindValue(6,$pAnimal->getSenha());
 				$result->bindValue(7,$pAnimal->getEmail());
 				$result->execute();
-				return "Concluido";
+				return $pAnimal->getNick();
 			}
 
 		}catch(PDOException $erro){
-			return "erro: ".$erro->getMessage();
+			echo "erro: ".$erro->getMessage();
+			return false;
 		}
 	}	
 

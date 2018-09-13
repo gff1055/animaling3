@@ -55,6 +55,9 @@ class ControllerIndex{
 	}
 
 	public function signup(){
+		$dataUser = new Animal();
+		$modelAnimal = new ModelAnimal(Init::getDB());
+		
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
@@ -62,13 +65,23 @@ class ControllerIndex{
 		$birthDate = $_POST['birthDate'];
 		$genre = $_POST['genre'];
 
-		$dataUser = new Animal();
 		$dataUser->setNome($name);
 		$dataUser->setEmail($email);
 		$dataUser->setSexo($genre);
 		$dataUser->setSenha($password);
 		$dataUser->setNascimento($birthDate);
 		$dataUser->setDescricao("");
+
+		$isItSuccess = $modelAnimal->inserirAnimal($dataUser);
+
+		if($isItSuccess != false){
+			header("location:".Init::$urlRoot."/".$isItSuccess);
+		}
+
+		else
+			header("location: facebook.com");
+
+
 
 		print_r($dataUser);
 
