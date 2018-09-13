@@ -5,6 +5,7 @@ namespace App\Controllers; //declarando o namespace
 // declarando as classes
 use App\Views\Cabecalho;
 use App\Models\ModelAnimal;
+use App\Models\Animal;
 use App\Models\ModelInteracao;
 use App\Init;
 
@@ -55,11 +56,22 @@ class ControllerIndex{
 
 	public function signup(){
 		$name = $_POST['name'];
-		$name = $_POST['email'];
-		$name = $_POST['password'];
-		$name = $_POST['checkPassword'];
-		$name = $_POST['birthDate'];
-		$name = $_POST['genre'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+		$checkPassword = $_POST['checkPassword'];
+		$birthDate = $_POST['birthDate'];
+		$genre = $_POST['genre'];
+
+		$dataUser = new Animal();
+		$dataUser->setNome($name);
+		$dataUser->setEmail($email);
+		$dataUser->setSexo($genre);
+		$dataUser->setSenha($password);
+		$dataUser->setNascimento($birthDate);
+		$dataUser->setDescricao("");
+
+		print_r($dataUser);
+
 
 	}
 

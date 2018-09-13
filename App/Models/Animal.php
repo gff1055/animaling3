@@ -6,7 +6,6 @@ class Animal{
 	//private $codigoDono;
 	private $codigo;
 	private $nome;
-	private $especie;
 	private $nascimento;
 	private $descricao;
 	private $sexo;

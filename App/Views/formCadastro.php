@@ -20,10 +20,10 @@ use App\Init;
 	<input type="password" id="checkPassword" name="checkPassword"/>
 	<br><br>
 	<label for="dateBirth" class="formField">Data de nascimento:</label>
-	<input type="date" id="dateBirth" name="dateBirth"/>
+	<input type="date" id="birthDate" name="birthDate"/>
 	<br><br>
 	<label for="genre" class="formField">Sexo:</label>
-	<select>
+	<select name="genre" id="genre">
 		<option value="m">Masculino</option>
 		<option value="f">Feminino</option>
 	</select>
