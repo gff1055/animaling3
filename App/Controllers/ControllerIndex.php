@@ -76,6 +76,10 @@ class ControllerIndex{
 
 		if($isItSuccess != false){
 			header("location:".Init::$urlRoot."/".$isItSuccess);
+			$post["formLogin"] = $isItSuccess;
+			$post["formSenha"] = $dataUser->getSenha();
+			$this->logon($post);
+			
 		}
 
 		else
