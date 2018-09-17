@@ -32,10 +32,12 @@ class ControllerAnimal{
 
 		/*Testando se o acesso é de alguem logado*/
 		if(isset($_SESSION['login'])) {
-			
+			/*echo $_SESSION['login'];
+				echo $dadosAnimal['nick'];*/			
 			/*Testando se é o usuario da sessão esta acessando o proprio perfil*/
 			if(($_SESSION['login'] == $dadosAnimal['nick'])){
 				$acessoUsuarioSessao = true;
+				
 								
 				/*Testando se o usuario postou novas mesnagens*/
 				if(!empty($_POST['novoPost'])){
