@@ -9,6 +9,10 @@
 	color: green;
 }
 
+.headPage{
+	display: inline;
+}
+
 .formField{
 	display: inline-block;
 	width: 200px;
