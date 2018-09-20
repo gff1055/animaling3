@@ -35,7 +35,7 @@ class ControllerAnimal{
 			/*echo $_SESSION['login'];
 				echo $dadosAnimal['nick'];*/			
 			/*Testando se é o usuario da sessão esta acessando o proprio perfil*/
-			if(($_SESSION['login'] == $dadosAnimal['nick'])){
+			if(($_SESSION['login'] == strtolower($dadosAnimal['nick']))){
 				$acessoUsuarioSessao = true;
 				
 								
