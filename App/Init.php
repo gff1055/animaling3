@@ -125,6 +125,13 @@ class Init{
 			'value' => ''
 		);
 
+		$arrayRotasAux['setup'] = array(
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/setup',
+			'controller' => 'controllerAnimal',
+			'action' => 'setup',
+			'value' => ''
+		);
+
 		/*$arrayRotasAux['admSeguidos'] = array(
 			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',
 			'controller'=> 'controllerAnimal',

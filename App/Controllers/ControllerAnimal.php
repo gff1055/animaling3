@@ -225,6 +225,14 @@ class ControllerAnimal{
 
 	}
 
+	public function setup($pNick){
+		session_start();
+		$modelAnimal = new ModelAnimal(Init::getDB());
+		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);	// carregando informacoes do animal
+		include_once "../App/Views/formUpdateData.php";
+
+	}
+
 	public function opSeguindo(){
 		echo "seguido";
 	}

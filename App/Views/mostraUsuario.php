@@ -16,7 +16,7 @@ if (isset($_SESSION['login'])){?>
 			<!--<input type="hidden" name="tipoPesquisa" value="Tudo"> -->
 		</form>
 		<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>"><?php echo $_SESSION['name']?></a>
-		<a href="<?php echo Init::$urlRoot.'/setup'?>">Configurações</a>
+		<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">Configurações</a>
 		<a href="<?php echo Init::$urlRoot?>/logout">Fazer Logoff</a>
 		
 	<?php
