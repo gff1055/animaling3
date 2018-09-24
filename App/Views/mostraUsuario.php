@@ -47,3 +47,4 @@ else
 		<?php if(!empty($_GET['erro'])) echo "ocorreu um erro"; ?>
 	</form>-->
 <?php }?>
+<br><br>

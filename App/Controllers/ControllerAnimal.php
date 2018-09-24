@@ -227,9 +227,20 @@ class ControllerAnimal{
 
 	public function setup($pNick){
 		session_start();
-		$modelAnimal = new ModelAnimal(Init::getDB());
-		$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);	// carregando informacoes do animal
-		include_once "../App/Views/formUpdateData.php";
+		$cab = new Cabecalho();
+		if(isset($_SESSION['login']) && $_SESSION['login'] == $pNick){
+			$cab->abertura($pNick." - Configurações");
+			include_once "../App/Views/mostraUsuario.php";
+			$modelAnimal = new ModelAnimal(Init::getDB());
+			$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);	// carregando informacoes do animal
+			include_once "../App/Views/formUpdateData.php";
+		}
+		else{
+			$cab->abertura("Acesso negado");
+			include_once "../App/Views/mostraUsuario.php";
+			echo "Acesso negado!!!!";
+		}
+		$cab->fechamento();
 
 	}
 

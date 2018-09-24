@@ -1,7 +1,8 @@
 <?php 
 use App\Init;
 ?>
-<?php echo $dadosAnimal['nome']?>
+<h2> Editar Perfil </h2>
+<br>
 
 <form action="<?php echo Init::$urlRoot?>/updatedata" method="post">
 
@@ -15,7 +16,7 @@ use App\Init;
 	<input type="text" id="nick" name="nick" value = "<?php echo $dadosAnimal['nick']?>"/>
 	<br><br>
 	<label for="password" class="formField">Senha:</label>
-	<input type="password" id="password" name="password" value = "<?php echo $dadosAnimal['senha']?>"/>
+	<input type="text" id="password" name="password" value = "<?php echo $dadosAnimal['senha']?>"/>
 	<br><br>
 	<label for="dateBirth" class="formField">Data de nascimento:</label>
 	<input type="date" id="birthDate" name="birthDate" value = "<?php echo $dadosAnimal['nascimento']?>"/>

@@ -129,7 +129,7 @@ class Init{
 			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/setup',
 			'controller' => 'controllerAnimal',
 			'action' => 'setup',
-			'value' => ''
+			'value' => $pUrlDividida[3]
 		);
 
 		/*$arrayRotasAux['admSeguidos'] = array(
