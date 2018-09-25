@@ -210,7 +210,16 @@ class ModelAnimal
 			echo "erro: ".$erro->getMessage();
 			return false;
 		}
-	}	
+	}
+
+	public function alterarSenha($pAnimal){
+		$query = "update animal set senha=? where codigo=?";
+		$result = null;
+		$result = $this->conex->prepare($query);
+		$result->bindValue(1,$pAnimal->getSenha());
+		$result->bindValue(2,$pAnimal->getCodigo());
+	}
+	
 
 
 	public function excluir($pAnimal)
