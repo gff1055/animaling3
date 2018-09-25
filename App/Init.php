@@ -132,6 +132,13 @@ class Init{
 			'value' => $pUrlDividida[3]
 		);
 
+		$arrayRotasAux['updateData'] = array(
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/updatedata',
+			'controller' => 'controllerAnimal',
+			'action' => 'updateData',
+			'value' => $_POST
+		);
+
 		/*$arrayRotasAux['admSeguidos'] = array(
 			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',
 			'controller'=> 'controllerAnimal',

@@ -225,15 +225,16 @@ class ControllerAnimal{
 
 	}
 
+	// executa quando o usuario entra na pagina /setup do usuario
 	public function setup($pNick){
 		session_start();
 		$cab = new Cabecalho();
-		if(isset($_SESSION['login']) && $_SESSION['login'] == $pNick){
+		if(isset($_SESSION['login']) && $_SESSION['login'] == $pNick){	// verificando se o usuario esta logado
 			$cab->abertura($pNick." - Configurações");
 			include_once "../App/Views/mostraUsuario.php";
 			$modelAnimal = new ModelAnimal(Init::getDB());
 			$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);	// carregando informacoes do animal
-			include_once "../App/Views/formUpdateData.php";
+			include_once "../App/Views/formUpdateData.php";	// exibinindo os dados do usuario no formulario para atualizacao
 		}
 		else{
 			$cab->abertura("Acesso negado");
@@ -241,7 +242,10 @@ class ControllerAnimal{
 			echo "Acesso negado!!!!";
 		}
 		$cab->fechamento();
+	}
 
+	public function updateData($pArrayDataUser){
+		
 	}
 
 	public function opSeguindo(){
