@@ -245,7 +245,18 @@ class ControllerAnimal{
 	}
 
 	public function updateData($pArrayDataUser){
-		
+		session_start();
+		$modelUser = new ModelAnimal(Init::getDB);
+		$objUser = new Animal();
+		$objUser->setCodigo($_SESSION['codigo']);
+		$objUser->setNick($pArrayDataUser['nick']);
+		$objUser->setNome($pArrayDataUser['name']);
+		$objUser->setDescricao($pArrayDataUser['description']);
+		$objUser->setEmail($pArrayDataUser['email']);
+		$objUser->setSexo($pArrayDataUser['genre']);
+		$objUser->setSenha($pArrayDataUser['password']);
+		$objUser->setNascimento($pArrayDataUser['birthDate']);
+		$modelUser->alterarDadosAnimal($objUser);
 	}
 
 	public function opSeguindo(){
