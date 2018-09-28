@@ -265,6 +265,12 @@ class ControllerAnimal{
 			echo "erro";
 	}
 
+	public function updatePassword($pArrayDataUser){
+		session_start();
+		$modelUser = new ModelAnimal(Init::getDB());
+		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);
+	}
+
 	public function opSeguindo(){
 		echo "seguido";
 	}

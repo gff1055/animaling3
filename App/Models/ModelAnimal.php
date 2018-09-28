@@ -212,15 +212,19 @@ class ModelAnimal
 		}
 	}
 
-	public function alterarSenha($pAnimal){
-		$query = "update animal set senha=? where codigo=?";
-		$result = null;
-		$result = $this->conex->prepare($query);
-		$result->bindValue(1,$pAnimal->getSenha());
-		$result->bindValue(2,$pAnimal->getCodigo());
+	public function changePassword($password, $code){
+		try{
+			$result = null;
+			$result = $this->conex->prepare("update animal set senha=? where codigo=?");
+			$result->bindValue(1,$password);
+			$result->bindValue(2,$code);	
+			$result->execute();
+			return true;
+		}catch(PDOException $erro){
+			echo "erro: ".$erro->getMessage();
+			return false;
+		}
 	}
-	
-
 
 	public function excluir($pAnimal)
 	{

@@ -1,7 +1,7 @@
 <?php 
 use App\Init;
 ?>
-<h2> Editar Perfil </h2>
+<h2> Dados do Perfil </h2>
 <br>
 
 <form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatedata" method="post">
@@ -41,3 +41,26 @@ use App\Init;
 	
 	<input type="submit" value="Atualizar Dados" class="styleButton"/>
 </form>
+<br>
+<hr>
+<br>
+<h2>Usuario e Senha</h2>
+<br>
+<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatepassword" method="post">
+
+	<label for="oldPassword" class="formField">Senha atual:</label>
+	<input type="text" id="oldPassword" name="oldPassword"/>
+	<br><br>
+	
+	<label for="newPassword" class="formField">Nova senha:</label>
+	<input type="text" id="newPassword" name="newPassword"/>
+	<br><br>
+	
+	<label for="checkNewPassword" class="formField">Confirme a nova senha:</label>
+	<input type="text" id="checkNewPassword" name="checkNewPassword"/>
+	<br><br>
+	
+	<input type="submit" value="Atualizar Senha" class="styleButton"/>
+</form>
+<br>
+<br>

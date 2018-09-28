@@ -21,16 +21,16 @@ class ControllerTeste{
 
 		//echo $modelAnimal->geraUsuario();
 
-		$pAnimal->setCodigo(30);
-		$pAnimal->setNick("Veludo");
-		$pAnimal->setSenha("veludo2");
-		$pAnimal->setNome("Veludo");
-		$pAnimal->setNascimento("2011-07-01");
-		$pAnimal->setSexo("M");
-		$pAnimal->setEmail("veludo2@gmail.com");
-		$pAnimal->setDescricao("sou peludo a beça");
+//		$pAnimal->setCodigo(30);
+//		$pAnimal->setNick("Veludo");
+//		$pAnimal->setSenha("veludo2");
+//		$pAnimal->setNome("Veludo");
+//		$pAnimal->setNascimento("2011-07-01");
+//		$pAnimal->setSexo("M");
+//		$pAnimal->setEmail("veludo2@gmail.com");
+//		$pAnimal->setDescricao("sou peludo a beça");
 
-		echo $modelAnimal->alterarDadosAnimal($pAnimal);
+		echo $modelAnimal->changePassword("Fido",88888);
 
 	}
 }
