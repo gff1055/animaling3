@@ -4,7 +4,7 @@ use App\Init;
 <h2> Editar Perfil </h2>
 <br>
 
-<form action="<?php echo Init::$urlRoot?>/updatedata" method="post">
+<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatedata" method="post">
 
 	<label for="name" class="formField">Nome para exibição:</label>
 	<input type="text" id="name" name="name" value = "<?php echo $dadosAnimal['nome']?>"/>

@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelAnimal;
+use App\Models\Animal;
 use App\Models\ModelStatus;
 use App\Models\ModelInteracao;
 use App\Models\Interacao;
@@ -246,9 +247,9 @@ class ControllerAnimal{
 
 	public function updateData($pArrayDataUser){
 		session_start();
-		$modelUser = new ModelAnimal(Init::getDB);
+		$modelUser = new ModelAnimal(Init::getDB());
 		$objUser = new Animal();
-		$objUser->setCodigo($_SESSION['codigo']);
+		$objUser->setCodigo($_SESSION['id']);
 		$objUser->setNick($pArrayDataUser['nick']);
 		$objUser->setNome($pArrayDataUser['name']);
 		$objUser->setDescricao($pArrayDataUser['description']);
@@ -256,7 +257,12 @@ class ControllerAnimal{
 		$objUser->setSexo($pArrayDataUser['genre']);
 		$objUser->setSenha($pArrayDataUser['password']);
 		$objUser->setNascimento($pArrayDataUser['birthDate']);
-		$modelUser->alterarDadosAnimal($objUser);
+		if($modelUser->alterarDadosAnimal($objUser)){
+			echo "perfil salvo";
+			header(Init::$urlRoot."/".$_SESSION['login']);
+		}
+		else 
+			echo "erro";
 	}
 
 	public function opSeguindo(){
