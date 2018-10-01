@@ -269,6 +269,7 @@ class ControllerAnimal{
 		session_start();
 		$modelUser = new ModelAnimal(Init::getDB());
 		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);
+		$_SESSION['senha'] = $pArrayDataUser['newPassword'];
 	}
 
 	public function opSeguindo(){
