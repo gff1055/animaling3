@@ -259,7 +259,8 @@ class ControllerAnimal{
 		$objUser->setNascimento($pArrayDataUser['birthDate']);
 		if($modelUser->alterarDadosAnimal($objUser)){
 			echo "perfil salvo";
-			header(Init::$urlRoot."/".$_SESSION['login']);
+			$_SESSION['login'] = $objUser->getNick();
+			header("location: ".Init::$urlRoot."/".$_SESSION['login']);
 		}
 		else 
 			echo "erro";
@@ -270,6 +271,7 @@ class ControllerAnimal{
 		$modelUser = new ModelAnimal(Init::getDB());
 		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);
 		$_SESSION['senha'] = $pArrayDataUser['newPassword'];
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
 	}
 
 	public function opSeguindo(){
