@@ -8,7 +8,7 @@ class Init{
 	private $con;
 	public static $urlRoot='/animaling3/public';
 	public static $urlSources = '/animaling3';
-	public $rotaVar=3;
+	public static $rotaVar=3;
 
 	function __construct(){
 		$urlAcessada=$this->urlDigit();
@@ -155,7 +155,8 @@ class Init{
 		);*/
 
 		// Verifica se o endereco possui mais subdominios
-		if(count($pUrlDividida)==$this->$rotaVar+2)
+		
+		if(count($pUrlDividida)==Init::$rotaVar+2)
 		$arrayRotasAux['verPostAnimal'] = array(
 			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/'.$pUrlDividida[4],
 			'controller'=>'controllerAnimal',
@@ -163,7 +164,7 @@ class Init{
 			'value'=>$pUrlDividida[4]
 		);
 
-		elseif(count($pUrlDividida)==$this->$rotaVar+3)
+		elseif(count($pUrlDividida)==Init::$rotaVar+3)
 			$arrayRotasAux['excluirPost'] = array(
 				'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/'.$pUrlDividida[4].'/delete',
 				'controller'=>'controllerAnimal',
