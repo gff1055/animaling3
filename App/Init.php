@@ -14,6 +14,7 @@ class Init{
 		$urlAcessada=$this->urlDigit();
 		$urlDividida = $this->getParamRoute($urlAcessada);
 		$this->inicializarRotas($urlDividida);
+		print_r($urlDividida);
 		$this->run($urlAcessada);
 	}
 
@@ -154,7 +155,7 @@ class Init{
 		);*/
 
 		// Verifica se o endereco possui mais subdominios
-		if(count($pUrlDividida)==5)
+		if(count($pUrlDividida)==$this->$rotaVar+2)
 		$arrayRotasAux['verPostAnimal'] = array(
 			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/'.$pUrlDividida[4],
 			'controller'=>'controllerAnimal',
@@ -162,7 +163,7 @@ class Init{
 			'value'=>$pUrlDividida[4]
 		);
 
-		elseif(count($pUrlDividida)==6)
+		elseif(count($pUrlDividida)==$this->$rotaVar+3)
 			$arrayRotasAux['excluirPost'] = array(
 				'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/'.$pUrlDividida[4].'/delete',
 				'controller'=>'controllerAnimal',
