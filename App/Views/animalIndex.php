@@ -60,10 +60,11 @@ elseif(!$acessoNaoLogado){
 			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>">
 				<?php echo $post['nomeAnimal']?>
 			</a><br>
-			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>">
-				Editar
-			</a>
-			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/delete'?>">Excluir</a><br>
+			<?php
+			if($acessoUsuarioSessao){?>
+				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>">Editar</a>
+				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/delete'?>">Excluir</a><br>
+			<?php } ?>
 			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>">
 				<?php echo $post['dataStatus']?>
 			</a><br>

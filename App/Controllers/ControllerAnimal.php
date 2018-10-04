@@ -129,11 +129,18 @@ class ControllerAnimal{
 
 	
 	public function deletarPost($pCodigo){ //metodo para a exclusao de postagens
+		session_start();
 		$modelStatus = new ModelStatus(Init::getDB());
 		$post = $modelStatus->exibirUmStatus($pCodigo);
 		$modelStatus->excluirStatus($pCodigo);
-		echo "deletando post ".$pCodigo;
-		include_once "../App/Views/excluiPost.php";		
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+		//echo "deletando post ".$pCodigo;
+		//include_once "../App/Views/excluiPost.php";		
+	}
+
+	public function editPost($pCode){
+		session_start();
+		echo "OLA ABASTEADO";
 	}
 	
 	

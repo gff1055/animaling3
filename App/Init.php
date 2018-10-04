@@ -158,19 +158,27 @@ class Init{
 		
 		if(count($pUrlDividida)==Init::$rotaVar+2)
 		$arrayRotasAux['verPostAnimal'] = array(
-			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/'.$pUrlDividida[4],
+			'route'=>Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/'.$pUrlDividida[Init::$rotaVar+1],
 			'controller'=>'controllerAnimal',
 			'action'=>'verPost',
-			'value'=>$pUrlDividida[4]
+			'value'=>$pUrlDividida[Init::$rotaVar+1]
 		);
 
-		elseif(count($pUrlDividida)==Init::$rotaVar+3)
+		elseif(count($pUrlDividida)==Init::$rotaVar+3){
 			$arrayRotasAux['excluirPost'] = array(
-				'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/'.$pUrlDividida[4].'/delete',
+				'route'=>Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/'.$pUrlDividida[Init::$rotaVar+1].'/delete',
 				'controller'=>'controllerAnimal',
 				'action'=>'deletarPost',
-				'value'=>$pUrlDividida[4]
+				'value'=>$pUrlDividida[Init::$rotaVar+1]
 			);
+
+			$arrayRotasAux['editPost'] = array(
+				'route'=>Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/'.$pUrlDividida[Init::$rotaVar+1].'/edit',
+				'controller'=>'controllerAnimal',
+				'action'=>'editPost',
+				'value'=>$pUrlDividida[Init::$rotaVar+1]
+			);
+		}
 
 
 		$this->configurarRotas($arrayRotasAux);
