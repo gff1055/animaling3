@@ -140,10 +140,10 @@ class ControllerAnimal{
 
 	public function editPost($pCode){
 		session_start();
-		if($pCode == $_SESSION['id'])
+		if($pCode == $_SESSION['id']){
 			$modelStatus = new ModelStatus(Init::getDB());
-			$modelUser = new ModelAnimal(Init::getDB());
 			echo "vc tem autorizacao";
+		}
 		else
 			echo "vc nao tem autorizacao";
 	}
