@@ -133,14 +133,19 @@ class ControllerAnimal{
 		$modelStatus = new ModelStatus(Init::getDB());
 		$post = $modelStatus->exibirUmStatus($pCodigo);
 		$modelStatus->excluirStatus($pCodigo);
-		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']);	// Retornando para a pagina do usuario
 		//echo "deletando post ".$pCodigo;
 		//include_once "../App/Views/excluiPost.php";		
 	}
 
 	public function editPost($pCode){
 		session_start();
-		echo "OLA ABASTEADO";
+		if($pCode == $_SESSION['id'])
+			$modelStatus = new ModelStatus(Init::getDB());
+			$modelUser = new ModelAnimal(Init::getDB());
+			echo "vc tem autorizacao";
+		else
+			echo "vc nao tem autorizacao";
 	}
 	
 	
@@ -256,6 +261,8 @@ class ControllerAnimal{
 		session_start();
 		$modelUser = new ModelAnimal(Init::getDB());
 		$objUser = new Animal();
+
+		/* Carregando os novos dados inseridos*/
 		$objUser->setCodigo($_SESSION['id']);
 		$objUser->setNick($pArrayDataUser['nick']);
 		$objUser->setNome($pArrayDataUser['name']);
@@ -264,10 +271,12 @@ class ControllerAnimal{
 		$objUser->setSexo($pArrayDataUser['genre']);
 		$objUser->setSenha($pArrayDataUser['password']);
 		$objUser->setNascimento($pArrayDataUser['birthDate']);
+
+		// Testando se os dados foram alterados
 		if($modelUser->alterarDadosAnimal($objUser)){
 			echo "perfil salvo";
-			$_SESSION['login'] = $objUser->getNick();
-			header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+			$_SESSION['login'] = $objUser->getNick();	// Atualizando o novo login
+			header("location: ".Init::$urlRoot."/".$_SESSION['login']);	// redirecionamento para a pagina do usuario
 		}
 		else 
 			echo "erro";

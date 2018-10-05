@@ -54,10 +54,12 @@ class ControllerIndex{
 		$this->cab->fechamento();
 	}
 
+	// metodo que cadastra as informações de um usuario no banco de dados
 	public function signup(){
 		$dataUser = new Animal();
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		
+		// recebendo as informacoes
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
@@ -65,6 +67,7 @@ class ControllerIndex{
 		$birthDate = $_POST['birthDate'];
 		$genre = $_POST['genre'];
 
+		// setando as informacoes recebidas
 		$dataUser->setNome($name);
 		$dataUser->setEmail($email);
 		$dataUser->setSexo($genre);
@@ -72,14 +75,15 @@ class ControllerIndex{
 		$dataUser->setNascimento($birthDate);
 		$dataUser->setDescricao("");
 
+		// inserindo os dados e retornando o resultado da insercao
 		$isItSuccess = $modelAnimal->inserirAnimal($dataUser);
 
+		// verificando se os dados foram salvos
 		if($isItSuccess != false){
-			header("location:".Init::$urlRoot."/".$isItSuccess);
-			$post["formLogin"] = $isItSuccess;
-			$post["formSenha"] = $dataUser->getSenha();
-			$this->logon($post);
-			
+			header("location:".Init::$urlRoot."/".$isItSuccess);	// acessando a pagina de perfil do usuario
+			$post["formLogin"] = $isItSuccess;	// carregando login
+			$post["formSenha"] = $dataUser->getSenha();	// carregando senha
+			$this->logon($post);	// efetuando o logon
 		}
 
 		else
