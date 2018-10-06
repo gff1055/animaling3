@@ -140,12 +140,17 @@ class ControllerAnimal{
 
 	public function editPost($pCode){
 		session_start();
+		$head = new Cabecalho();
+		$head->abertura("Editar publicacao");
 		if($pCode == $_SESSION['id']){
 			$modelStatus = new ModelStatus(Init::getDB());
-			echo "vc tem autorizacao";
+			$post = $modelStatus->exibirUmStatus($pCode);
+			if($post) include_once "../App/Views/formEditPost";
+			else echo "Houve um erro interno: #editpost";
 		}
 		else
 			echo "vc nao tem autorizacao";
+		$head->fechamento();
 	}
 	
 	

@@ -78,7 +78,7 @@ class ModelStatus{
 	public function exibirUmStatus($codigoStatus){
 		try{
 			$resultado=$this->conex->prepare("
-				select a.nome as nomeAnimal, s.conteudo as conteudoPost, s.dataStatus as dataStatus, a.nick as nickAnimal
+				select s.codigo as codeUser, a.nome as nomeAnimal, s.conteudo as conteudoPost, s.dataStatus as dataStatus, a.nick as nickAnimal
 				from animal as a
 				inner join status as s
 				on a.codigo=s.codigoAnimal
@@ -93,7 +93,8 @@ class ModelStatus{
 			else
 				return null;
 		}catch(PDOException $e){
-			return "ERRO".$erro->getmessage();
+			echo "ERRO".$erro->getmessage();
+			return null;
 		}
 	}
 

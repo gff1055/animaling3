@@ -7,7 +7,7 @@ use App\Init;
 <form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/updatepost'?>" method="post">
 	<textarea rows='5' cols='30'>
 		<?php
-		$arrayData['conteudo'];
+		$post['conteudo'];
 		?>
 	</textarea>
 	<br>
