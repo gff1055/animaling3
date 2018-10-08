@@ -138,15 +138,16 @@ class ControllerAnimal{
 		//include_once "../App/Views/excluiPost.php";		
 	}
 
+	/* metodo ao acessar a pagina /edit do usuario (edição de posts) */
 	public function editPost($pCode){
 		session_start();
 		$head = new Cabecalho();
 
 		$head->abertura("Editar publicacao");
-		include_once "../App/Views/mostraUsuario.php";
+		include_once "../App/Views/mostraUsuario.php";	// mostrando o usuario
 		$modelStatus = new ModelStatus(Init::getDB());
-		$post = $modelStatus->exibirUmStatus($pCode);
-		if($post['codeUser'] == $_SESSION['id']){
+		$post = $modelStatus->exibirUmStatus($pCode);	// pegando os dados do status
+		if($post['codeUser'] == $_SESSION['id']){	// verificando as credenciais do usuario
 			include_once "../App/Views/formEditPost.php";
 		}
 		else
