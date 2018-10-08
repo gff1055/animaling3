@@ -141,12 +141,13 @@ class ControllerAnimal{
 	public function editPost($pCode){
 		session_start();
 		$head = new Cabecalho();
+
 		$head->abertura("Editar publicacao");
-		if($pCode == $_SESSION['id']){
-			$modelStatus = new ModelStatus(Init::getDB());
-			$post = $modelStatus->exibirUmStatus($pCode);
-			if($post) include_once "../App/Views/formEditPost";
-			else echo "Houve um erro interno: #editpost";
+		include_once "../App/Views/mostraUsuario.php";
+		$modelStatus = new ModelStatus(Init::getDB());
+		$post = $modelStatus->exibirUmStatus($pCode);
+		if($post['codeUser'] == $_SESSION['id']){
+			include_once "../App/Views/formEditPost.php";
 		}
 		else
 			echo "vc nao tem autorizacao";

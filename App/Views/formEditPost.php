@@ -3,12 +3,10 @@ use App\Init;
 ?>
 
 <h3>Editar publicação</h3>
-
+<br>
 <form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/updatepost'?>" method="post">
-	<textarea rows='5' cols='30'>
-		<?php
-		$post['conteudo'];
-		?>
+	<textarea rows='5' cols='30'><?php
+		echo $post['conteudoPost'];?>
 	</textarea>
 	<br>
 	<input type="submit" value ="Atualizar publicação"/>
