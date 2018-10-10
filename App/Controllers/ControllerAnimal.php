@@ -289,12 +289,21 @@ class ControllerAnimal{
 			echo "erro";
 	}
 
+	/* metodo quando é acessado a URL /updatepassword (atualizacao de senha) */
 	public function updatePassword($pArrayDataUser){
 		session_start();
 		$modelUser = new ModelAnimal(Init::getDB());
 		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);
 		$_SESSION['senha'] = $pArrayDataUser['newPassword'];
 		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+	}
+
+	public function updatePost($arrayDataPost){
+		$modelPost = new ModelStatus(Init::getDB());
+		$status = new Status();
+		$post->setCodigo($arrayDataPost[]);
+		$post->setConteudo(...);
+		$modelPost->atualizarStatus($post);
 	}
 
 	public function opSeguindo(){
