@@ -78,7 +78,7 @@ class ModelStatus{
 	public function exibirUmStatus($codigoStatus){
 		try{
 			$resultado=$this->conex->prepare("
-				select a.codigo as codeUser, a.nome as nomeAnimal, s.conteudo as conteudoPost, s.dataStatus as dataStatus, a.nick as nickAnimal
+				select a.codigo as codeUser, a.nome as nomeAnimal, s.conteudo as conteudoPost, s.dataStatus as dataStatus, a.nick as nickAnimal, s.codigo as codePost
 				from animal as a
 				inner join status as s
 				on a.codigo=s.codigoAnimal

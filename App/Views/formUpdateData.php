@@ -15,9 +15,7 @@ use App\Init;
 	<br><br>
 	
 	<label for="description" class="formField">Descrição:</label>
-	<textarea id="description" name="description" rows="10" cols="50">
-		<?php echo $dadosAnimal['descricao']?>
-	</textarea>
+	<textarea id="description" name="description" rows="10" cols="50"><?php echo $dadosAnimal['descricao']?></textarea>
 	<br><br>
 	
 	<label for="nick" class="formField">Usuario:</label>

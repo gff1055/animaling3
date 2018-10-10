@@ -85,72 +85,65 @@ class Init{
 		);*/
 
 		$arrayRotasAux['pagProfAnimal'] = array(
-			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3],
+			'route'=>Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar],
 			'controller'=>'controllerAnimal',
 			'action'=>'index',
 			'value'=>$pUrlDividida[3]
 		);
 
 		$arrayRotasAux['seguidores'] = array(
-			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/seguidores',
+			'route'=>Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/seguidores',
 			'controller'=>'controllerAnimal',
 			'action'=>'seguidores',
 			'value'=>$pUrlDividida[3]
 		);
 
 		$arrayRotasAux['admSeguidores'] = array(
-			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/followstate',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/followstate',
 			'controller'=> 'controllerAnimal',
 			'action'=> 'followstate',
 			'value'=>''
 		);
 
 		$arrayRotasAux['admSeguidores'] = array(
-			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/someactionfollow',
+			'route'=> Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/someactionfollow',
 			'controller'=> 'controllerAnimal',
 			'action'=> 'someactionfollow',
 			'value'=>''
 		);
 
 		$arrayRotasAux['seguindo'] = array(
-			'route'=>Init::$urlRoot.'/'.$pUrlDividida[3].'/seguindo',
+			'route'=>Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/seguindo',
 			'controller'=>'controllerAnimal',
 			'action'=>'seguindo',
 			'value'=>$pUrlDividida[3]
 		);
 
 		$arrayRotasAux['countFollow'] = array(
-			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/countfollow',
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/countfollow',
 			'controller' => 'controllerAnimal',
 			'action' => 'countFollow',
 			'value' => ''
 		);
 
 		$arrayRotasAux['setup'] = array(
-			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/setup',
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/setup',
 			'controller' => 'controllerAnimal',
 			'action' => 'setup',
 			'value' => $pUrlDividida[3]
 		);
 
 		$arrayRotasAux['updateData'] = array(
-			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/updatedata',
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/updatedata',
 			'controller' => 'controllerAnimal',
 			'action' => 'updateData',
 			'value' => $_POST
 		);
 
 		$arrayRotasAux['updatePassword'] = array(
-			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/updatepassword',
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/updatepassword',
 			'controller' => 'controllerAnimal', 
 			'action' => 'updatePassword',
-			'value' => $_POST
-		);
-
-		$arrayRotasAux['updatePost'] = array(
-			'route' => Init::$urlRoot.'/'.$pUrlDividida[3].'/updatepost',
-			'controller' => 'controllerAnimal',
-			'action' => 'updatePost',
 			'value' => $_POST
 		);
 
@@ -185,6 +178,15 @@ class Init{
 				'action'=>'editPost',
 				'value'=>$pUrlDividida[Init::$rotaVar+1]
 			);
+
+			$arrayRotasAux['updatePost'] = array(
+				'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/'.$pUrlDividida[Init::$rotaVar+1].'/updatepost',
+				'controller' => 'controllerAnimal',
+				'action' => 'updatePost',
+				'value' => $_POST
+			);
+
+
 		}
 
 
