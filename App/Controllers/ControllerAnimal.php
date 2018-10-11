@@ -299,11 +299,13 @@ class ControllerAnimal{
 	}
 
 	public function updatePost($arrayDataPost){
+		session_start();
 		$modelPost = new ModelStatus(Init::getDB());
-		$status = new Status();
-		$post->setCodigo($arrayDataPost[]);
-		$post->setConteudo(...);
+		$post = new Status();
+		$post->setCodigo($arrayDataPost['formCodePost']);
+		$post->setConteudo($arrayDataPost['formContentPost']);
 		$modelPost->atualizarStatus($post);
+		header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);
 	}
 
 	public function opSeguindo(){

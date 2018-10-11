@@ -2,16 +2,18 @@
 namespace App\Controllers;
 
 use App\Models\ModelAnimal;
+use App\Models\ModelStatus;
+use App\Models\Status;
 use App\Init;
 use App\Models\Animal;
 
 
 class ControllerTeste{
 	public function index(){
-		$modelAnimal = new ModelAnimal(Init::getDB());
+		//$modelAnimal = new ModelAnimal(Init::getDB());
 		
 		
-		$pAnimal = new Animal();
+		//$pAnimal = new Animal();
 		
 		//$animal->setNick("fidoumaegua");
 		//$animal->setEmail("fidoumageua@gmail.com");
@@ -30,7 +32,17 @@ class ControllerTeste{
 //		$pAnimal->setEmail("veludo2@gmail.com");
 //		$pAnimal->setDescricao("sou peludo a beça");
 
-		echo $modelAnimal->changePassword("Fido",88888);
+		//echo $modelAnimal->changePassword("Fido",88888);
+
+		$modelStatus = new ModelStatus(Init::getDB());
+		$status = new Status();
+		$status->setCodigo(14);
+		$codeUser = 456;
+
+
+		if($modelStatus->IsItExistUserPost($status->getCodigo(), $codeUser))
+			echo "OK";
+		else echo "NULL";
 
 	}
 }

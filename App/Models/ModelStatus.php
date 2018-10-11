@@ -98,6 +98,23 @@ class ModelStatus{
 		}
 	}
 
+	public function IsItExistUserPost($codePost, $codeUser){
+		$query = "select * from status where codigo = ? and codigoAnimal = ?";
+		try{
+			$result = $this->conex->prepare($query);
+			$result->bindValue(1, $codePost);
+			$result->bindValue(2, $codeUser);
+			$result->execute();
+
+			if($result->rowCount()>0){
+				return true;
+			}
+			else return false;
+		}catch(PDOException $erro){
+			return "ERRO: ".$erro->getMessage(); 
+		}
+	}
+
 	public function inserirStatus($pStatus){
 	
 		$query = "insert into status(conteudo, codigoAnimal, dataStatus) values (?,?,?)";
