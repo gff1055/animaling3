@@ -304,8 +304,13 @@ class ControllerAnimal{
 		$post = new Status();
 		$post->setCodigo($arrayDataPost['formCodePost']);
 		$post->setConteudo($arrayDataPost['formContentPost']);
-		$modelPost->atualizarStatus($post);
-		header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);
+		$check = $modelPost->isThereUserPost($_SESSION['id'], $arrayDataPost['formCodePost']);
+		if($check){
+			$modelPost->atualizarStatus($post);
+			header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);
+		}
+		else
+			echo "ERRO INTERNO";
 	}
 
 	public function opSeguindo(){

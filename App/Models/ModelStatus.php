@@ -98,7 +98,7 @@ class ModelStatus{
 		}
 	}
 
-	public function IsItExistUserPost($codePost, $codeUser){
+	public function IsThereUserPost($codeUser, $codePost){
 		$query = "select * from status where codigo = ? and codigoAnimal = ?";
 		try{
 			$result = $this->conex->prepare($query);
