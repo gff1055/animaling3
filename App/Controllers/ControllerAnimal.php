@@ -293,21 +293,23 @@ class ControllerAnimal{
 	public function updatePassword($pArrayDataUser){
 		session_start();
 		$modelUser = new ModelAnimal(Init::getDB());
-		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);
+		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);	// mudando a senha do usuario no BD
 		$_SESSION['senha'] = $pArrayDataUser['newPassword'];
-		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']);	// encaminhamento para a pagina de perfil
 	}
 
+	/* metodo que encaminha os novos dados para atualização no banco*/
 	public function updatePost($arrayDataPost){
 		session_start();
 		$modelPost = new ModelStatus(Init::getDB());
-		$post = new Status();
-		$post->setCodigo($arrayDataPost['formCodePost']);
-		$post->setConteudo($arrayDataPost['formContentPost']);
-		$check = $modelPost->isThereUserPost($_SESSION['id'], $arrayDataPost['formCodePost']);
+		$post = new Status();	// declaracao do objeto que conterá os novos dados
+		$post->setCodigo($arrayDataPost['formCodePost']);	// setando codigo do post
+		$post->setConteudo($arrayDataPost['formContentPost']);	// setando o novo conteudo
+		$check = $modelPost->isThereUserPost($_SESSION['id'], $arrayDataPost['formCodePost']);	// verificando se o post pertence ao usuario corrente
+		
 		if($check){
-			$modelPost->atualizarStatus($post);
-			header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);
+			$modelPost->atualizarStatus($post);	// post atualizado
+			header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);	// usuario é encaminhado para a pagina inicial
 		}
 		else
 			echo "ERRO INTERNO";

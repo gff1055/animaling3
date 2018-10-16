@@ -36,7 +36,8 @@ use App\Init;
 		<option value="f">Feminino</option>
 	</select>
 	<br><br>
-	
+
+	<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'] ?>">&lsaquo;&lsaquo; Voltar</a>	
 	<input type="submit" value="Atualizar Dados" class="styleButton"/>
 </form>
 <br>
@@ -58,6 +59,7 @@ use App\Init;
 	<input type="text" id="checkNewPassword" name="checkNewPassword"/>
 	<br><br>
 	
+	<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'] ?>">&lsaquo;&lsaquo; Voltar</a>
 	<input type="submit" value="Atualizar Senha" class="styleButton"/>
 </form>
 <br>
