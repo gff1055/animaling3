@@ -9,15 +9,18 @@ if (isset($_GET["pesquisa"])){
 else $showTerm = "";
 
 if (isset($_SESSION['login'])){?>
-		<a href="<?php echo Init::$urlRoot.'/'?>">Home</a>
-		<form method="get" action="<?php echo Init::$urlRoot?>/busca">
+	<div class="topMenu">
+		<div><a href="<?php echo Init::$urlRoot.'/'?>">Home</a></div>
+		<div><form method="get" action="<?php echo Init::$urlRoot?>/busca">
 			<input type="text" name="pesquisa" value="<?php echo $showTerm ?>" id="txtTerm"/>
+
 			<input type="submit" value="Buscar" id = "btnSearch"/>
 			<!--<input type="hidden" name="tipoPesquisa" value="Tudo"> -->
-		</form>
-		<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>"><?php echo $_SESSION['name']?></a>
-		<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">Configurações</a>
-		<a href="<?php echo Init::$urlRoot?>/logout">Fazer Logoff</a>
+		</form></div>
+		<div><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>"><?php echo $_SESSION['name']?></a></div>
+		<div><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">Configurações</a></div>
+		<div><a href="<?php echo Init::$urlRoot?>/logout">Fazer Logoff</a></div>
+	</div>
 		
 	<?php
 	}

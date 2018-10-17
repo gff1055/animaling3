@@ -14,7 +14,6 @@ class Init{
 		$urlAcessada=$this->urlDigit();
 		$urlDividida = $this->getParamRoute($urlAcessada);
 		$this->inicializarRotas($urlDividida);
-		print_r($urlDividida);
 		$this->run($urlAcessada);
 	}
 

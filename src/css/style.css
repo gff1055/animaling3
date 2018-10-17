@@ -3,14 +3,23 @@
 	margin: 1px;
 }
 
+body{
+	margin: 10px;
+}
+
 #logo{
 	font-family: "Snap ITC";
 	font-size: 20px;
 	color: green;
 }
 
-.headPage{
+/*.headPage{
 	display: inline;
+}*/
+
+.topMenu{
+	display: grid;
+	grid-template-columns: 20% 50% 10% 10% 10%;
 }
 
 .formField{
