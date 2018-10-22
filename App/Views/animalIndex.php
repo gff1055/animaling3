@@ -55,7 +55,7 @@ elseif(!$acessoNaoLogado){
 		foreach($posts as $post){
 		// exibindo as opções de edicao, exclusão e o post?>
 			<br><br><br>
-			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>">
+			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>" class="generalStyle">
 				<?php echo $post['nomeAnimal']?>
 			</a><br>
 			<?php

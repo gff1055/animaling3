@@ -5,18 +5,24 @@
 
 @media only screen and (max-width:900px){
 	body{
-		background-color: grey;
+		background-color: #dddddd;
 	}
 }
 
 @media only screen and (max-width:700px){
 	body{
-		background-color: white;
+		background-color: #dddddd;
 	}
 }
 
 body{
 	margin: 10px;
+	background-color: #dddddd;
+}
+
+div{
+	background-color: white;
+	padding: 10px;
 }
 
 #logo{
@@ -45,13 +51,19 @@ body{
 	text-align: right;
 }
 
-a{
-	text-decoration: none;	
+.generalStyle{
+	color: #006600;
+	font-weight: bolder;
+	text-decoration: none;
+}
+
+.generalStyle:hover {
+	text-decoration: underline;	
 }
 
 .postDate{
 	color: gray;
 	font-size: 10px;
 	font-family: sans-serif;
-
+	text-decoration: none;
 }
