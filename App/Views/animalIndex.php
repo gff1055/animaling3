@@ -5,10 +5,10 @@ use App\Init;
 ?>
 
 <div>
+	<span id = "nameUser"><?php echo $dadosAnimal['nome']?></span>
 	<br>
-	<?php echo $dadosAnimal['nome']?><br>
+	<br>
 	<?php echo $dadosAnimal['descricao']?><br>
-	<br>
 </div>
 
 <div>
@@ -47,34 +47,40 @@ elseif(!$acessoNaoLogado){
 	</form>
 <?php } ?>
 
-<div>
+
 	<?php
 
 	// exibindo as postagens
 	if($posts){
 		foreach($posts as $post){
 		// exibindo as opções de edicao, exclusão e o post?>
-			<br><br><br>
+		<div class="postArea">
 			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>" class="generalStyle">
 				<?php echo $post['nomeAnimal']?>
-			</a><br>
+			</a>
+			<br>
+			<br>
 			<?php
 			if($acessoUsuarioSessao){?>
 				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/edit'?>">Editar</a>
 				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/delete'?>">Excluir</a><br>
 			<?php } ?>
+			<?php echo $post['conteudo']?>
+			<br>
+			<br>
+			<br>
 			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>" class="postDate">
-				<?php echo $post['dataStatus']?>
+				<?php echo "Postado em ".$post['dataStatus']?>
 			</a><br>
-			<?php echo $post['conteudo']?><br>
+		</div>
 			<?php
 		}
 	}
-	else // no caso de nao haver postagens
-		echo "<br>Nenhuma postagem<br>";
-	?>
-
-</div>
+	else{ // no caso de nao haver postagens?>
+		<div>
+		<?php echo "<br>Nenhuma postagem<br>";?>
+		</div>
+	<?php } ?>
 <script src="<?php echo Init::$urlSources.'/src/js/support.js'?>">
 </script>
 

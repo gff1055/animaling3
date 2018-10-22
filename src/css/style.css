@@ -5,24 +5,38 @@
 
 @media only screen and (max-width:900px){
 	body{
-		background-color: #dddddd;
+		background-color: #b3e6b3;
 	}
 }
 
 @media only screen and (max-width:700px){
 	body{
-		background-color: #dddddd;
+		background-color: #b3e6b3;
 	}
 }
 
 body{
 	margin: 10px;
-	background-color: #dddddd;
+	background-color: #b3e6b3;
+}
+
+#nameUser{
+	font-family: sans-serif;
+	font-size: 25px;
+	font-weight: bolder;
 }
 
 div{
 	background-color: white;
 	padding: 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border-radius: 6px;
+}
+
+.postArea{
+	margin-bottom: 1px;
+	margin-top: 2px;
 }
 
 #logo{
