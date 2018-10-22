@@ -7,8 +7,6 @@ use App\Init;
 <div>
 	<br>
 	<?php echo $dadosAnimal['nome']?><br>
-	<?php echo $dadosAnimal['sexo']?><br>
-	<?php echo $dadosAnimal['nascimento']?><br>
 	<?php echo $dadosAnimal['descricao']?><br>
 	<br>
 </div>
@@ -65,7 +63,7 @@ elseif(!$acessoNaoLogado){
 				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/edit'?>">Editar</a>
 				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/delete'?>">Excluir</a><br>
 			<?php } ?>
-			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>">
+			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>" class="postDate">
 				<?php echo $post['dataStatus']?>
 			</a><br>
 			<?php echo $post['conteudo']?><br>

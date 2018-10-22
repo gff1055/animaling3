@@ -102,6 +102,8 @@ class ControllerAnimal{
 	//metodo para visualizacao dos posts
 	public function verPost($codigo){
 
+		session_start();
+
 		//preparacao dos dados para exibicao
 		$cab = new Cabecalho();
 		$modelPost = new ModelStatus(Init::getDB());
@@ -109,6 +111,7 @@ class ControllerAnimal{
 
 		//exibindo o post
 		$cab->abertura($post['nomeAnimal']);
+		include_once "../App/Views/mostraUsuario.php";	// mostrando o usuario
 		include_once "../App/Views/exibePost.php";
 		$cab->fechamento();
 	}

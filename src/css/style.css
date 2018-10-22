@@ -45,3 +45,13 @@ body{
 	text-align: right;
 }
 
+a{
+	text-decoration: none;	
+}
+
+.postDate{
+	color: gray;
+	font-size: 10px;
+	font-family: sans-serif;
+
+}
