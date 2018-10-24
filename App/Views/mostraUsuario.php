@@ -27,7 +27,7 @@ if (isset($_SESSION['login'])){?>
 else
 	{
 	?>
-	<a href="<?php echo Init::$urlRoot?>">Login</a>
+	Você não está logado. Faça <a href="<?php echo Init::$urlRoot?>">Login</a> ou <a href="<?php echo Init::$urlRoot?>/register">Cadastre-se</a>
 	
 	<!-- Adicionar na pagina inicial -->
 	
@@ -50,4 +50,3 @@ else
 		<?php if(!empty($_GET['erro'])) echo "ocorreu um erro"; ?>
 	</form>-->
 <?php }?>
-<br><br>

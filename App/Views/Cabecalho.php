@@ -27,6 +27,7 @@ class Cabecalho{
 
 	public function fechamento(){
 		?>
+		<br><br>Copyright 2018 (c)<br><br>
 </body>
 </html>
 		<?php

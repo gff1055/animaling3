@@ -11,41 +11,42 @@ use App\Init;
 	<?php echo $dadosAnimal['descricao']?><br>
 </div>
 
-<div>
-	<br>
-	<?php // mostrandp a quantidade de publicações, seguidores e usuarios sendo seguidos?>
-	publicacoes (<?php echo $numeroPosts?>)<br>
-	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores">
+<div id = "followBar" class="generalStyle">
+	<div>
+		<?php // mostrandp a quantidade de publicações, seguidores e usuarios sendo seguidos?>
+		publicacoes (<?php echo $numeroPosts?>)
+	</div>
+	<div>
+		<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores">
 		Seguidores (<span id="countFollowers"><?php echo $count['followers']?></span>)
-	</a>
-	<br>
+		</a>
+	</div>
+	<div>
 	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo" >
-		Seguindo <?php echo $count['followings']?>)
+		Seguindo (<?php echo $count['followings']?>)
 	</a>
+	</div>
 	
+
+	<?php // verificando se quem esta acessando o perfil é o proprio usuario
+	if($acessoUsuarioSessao) {?>
+		<form method="post" action="">
+			<input type="text" name="novoPost"/>
+			<input type="submit" value="Postar">
+	
+		</form>
+	<?php }
+
+	// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.
+	elseif(!$acessoNaoLogado){
+		?>
+		<form>
+			<input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
+			<input type="hidden" id=hdnPerfil value="<?php echo $dadosAnimal['codigo'] ?>">
+			<input type="hidden" id=hdnSessaoUsuario value="<?php echo $_SESSION['id'] ?>">
+		</form>
+	<?php } ?>
 </div>
-
-<?php
-
-// verificando se quem esta acessando o perfil é o proprio usuario
-if($acessoUsuarioSessao) {?>
-	<form method="post" action="">
-		<input type="text" name="novoPost"/>
-		<input type="submit" value="Postar">
-	
-	</form>
-	<?php
-}
-
-// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.
-elseif(!$acessoNaoLogado){
-	?>
-	<form>
-		<input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
-		<input type="hidden" id=hdnPerfil value="<?php echo $dadosAnimal['codigo'] ?>">
-		<input type="hidden" id=hdnSessaoUsuario value="<?php echo $_SESSION['id'] ?>">
-	</form>
-<?php } ?>
 
 
 	<?php
