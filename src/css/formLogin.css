@@ -1,0 +1,15 @@
+
+#pageLoginDiv{ /*Bar who contains the followers/following counter*/
+	display: grid;
+	grid-template-columns: 50% 50%;
+	height: 600px;
+	width: auto;
+	border-radius: 10px;
+	/*background-color: red;*/
+}
+
+#mainImageDiv{
+	background-image: url("../img/firstImage.jpg");
+	background-repeat: no-repeat;
+	border-radius: 20px;
+}

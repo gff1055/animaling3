@@ -5,19 +5,19 @@
 
 @media only screen and (max-width:900px){
 	body{
-		background-color: #a3dca6;
+		background-color: #D8E6DB;
 	}
 }
 
 @media only screen and (max-width:700px){
 	body{
-		background-color: #a3dca6;
+		background-color: #D8E6DB;
 	}
 }
 
 body{
 	margin: 10px;
-	background-color: #a3dca6;
+	background-color: #D8E6DB;
 }
 
 #logo{
