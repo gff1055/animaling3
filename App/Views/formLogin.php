@@ -4,7 +4,10 @@
 
 <div id="pageLoginDiv">
 	<div id="mainImageDiv">
-
+		Conecte-se<br><br>
+		Compartilhe<br><br>
+		Viva<br><br>
+		Adote<br><br>
 	</div>
 
 	<div>

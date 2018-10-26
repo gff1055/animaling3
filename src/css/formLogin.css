@@ -1,4 +1,9 @@
 
+body{
+	background-color: #FFFFFF;
+}
+
+
 #pageLoginDiv{ /*Bar who contains the followers/following counter*/
 	display: grid;
 	grid-template-columns: 50% 50%;
@@ -9,7 +14,18 @@
 }
 
 #mainImageDiv{
-	background-image: url("../img/firstImage.jpg");
+	background-image: url("../img/firstImage.png");
 	background-repeat: no-repeat;
-	border-radius: 20px;
+	/*border-radius: 20px;*/
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	color: white;
+	font-family: "Levenim MT";
+	font-size: 40px;
+	font-weight: none;
 }
+
+#mainImageDiv img{
+
+}
+
