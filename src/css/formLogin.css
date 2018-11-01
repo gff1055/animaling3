@@ -1,9 +1,10 @@
 
 body{
-	background-color: #FFFFFF;
+	background-color: #D8E6DB;
 }
 
 
+/*div principal*/
 #pageLoginDiv{ /*Bar who contains the followers/following counter*/
 	display: grid;
 	grid-template-columns: 50% 50%;
@@ -13,16 +14,32 @@ body{
 	/*background-color: red;*/
 }
 
+/*div que contem a imagem principal*/
 #mainImageDiv{
+	display: grid;
 	background-image: url("../img/firstImage.png");
+	background-size: cover;
 	background-repeat: no-repeat;
 	/*border-radius: 20px;*/
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	color: white;
-	font-family: 'Century Gothic';
-	font-size: 40px;
-	font-weight: none;
+	color: #D8E6DB;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: bolder;
+	grid-template-rows: 50% 50%;
+	grid-template-columns: 50% 50%;
+}
+
+/* divs internas da imagem principal */
+#mainImageDiv div{
+	background-color: rgba(0,0,0,0);
+	text-align: center;
+}
+
+.subMainImage{
+	max-width: 200px;
+	max-height: 200px;
 }
 
 #mainImageDiv img{
