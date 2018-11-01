@@ -1,6 +1,6 @@
 
 body{
-	background-color: #FFFFFF;
+	background-color: #D8E6DB;
 }
 
 
@@ -21,13 +21,13 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;
 	/*border-radius: 20px;*/
-	border-radius: 20px;
-	color: #D8E6DB;
+	border-radius: 50px;
+	color: #ffffff;
 	font-family: sans-serif;
 	font-size: 40px;
 	font-weight: lighter;
 	grid-template-rows: 25% 25% 25% 25%;
-	padding: 75px;
+
 }
 
 /* divs internas da imagem principal */

@@ -30,10 +30,20 @@ class Cabecalho{
 	public function fechamento(){
 		?>
 		<br><br>
-		<span id="foot">
+		<div class="generalStyle footer">
+		<a href="#"> Anúncios &nbsp;</a>
+		<a href="#">Fale conosco &nbsp;</a>
+		<a href="#"> Sobre nós &nbsp;</a>
+		<a href="#"> Termos de serviço &nbsp;</a>
+		<a href="#"> Privacidade &nbsp;</a>
+
+
+		</div>
+		<div class="footer">
 			Todos os direitos reservados<br>
 			Copyright 2018 &copy;
-		</span><br><br>
+		</div>
+		<br><br>
 </body>
 </html>
 		<?php

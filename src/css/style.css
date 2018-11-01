@@ -103,7 +103,7 @@ a.generalStyle:hover {
 	text-decoration: none;
 }
 
-#foot{
+.footer{
 	text-align: center;
-	background-color: "blue";
+	background-color: rgba(0,0,0,0);
 }
