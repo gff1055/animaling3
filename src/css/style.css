@@ -102,3 +102,8 @@ a.generalStyle:hover {
 	font-family: sans-serif;
 	text-decoration: none;
 }
+
+#foot{
+	text-align: center;
+	background-color: "blue";
+}

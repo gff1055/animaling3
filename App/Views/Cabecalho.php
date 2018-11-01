@@ -29,7 +29,11 @@ class Cabecalho{
 
 	public function fechamento(){
 		?>
-		<br><br>Copyright 2018 (c)<br><br>
+		<br><br>
+		<span id="foot">
+			Todos os direitos reservados<br>
+			Copyright 2018 &copy;
+		</span><br><br>
 </body>
 </html>
 		<?php

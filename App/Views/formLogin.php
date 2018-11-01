@@ -5,28 +5,18 @@
 <div id="pageLoginDiv">
 	<div id="mainImageDiv">
 		<div>
-			<figure>
-				<img src="../src/img/conectar.png" class="subMainImage" />
-				<figcaption>Conecte-se</figcaption>
-			</figure>
+			<img src="../src/img/conectar.png" class="subMainImage" /> Conecte-se
+			
 		</div>
 		<div>
-			<figure>
-				<img src="../src/img/viva.png" class="subMainImage" />
-				<figcaption>Conecte-se</figcaption>
-			</figure>
+			<img src="../src/img/viva.png" class="subMainImage" /> Viva
+			
 		</div>
 		<div>
-			<figure>
-				<img src="../src/img/compartilhe.png" class="subMainImage" />
-				<figcaption>Conecte-se</figcaption>
-			</figure>
+			<img src="../src/img/compartilhe.png" class="subMainImage" /> Compartilhe
 		</div>
 		<div>
-			<figure>
-				<img src="../src/img/conectar.png" class="subMainImage" />
-				<figcaption>Conecte-se</figcaption>
-			</figure>
+			<img src="../src/img/conectar.png" class="subMainImage" /> Adote
 		</div>
 		
 	</div>
