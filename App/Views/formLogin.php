@@ -16,7 +16,7 @@
 			<img src="../src/img/compartilhe.png" class="subMainImage" /> Compartilhe
 		</div>
 		<div>
-			<img src="../src/img/conectar.png" class="subMainImage" /> Adote
+			<img src="../src/img/adote.png" class="subMainImage" /> Adote
 		</div>
 		
 	</div>
