@@ -36,12 +36,24 @@ body{
 	text-align: justify;
 }
 
+
+/* classe que estiliza os icones na pagina principal */
 .subMainImage{
 	max-width: 40px;
 	max-height: 40px;
 }
 
-#mainImageDiv img{
+/* estilizando a imagem do logo */
+#divLogoImage img{
+	width: 200px;
+	height: 200px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+#formLogin{
+	text-align: center;
+	background-color: red;
 }
 

@@ -72,7 +72,8 @@ div.postArea{ /*area of posts*/
 .formField{
 	display: inline-block;
 	width: 200px;
-	text-align: right;
+	text-align: left;
+	background-color: blue;
 }
 
 .styleButton{

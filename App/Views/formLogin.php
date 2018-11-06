@@ -22,16 +22,18 @@
 	</div>
 
 	<div>
+		<div id="divLogoImage" >
+			<img src="../src/img/logo-image.png"/>
+		</div>
+		<div>
 		<form action="<?php echo Init::$urlRoot?>/logon" method="post" id="formLogin">
-			<fieldset>
-				<legend><span id = "logo">Animaling</span></legend>
-				<label for="name" class="formField">Login/Email:</label>
+				<label for="name" class="formField">Login/Email:</label><br>
 				<input type="text" name="formLogin"/>
 		
 				<br>
 				<br>
 	
-				<label for="name" class="formField">Senha:</label>
+				<label for="name" class="formField">Senha:</label><br>
 				<input type="password" name="formSenha"/>
 	
 				<br>
@@ -39,10 +41,11 @@
 
 				<input type="submit" value="Entrar">
 				<?php if(!empty($_GET['erro'])) echo "ocorreu um erro"; ?>
-			</fieldset>
 		</form>
+
 		<br>
 		Não possui conta? Cadastre-se <a href="<?php echo Init::$urlRoot?>/register">aqui</a>
+		</div>
 	</div>
 </div>
 
