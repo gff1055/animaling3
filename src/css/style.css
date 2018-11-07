@@ -72,7 +72,7 @@ div.postArea{ /*area of posts*/
 .formField{
 	display: inline-block;
 	width: 200px;
-	text-align: left;
+	text-align: right;
 	background-color: blue;
 }
 

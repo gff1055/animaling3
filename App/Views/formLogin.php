@@ -27,24 +27,23 @@
 		</div>
 		<div>
 		<form action="<?php echo Init::$urlRoot?>/logon" method="post" id="formLogin">
-				<label for="name" class="formField">Login/Email:</label><br>
-				<input type="text" name="formLogin"/>
-		
+			<input type="text" name="formLogin" placeholder="Login ou Email" />
 				<br>
 				<br>
 	
-				<label for="name" class="formField">Senha:</label><br>
-				<input type="password" name="formSenha"/>
+				<input type="password" name="formSenha" placeholder="Senha"/>
 	
 				<br>
-				<br>
-
-				<input type="submit" value="Entrar">
-				<?php if(!empty($_GET['erro'])) echo "ocorreu um erro"; ?>
+				<div id="submitFormLogin">
+					<input type="submit" value="Entrar">
+				<?php if(!empty($_GET['erro'])) echo "<br><br>Usuario e/ou senha não existem"; ?>
+				</div>
 		</form>
 
+		<div class="naoCadastrado">Não possui conta? Cadastre-se <a href="<?php echo Init::$urlRoot?>/register">aqui</a></div>
+
 		<br>
-		Não possui conta? Cadastre-se <a href="<?php echo Init::$urlRoot?>/register">aqui</a>
+		
 		</div>
 	</div>
 </div>

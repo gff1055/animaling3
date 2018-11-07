@@ -1,8 +1,32 @@
 
+@media only screen and (max-width:600px){
+	#mainImageDiv{
+		display: none;
+	}
+
+	#divLogoImage img{
+	width: 125px;
+	height: 125px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	}
+
+	#formLogin{
+	text-align: center;
+	background-color: #D8E6DB;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+
+}
+
 body{
 	background-color: #D8E6DB;
 }
 
+@media only screen and (min-width:601px){
 
 /*div principal*/
 #pageLoginDiv{ /*Bar who contains the followers/following counter*/
@@ -45,8 +69,8 @@ body{
 
 /* estilizando a imagem do logo */
 #divLogoImage img{
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 250px;
 	display: block;
     margin-left: auto;
     margin-right: auto;
@@ -54,6 +78,18 @@ body{
 
 #formLogin{
 	text-align: center;
-	background-color: red;
+	background-color: #D8E6DB;
+	padding: 20px;
+	border-radius: 20px;
 }
 
+#submitFormLogin{
+	padding:0px;
+	text-align: center;
+	background-color: rgba(0,0,0,0);
+}
+
+div.naoCadastrado{
+	text-align: center;
+}
+}
