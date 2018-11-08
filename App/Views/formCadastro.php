@@ -5,6 +5,7 @@ use App\Init;
 <hr>
 <span id = "logo">Animaling</span>
 <h6>Abra uma conta</h6>
+<div>
 <form action="<?php echo Init::$urlRoot?>/signup" method="post">
 
 	<label for="name" class="formField">Nome:</label>
@@ -29,5 +30,6 @@ use App\Init;
 	</select>
 	<br><br>
 	
-	<input type="submit" value="Cadastrar" class="styleButton"/>
+	<input type="submit" value="Cadastrar" class="submitFormLogin"/>
 </form>
+</div>

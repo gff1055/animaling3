@@ -1,7 +1,7 @@
-*{
+/**{
 	font-family: Arial, 'sans-serif';
 	margin: 1px;
-}
+}*/
 
 @media only screen and (max-width:900px){
 	body{
@@ -52,6 +52,7 @@ a{
 }
 
 a:hover{
+	color: #006600;
 	text-decoration: underline;	
 }
 

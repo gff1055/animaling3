@@ -29,14 +29,16 @@
 		<form action="<?php echo Init::$urlRoot?>/logon" method="post" id="formLogin">
 			<input type="text" name="formLogin" placeholder="Login ou Email" />
 				<br>
-				<br>
 	
 				<input type="password" name="formSenha" placeholder="Senha"/>
 	
 				<br>
 				<div id="submitFormLogin">
 					<input type="submit" value="Entrar">
-				<?php if(!empty($_GET['erro'])) echo "<br><br>Usuario e/ou senha não existem"; ?>
+				<?php 
+				if(!empty($_GET['erro'])) echo "<br><br>Usuario e/ou senha não existem";
+				else echo "<br><br> &nbsp";
+				?>
 				</div>
 		</form>
 

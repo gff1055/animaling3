@@ -14,10 +14,16 @@ class Cabecalho{
 <title><?php echo $titulo ?></title>
 
 <link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/reset.css'?>"/>
-<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
-<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/style.css'?>"/>
-<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/formLogin.css'?>"/>
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
+
+
+<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/bootstrap.css'?>"/>
 <link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/styleFonts.css'?>"/>
+<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/formLogin.css'?>"/>
+<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/style.css'?>"/>
+
+
+
 
 
 </head>
@@ -31,11 +37,11 @@ class Cabecalho{
 		?>
 		<br><br>
 		<div class="generalStyle footer">
-		<a href="#"> Anúncios &nbsp;</a>
-		<a href="#">Fale conosco &nbsp;</a>
-		<a href="#"> Sobre nós &nbsp;</a>
-		<a href="#"> Termos de serviço &nbsp;</a>
-		<a href="#"> Privacidade &nbsp;</a>
+		<a href="#"> Anúncios</a> &nbsp;
+		<a href="#">Fale conosco</a> &nbsp;
+		<a href="#"> Sobre nós</a> &nbsp;
+		<a href="#"> Termos de serviço</a> &nbsp;
+		<a href="#"> Privacidade</a>
 
 
 		</div>
