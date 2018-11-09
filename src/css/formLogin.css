@@ -13,7 +13,7 @@
     	margin-right: auto;
 	}
 
-	#formLogin{
+	.formLogin{
 		text-align: center;
 		background-color: #D8E6DB;
 		padding: 20px;
@@ -108,17 +108,17 @@ body{
 }
 
 /* Formulario de login */
-#formLogin{
+.formLogin{
 	text-align: center;
 	background-color: #D8E6DB;
 	padding: 20px;
 	border-radius: 20px;
 }
 
-#formLogin input{
+.formLogin input{
 	padding: 5px;
 	margin: 5px;
-	width: 180px;
+	width: 280px;
 	border-radius: 5px;
 }
 
@@ -126,14 +126,14 @@ body{
 
 
 /* div do Botao de login */
-#submitFormLogin{
+/*.submitFormLogin{
 	padding:0px;
 	text-align: center;
 	background-color: rgba(0,0,0,0);
-}
+}*/
 
 /* estilizando o botao de login*/
-.submitFormLogin input{
+.submitFormLogin{
 	border: none;
 	border-radius: 10px;
 	background-color: ;

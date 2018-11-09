@@ -1,10 +1,8 @@
 <?php 
 use App\Init;
 ?>
-<br>
-<hr>
-<span id = "logo">Animaling</span>
 <h6>Abra uma conta</h6>
+
 <div>
 <form action="<?php echo Init::$urlRoot?>/signup" method="post">
 
@@ -20,7 +18,7 @@ use App\Init;
 	<label for="checkPassword" class="formField">Conf. Senha:</label>
 	<input type="password" id="checkPassword" name="checkPassword"/>
 	<br><br>
-	<label for="dateBirth" class="formField">Data de nascimento:</label>
+	<label for="dateBirth" class="formField">Data de nascimento:</label><br>
 	<input type="date" id="birthDate" name="birthDate"/>
 	<br><br>
 	<label for="genre" class="formField">Sexo:</label>
