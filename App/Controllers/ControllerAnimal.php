@@ -278,9 +278,9 @@ class ControllerAnimal{
 		$objUser->setNome($pArrayDataUser['name']);
 		$objUser->setDescricao($pArrayDataUser['description']);
 		$objUser->setEmail($pArrayDataUser['email']);
-		$objUser->setSexo($pArrayDataUser['genre']);
+		//$objUser->setSexo($pArrayDataUser['genre']);
 		$objUser->setSenha($pArrayDataUser['password']);
-		$objUser->setNascimento($pArrayDataUser['birthDate']);
+		//$objUser->setNascimento($pArrayDataUser['birthDate']);
 
 		// Testando se os dados foram alterados
 		if($modelUser->alterarDadosAnimal($objUser)){

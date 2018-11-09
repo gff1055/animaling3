@@ -18,14 +18,14 @@ use App\Init;
 	<label for="checkPassword" class="formField">Conf. Senha:</label>
 	<input type="password" id="checkPassword" name="checkPassword"/>
 	<br><br>
-	<label for="dateBirth" class="formField">Data de nascimento:</label><br>
+	<!--<label for="dateBirth" class="formField">Data de nascimento:</label><br>
 	<input type="date" id="birthDate" name="birthDate"/>
 	<br><br>
 	<label for="genre" class="formField">Sexo:</label>
 	<select name="genre" id="genre">
 		<option value="m">Masculino</option>
 		<option value="f">Feminino</option>
-	</select>
+	</select>-->
 	<br><br>
 	
 	<input type="submit" value="Cadastrar" class="submitFormLogin"/>

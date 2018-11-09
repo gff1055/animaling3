@@ -25,7 +25,7 @@ use App\Init;
 	<label for="password" class="formField">Senha:</label>
 	<input type="text" id="password" name="password" value = "<?php echo $dadosAnimal['senha']?>"/>
 	<br><br>
-	
+	<!--
 	<label for="dateBirth" class="formField">Data de nascimento:</label>
 	<input type="date" id="birthDate" name="birthDate" value = "<?php echo $dadosAnimal['nascimento']?>"/>
 	<br><br>
@@ -35,7 +35,7 @@ use App\Init;
 		<option value="m">Masculino</option>
 		<option value="f">Feminino</option>
 	</select>
-	<br><br>
+	<br><br>-->
 
 	<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'] ?>">&lsaquo;&lsaquo; Voltar</a>	
 	<input type="submit" value="Atualizar Dados" class="styleButton"/>

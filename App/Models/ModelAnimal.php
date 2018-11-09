@@ -32,7 +32,7 @@ class ModelAnimal
 
 		//preparando a query do banco de dados
 		$resultado=$this->conex->prepare(
-			"select codigo,nome,nick,sexo,nascimento,descricao,email,senha
+			"select codigo,nome,nick,descricao,email,senha
 			from animal
 			where nick=?"
 			);
@@ -170,7 +170,7 @@ class ModelAnimal
 
 
 	public function inserirAnimal($pAnimal){
-		$query = "insert into animal(nome,nick,descricao,nascimento,sexo,senha,email)values(?,?,?,?,?,?,?)";
+		$query = "insert into animal(nome,nick,descricao,senha,email)values(?,?,?,?,?)";
 		$pAnimal->setNick($this->geraNick());
 		$insercao = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
 		return $insercao;
@@ -178,7 +178,7 @@ class ModelAnimal
 
 
 	public function alterarDadosAnimal($pAnimal){
-		$query = "update animal set nome=?,nick=?,descricao=?,nascimento=?,sexo=?,senha=?,email=? where codigo=?";
+		$query = "update animal set nome=?,nick=?,descricao=?,senha=?,email=? where codigo=?";
 		$alteracao = $this->gerenciarAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
 		return $alteracao;
 	}
@@ -193,15 +193,15 @@ class ModelAnimal
 				$result = null;
 				$result = $this->conex->prepare($query);
 				if($op == ModelAnimal::ALTERACAO_DADOS){
-					$result->bindValue(8,$pAnimal->getCodigo());
+					$result->bindValue(6,$pAnimal->getCodigo());
 				}
 				$result->bindValue(1,$pAnimal->getNome());
 				$result->bindValue(2,$pAnimal->getNick());
 				$result->bindValue(3,$pAnimal->getDescricao());
-				$result->bindValue(4,$pAnimal->getNascimento());
-				$result->bindValue(5,$pAnimal->getSexo());
-				$result->bindValue(6,$pAnimal->getSenha());
-				$result->bindValue(7,$pAnimal->getEmail());
+				//$result->bindValue(4,$pAnimal->getNascimento());
+				//$result->bindValue(5,$pAnimal->getSexo());
+				$result->bindValue(4,$pAnimal->getSenha());
+				$result->bindValue(5,$pAnimal->getEmail());
 				$result->execute();
 				return $pAnimal->getNick();
 			}

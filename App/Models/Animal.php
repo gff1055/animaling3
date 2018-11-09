@@ -6,9 +6,9 @@ class Animal{
 	//private $codigoDono;
 	private $codigo;
 	private $nome;
-	private $nascimento;
+	//private $nascimento;
 	private $descricao;
-	private $sexo;
+	//private $sexo;
 	private $nick;
 	private $email;
 	private $senha;
@@ -32,17 +32,17 @@ class Animal{
 	
 	public function getEmail(){return $this->email;}
 	public function setEmail($pEmail){$this->email = $pEmail;}
-
+/*
 	public function getSexo(){return $this->sexo;}
 	public function setSexo($pSexo){$this->sexo = $pSexo;}
-
+*/
 	public function getSenha(){return $this->senha;}
 	public function setSenha($pSenha){$this->senha = $pSenha;}
 		
-	public function getNascimento(){return $this->nascimento;}
+	/*public function getNascimento(){return $this->nascimento;}
 	public function setNascimento($pNascimento){
 		$objAuxData = new \DateTime($pNascimento);
 		$this->nascimento = $objAuxData->format('y/m/d');
-	}
+	}*/
 }
 ?>

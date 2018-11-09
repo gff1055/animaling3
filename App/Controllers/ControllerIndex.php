@@ -64,15 +64,15 @@ class ControllerIndex{
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$checkPassword = $_POST['checkPassword'];
-		$birthDate = $_POST['birthDate'];
-		$genre = $_POST['genre'];
+		//$birthDate = $_POST['birthDate'];
+		//$genre = $_POST['genre'];
 
 		// setando as informacoes recebidas
 		$dataUser->setNome($name);
 		$dataUser->setEmail($email);
-		$dataUser->setSexo($genre);
+		//$dataUser->setSexo($genre);
 		$dataUser->setSenha($password);
-		$dataUser->setNascimento($birthDate);
+		//$dataUser->setNascimento($birthDate);
 		$dataUser->setDescricao("");
 
 		// inserindo os dados e retornando o resultado da insercao
@@ -88,12 +88,6 @@ class ControllerIndex{
 
 		else
 			header("location: facebook.com");
-
-
-
-		print_r($dataUser);
-
-
 	}
 
 	// metodo para o processo de logon

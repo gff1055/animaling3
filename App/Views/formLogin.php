@@ -31,14 +31,14 @@
 					<h6>Sign up to see photos and videos from your friends.</h6>
 					<form action="<?php echo Init::$urlRoot?>/signup" method="post" class="formLogin">
 
-						<input type="text" id="name" name="name" placeholder="Nome" />
-						<br><br>
-						<input type="text"  id="email" name="email" placeholder="Email" />
-						<br><br>
-						<input type="password" id="password" name="password" placeholder="Senha" />
-						<br><br>
-						<input type="password" id="checkPassword" name="checkPassword" placeholder="Redigite senha" />
-						<br><br>
+						<input type="text" id="name" name="name" placeholder="Nome" class="requireField"/>
+						<br>
+						<input type="text"  id="email" name="email" placeholder="Email" class="requireField"/>
+						<br>
+						<input type="password" id="password" name="password" placeholder="Senha" class="requireField"/>
+						<br>
+						<input type="password" id="checkPassword" name="checkPassword" placeholder="Redigite senha" class="requireField"/>
+						<!--<br><br>
 						<label for="date">Nascimento:</label><br>
 						<input type="date" id="birthDate" name="birthDate"/>
 						<br><br>
@@ -46,10 +46,10 @@
 						<select name="genre" id="genre">
 							<option value="m">Masculino</option>
 							<option value="f">Feminino</option>
-						</select>
+						</select>-->
 						<br><br>
 	
-						<input type="submit" value="Cadastrar" class="submitFormLogin"/>
+						<input type="submit" value="Cadastrar" class="submitFormLogin" id="btnRegister"/>
 					</form>
 
 					<div class="naoCadastrado">Se já possuir conta, faça o login <a href="<?php echo Init::$urlRoot?>">aqui</a>
