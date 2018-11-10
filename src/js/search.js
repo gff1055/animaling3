@@ -1,4 +1,4 @@
-var btnSearch = document.getElementById('btnSearch');
+/*var btnSearch = document.getElementById('btnSearch');
 var txtTermSearch = document.getElementById('txtTermSearch');
 var spaceResult = document.getElementById('spaceResult');
 var urlRoot = "/animaling3/public";
@@ -56,3 +56,4 @@ function showData(term){
 
 }
 
+*/

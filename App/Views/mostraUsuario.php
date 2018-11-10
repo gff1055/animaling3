@@ -10,7 +10,11 @@ else $showTerm = "";
 
 if (isset($_SESSION['login'])){?>
 	<div class="topMenu">
-		<div><a href="<?php echo Init::$urlRoot.'/'?>">Home</a></div>
+		<div>
+			<a href="<?php echo Init::$urlRoot.'/'?>">
+				<img src="../src/img/title-image.png" class="nameImage">
+			</a>
+		</div>
 		<div><form method="get" action="<?php echo Init::$urlRoot?>/busca">
 			<input type="text" name="pesquisa" value="<?php echo $showTerm ?>" id="txtTerm"/>
 
