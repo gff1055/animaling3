@@ -13,6 +13,10 @@
 	body{
 		background-color: #D8E6DB;
 	}
+
+		.nameImage{
+		display: none;
+	}
 }
 
 body{

@@ -1,0 +1,14 @@
+#formToPost{
+	text-align: center;
+	background-color: #D8E6DB;
+	border-radius: 20px;
+	
+}
+
+#formToPost form{
+	/*padding: 5px;
+	margin: 5px;*/
+	width: auto;
+	/*border-radius: 5px;*/
+}
+}

@@ -30,11 +30,14 @@ use App\Init;
 
 	<?php // verificando se quem esta acessando o perfil é o proprio usuario
 	if($acessoUsuarioSessao) {?>
-		<form method="post" action="">
-			<input type="text" name="novoPost"/>
+		<br>
+		<div id="formToPost">
+		<form method="post" action="" >
+			<input type="text" name="novoPost"/><br>
 			<input type="submit" value="Postar">
 	
 		</form>
+	</div>
 	<?php }
 
 	// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.

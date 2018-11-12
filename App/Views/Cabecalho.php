@@ -21,6 +21,8 @@ class Cabecalho{
 <link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/styleFonts.css'?>"/>
 <link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/formLogin.css'?>"/>
 <link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/style.css'?>"/>
+<link rel="stylesheet" href="<?php echo Init::$urlSources.'/src/css/profilePage.css'?>"/>
+
 
 
 
