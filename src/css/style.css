@@ -49,10 +49,7 @@ div{
 	border-radius: 3px;
 }
 
-#followBar{ /*Bar who contains the followers/following counter*/
-	display: grid;
-	grid-template-columns: 25% 25% 25% 25%;
-}
+
 
 a{
 	color: #006600;
@@ -63,11 +60,6 @@ a{
 a:hover{
 	color: #006600;
 	text-decoration: underline;	
-}
-
-div.postArea{ /*area of posts*/
-	margin-bottom: 1px;
-	margin-top: 2px;
 }
 
 /*.headPage{
@@ -83,12 +75,15 @@ div.postArea{ /*area of posts*/
 	display: inline-block;
 	width: 200px;
 	text-align: right;
-	background-color: blue;
 }
 
 .styleButton{
-	display: inline-block;
-	text-align: right;
+	/*display: inline-block;
+	text-align: right;*/
+	border: none;
+	background-color: #449d44;
+	color:white;
+	font-weight: bolder;
 }
 
 .generalStyle{
@@ -107,12 +102,7 @@ a.generalStyle:hover {
 	/*text-decoration: underline;*/	
 }
 
-.postDate{
-	color: gray;
-	font-size: 10px;
-	font-family: sans-serif;
-	text-decoration: none;
-}
+
 
 .footer{
 	text-align: center;

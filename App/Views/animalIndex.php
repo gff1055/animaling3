@@ -11,33 +11,33 @@ use App\Init;
 	<?php echo $dadosAnimal['descricao']?><br>
 </div>
 
-<div id = "followBar" class="generalStyle">
-	<div>
+<div class="generalStyle followBar">
+	<div class="divCountPublications">
 		<?php // mostrandp a quantidade de publicações, seguidores e usuarios sendo seguidos?>
 		publicacoes (<?php echo $numeroPosts?>)
 	</div>
-	<div>
+	<div class="divCountFollowers">
 		<a href="../public/<?php echo $dadosAnimal['nick']?>/seguidores">
 		Seguidores (<span id="countFollowers"><?php echo $count['followers']?></span>)
 		</a>
 	</div>
-	<div>
-	<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo" >
-		Seguindo (<?php echo $count['followings']?>)
-	</a>
+	<div class="divCountFollowing">
+		<a href="../public/<?php echo $dadosAnimal['nick']?>/seguindo" >
+			Seguindo (<?php echo $count['followings']?>)
+		</a>
 	</div>
 	
 
 	<?php // verificando se quem esta acessando o perfil é o proprio usuario
 	if($acessoUsuarioSessao) {?>
 		<br>
-		<div id="formToPost">
-		<form method="post" action="" >
-			<input type="text" name="novoPost"/><br>
-			<input type="submit" value="Postar">
+		<div class="divPostBtnFollow">
+			<form method="post" action="" class="formToPost">
+				<input type="text" name="novoPost"/><br>
+				<input type="submit" value="Postar" class="styleButton">
 	
-		</form>
-	</div>
+			</form>
+		</div>
 	<?php }
 
 	// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.
