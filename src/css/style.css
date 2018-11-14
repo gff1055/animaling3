@@ -104,8 +104,15 @@ a.generalStyle:hover {
 	/*text-decoration: underline;*/	
 }
 
+/* propriedade de todos os inputs do site */
+input{
+	border-radius: 10px;
+	border-color: lightgray;
+	margin: 1px;	
+}
 
 
+/* propriedades do cabecalho */
 .footer{
 	text-align: center;
 	background-color: rgba(0,0,0,0);

@@ -5,6 +5,7 @@
 		display: none;
 	}
 
+/*div onde esta a logo completa do site*/
 	#divLogoImage img{
 		width: 200px;
 		height: 200px;
@@ -13,6 +14,7 @@
     	margin-right: auto;
 	}
 
+	/* propriedades do formulario de login */
 	.formLogin{
 		text-align: center;
 		background-color: #D8E6DB;
@@ -20,6 +22,15 @@
 		border-radius: 20px;
 	}
 
+	/* estilizando os inputs do formlario */
+	.formLogin input{
+		padding: 5px;
+		margin: 5px;
+		width: 140px;
+		/*border-radius: 5px;*/
+	}
+
+	/* Estilos do botao de cadastro */
 	.submitFormLogin{
 		padding:0px;
 		text-align: center;
@@ -40,6 +51,7 @@
 		cursor: pointer; /*cursos em forma de ponteiro*/
 	}
 
+	/* Propriedades do botao de login ao passar o mouse em cima */
 	.submitFormLogin:hover{
 		background-image: linear-gradient(#009900, #009900, #003300);
 		box-shadow: 0px 0px 5px rgba(1,1,1,0.5);
@@ -115,11 +127,12 @@ body{
 	border-radius: 20px;
 }
 
+/* Estilizando os campos do formulario de login */
 .formLogin input{
 	padding: 5px;
 	margin: 5px;
 	width: 280px;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 }
 
 
@@ -132,7 +145,7 @@ body{
 	background-color: rgba(0,0,0,0);
 }*/
 
-/* estilizando o botao de login*/
+/* estilizando o botao de login */
 .submitFormLogin{
 	border: none;
 	border-radius: 10px;
@@ -146,6 +159,7 @@ body{
 	
 	
 }
+
 
 .submitFormLogin:hover{
 	background-image: linear-gradient(#009900, #009900, #003300);
