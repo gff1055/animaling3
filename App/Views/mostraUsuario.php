@@ -12,13 +12,13 @@ if (isset($_SESSION['login'])){?>
 	<div class="topMenu">
 		<div>
 			<a href="<?php echo Init::$urlRoot.'/'?>">
-				<img src="../src/img/title-image.png" class="nameImage">
+				<img src="<?php echo Init::$urlSources?>/src/img/title-image.png" class="nameImage">
 			</a>
 		</div>
 		<div><form method="get" action="<?php echo Init::$urlRoot?>/busca">
 			<input type="text" name="pesquisa" value="<?php echo $showTerm ?>" id="txtTerm"/>
 
-			<input type="submit" value="Buscar" id = "btnSearch"/>
+			<input type="submit" value="Buscar" id = "btnSearch" class="styleButton"/>
 			<!--<input type="hidden" name="tipoPesquisa" value="Tudo"> -->
 		</form></div>
 		<div><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>"><?php echo $_SESSION['name']?></a></div>

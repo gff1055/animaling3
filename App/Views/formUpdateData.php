@@ -1,9 +1,10 @@
 <?php 
 use App\Init;
 ?>
+<div>
+<br>
 <h2> Dados do Perfil </h2>
 <br>
-
 <form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatedata" method="post">
 
 	<label for="name" class="formField">Nome para exibição:</label>
@@ -41,10 +42,13 @@ use App\Init;
 	<input type="submit" value="Atualizar Dados" class="styleButton"/>
 </form>
 <br>
-<hr>
+</div>
+
+<div>
 <br>
 <h2>Usuario e Senha</h2>
 <br>
+
 <form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatepassword" method="post">
 
 	<label for="oldPassword" class="formField">Senha atual:</label>
@@ -63,4 +67,5 @@ use App\Init;
 	<input type="submit" value="Atualizar Senha" class="styleButton"/>
 </form>
 <br>
+</div>
 <br>

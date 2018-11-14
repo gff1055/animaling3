@@ -46,7 +46,7 @@ div{
 	padding: 10px;
 	margin-bottom: 5px;
 	margin-top: 5px;
-	border-radius: 3px;
+	border-radius: 20px;
 }
 
 
@@ -84,6 +84,8 @@ a:hover{
 	background-color: #449d44;
 	color:white;
 	font-weight: bolder;
+	cursor: pointer;
+	border-radius: 10px;
 }
 
 .generalStyle{
