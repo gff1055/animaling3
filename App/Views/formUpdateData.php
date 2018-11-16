@@ -19,13 +19,13 @@ use App\Init;
 	<textarea id="description" name="description" rows="10" cols="50"><?php echo $dadosAnimal['descricao']?></textarea>
 	<br><br>
 	
-	<label for="nick" class="formField">Usuario:</label>
+	<!--<label for="nick" class="formField">Usuario:</label>
 	<input type="text" id="nick" name="nick" value = "<?php echo $dadosAnimal['nick']?>"/>
 	<br><br>
 	
 	<label for="password" class="formField">Senha:</label>
 	<input type="text" id="password" name="password" value = "<?php echo $dadosAnimal['senha']?>"/>
-	<br><br>
+	<br><br>-->
 	<!--
 	<label for="dateBirth" class="formField">Data de nascimento:</label>
 	<input type="date" id="birthDate" name="birthDate" value = "<?php echo $dadosAnimal['nascimento']?>"/>
@@ -56,11 +56,11 @@ use App\Init;
 	<br><br>
 	
 	<label for="newPassword" class="formField">Nova senha:</label>
-	<input type="text" id="newPassword" name="newPassword"/>
+	<input type="password" id="newPassword" name="newPassword"/>
 	<br><br>
 	
 	<label for="checkNewPassword" class="formField">Confirme a nova senha:</label>
-	<input type="text" id="checkNewPassword" name="checkNewPassword"/>
+	<input type="password" id="checkNewPassword" name="checkNewPassword"/>
 	<br><br>
 	
 	<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'] ?>">&lsaquo;&lsaquo; Voltar</a>

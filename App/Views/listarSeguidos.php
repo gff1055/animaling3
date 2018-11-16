@@ -1,7 +1,8 @@
+<div>
 <?php
 
 if (!$seguidos)
-	echo "<br>Ninguem segue esta conta";
+	echo "<br>Ninguem segue esta conta<br><br>";
 else{
 	?>
 	<h3>Animais que <?php echo $dadosAnimal['nome']?> segue</h3>
@@ -9,8 +10,9 @@ else{
 	foreach($seguidos as $seguindo){?>
 		<a href="../<?php echo $seguindo['nickAnimal']?>"><?php echo "<b>".$seguindo['nomeSeguido']."</b><br>";?></a>
 		<?php echo $seguindo['descricaoSeguido']."<br>";
-		echo "<br>";
+		echo "<br><br>";
 	}
 }
 
 ?>
+</div>

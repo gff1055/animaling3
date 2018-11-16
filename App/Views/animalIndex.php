@@ -27,28 +27,31 @@ use App\Init;
 		</a>
 	</div>
 	
-
-	<?php // verificando se quem esta acessando o perfil é o proprio usuario
-	if($acessoUsuarioSessao) {?>
-		<br>
-		<div class="divPostBtnFollow">
-			<form method="post" action="" class="formToPost">
-				<input type="text" name="novoPost"/><br>
-				<input type="submit" value="Postar" class="styleButton">
+	<div class="divPostBtnFollow">
+		<?php // verificando se quem esta acessando o perfil é o proprio usuario
+		if($acessoUsuarioSessao) {?>
+			<br>
+<!--			<div class="divPostBtnFollow">-->
+				<form method="post" action="" class="formToPost">
+					<input type="text" name="novoPost"/><br>
+					<input type="submit" value="Postar" class="styleButton">
 	
-			</form>
-		</div>
-	<?php }
+				</form>
+				<!--</div>-->
+		<?php
+		}
 
-	// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.
-	elseif(!$acessoNaoLogado){
+		// se não for o usuario da sessão, verifica se o acesso é de alguem que está logado.
+		elseif(!$acessoNaoLogado){
 		?>
-		<form>
-			<input type="button" name="btnFollow" id="btnSeguir" value="<?php echo $relacionamento ?>" />
-			<input type="hidden" id=hdnPerfil value="<?php echo $dadosAnimal['codigo'] ?>">
-			<input type="hidden" id=hdnSessaoUsuario value="<?php echo $_SESSION['id'] ?>">
-		</form>
-	<?php } ?>
+			<form>
+				<input type="button" name="btnFollow" id="btnSeguir" class="styleButton" value="<?php echo $relacionamento ?>" />
+				<input type="hidden" id=hdnPerfil value="<?php echo $dadosAnimal['codigo'] ?>">
+				<input type="hidden" id=hdnSessaoUsuario value="<?php echo $_SESSION['id'] ?>">
+			</form>
+		<?php
+		}?>
+	</div>
 </div>
 
 
