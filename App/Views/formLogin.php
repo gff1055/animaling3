@@ -32,12 +32,16 @@
 					<form action="<?php echo Init::$urlRoot?>/signup" method="post" class="formLogin">
 
 						<input type="text" id="name" name="name" placeholder="Nome" class="requireField"/>
+						<span id="fieldCheckName">*</span>
 						<br>
 						<input type="text"  id="email" name="email" placeholder="Email" class="requireField"/>
+						<span id="fieldCheckEmail">*</span>
 						<br>
 						<input type="password" id="password" name="password" placeholder="Senha" class="requireField"/>
+						<span id="fieldCheckPassword1">*</span>
 						<br>
 						<input type="password" id="checkPassword" name="checkPassword" placeholder="Redigite senha" class="requireField"/>
+						<span  id="fieldCheckPassword2">*</span>
 						<!--<br><br>
 						<label for="date">Nascimento:</label><br>
 						<input type="date" id="birthDate" name="birthDate"/>
