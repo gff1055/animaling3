@@ -1,6 +1,7 @@
 var formCadastro = document.getElementById('formCadastro');	// Recebendo referencia do formulario de cadastro
 var arrRequireField = document.getElementsByClassName('requireField');	// Recebendo referencia da classe dos campos obrigatorios
 var arrCheckField = document.getElementsByClassName('requireField');	// Recebendo referencia da classe dos campos obrigatorios
+var btnRegister = document.getElementById('btnRegister');
 
 
 /*btn.addEventListener(
@@ -13,11 +14,13 @@ var arrCheckField = document.getElementsByClassName('requireField');	// Recebend
 formCadastro.addEventListener(
 	"load",
 	function clickSearch(){
-		arrRequireField.foreach()
+		for(var index=0; index<arrRequireField.length; index++){
+			if()
+		}
 	}
 );
 
-function isItOk(content,index){
+function isItEmpty(content,index){
 
 }
 
