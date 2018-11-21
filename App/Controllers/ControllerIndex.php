@@ -110,7 +110,7 @@ class ControllerIndex{
 			$_SESSION['name'] = $isOk['nome'];
 			echo "<br>SESSION[id] =". $isOk['codigo'];
 
-			header("location: ../public/".$isOk['nick']); // redirecionando para a pagina inicial
+			header("location: ../public/"); // redirecionando para a pagina inicial
 		}
 
 		// no caso de nao existir o usuario e senha digitados

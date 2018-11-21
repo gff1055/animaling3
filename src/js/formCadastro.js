@@ -14,9 +14,13 @@ var btnRegister = document.getElementById('btnRegister');
 formCadastro.addEventListener(
 	"load",
 	function clickSearch(){
+		var disable = false;
 		for(var index=0; index<arrRequireField.length; index++){
-			if()
+			if(arrRequireField[index].value=="")
+				disable = true;			
 		}
+		if(disable)
+			btnRegister.disable = disable
 	}
 );
 
