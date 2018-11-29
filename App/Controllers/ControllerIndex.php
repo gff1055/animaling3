@@ -64,8 +64,6 @@ class ControllerIndex{
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$checkPassword = $_POST['checkPassword'];
-		//$birthDate = $_POST['birthDate'];
-		//$genre = $_POST['genre'];
 
 		// setando as informacoes recebidas
 		$dataUser->setNome($name);
@@ -77,10 +75,11 @@ class ControllerIndex{
 
 		// inserindo os dados e retornando o resultado da insercao
 		$isItSuccess = $modelAnimal->inserirAnimal($dataUser);
+		
 
 		// verificando se os dados foram salvos
 		if($isItSuccess != false){
-			header("location:".Init::$urlRoot."/".$isItSuccess);	// acessando a pagina de perfil do usuario
+			//header("location:".Init::$urlRoot."/".$isItSuccess);	// acessando a pagina de perfil do usuario
 			$post["formLogin"] = $isItSuccess;	// carregando login
 			$post["formSenha"] = $dataUser->getSenha();	// carregando senha
 			$this->logon($post);	// efetuando o logon
@@ -88,6 +87,8 @@ class ControllerIndex{
 
 		else
 			header("location: facebook.com");
+
+		//include_once "../App/Views/sohcriapasta.php";
 	}
 
 	// metodo para o processo de logon

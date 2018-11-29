@@ -34,7 +34,7 @@ class ControllerTeste{
 
 		//echo $modelAnimal->changePassword("Fido",88888);
 
-		$modelStatus = new ModelStatus(Init::getDB());
+		/*$modelStatus = new ModelStatus(Init::getDB());
 		$status = new Status();
 		$status->setCodigo(14);
 		$codeUser = 456;
@@ -42,7 +42,16 @@ class ControllerTeste{
 
 		if($modelStatus->IsItExistUserPost($status->getCodigo(), $codeUser))
 			echo "OK";
-		else echo "NULL";
+		else echo "NULL";*/
+
+
+		$pasta_dir = "../src/img/data_users/";	//diretorio dos arquivos
+		//se nao existir a pasta ele cria uma
+		if(!file_exists($pasta_dir)){
+			mkdir($pasta_dir,0775);
+			echo "mkdir";
+			//echo exec('whoami');
+		}
 
 	}
 }

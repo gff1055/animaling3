@@ -173,7 +173,15 @@ class ModelAnimal
 		$query = "insert into animal(nome,nick,descricao,senha,email)values(?,?,?,?,?)";
 		$pAnimal->setNick($this->geraNick());
 		$insercao = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
+
+		
 		return $insercao;
+		/*if($this->createFolder($pAnimal->getNick)){
+			
+		}
+		else{
+			return false;
+		}*/
 	}
 
 
@@ -198,8 +206,6 @@ class ModelAnimal
 				$result->bindValue(1,$pAnimal->getNome());
 				$result->bindValue(2,$pAnimal->getNick());
 				$result->bindValue(3,$pAnimal->getDescricao());
-				//$result->bindValue(4,$pAnimal->getNascimento());
-				//$result->bindValue(5,$pAnimal->getSexo());
 				$result->bindValue(4,$pAnimal->getSenha());
 				$result->bindValue(5,$pAnimal->getEmail());
 				$result->execute();
@@ -208,6 +214,25 @@ class ModelAnimal
 
 		}catch(PDOException $erro){
 			echo "erro: ".$erro->getMessage();
+			return false;
+		}
+	}
+
+	public function createFolder($pNick){
+		try{
+			$result = $this->conex->prepare("select codigo from animal where nick=?");
+			$result->bindValue(1,$pNick);
+			if($result->rowCount>0){
+				while($row = $result->fetch(\PDO::FETCH_ASSOC)){
+					$userFolder = "teste/";
+					if(!file_exists($userFolder)){
+						mkdir($userFolder,0775);
+						return true;
+					}
+				}	
+			}
+		}catch(PDOException $e){
+			echo $e->getMessage();
 			return false;
 		}
 	}
