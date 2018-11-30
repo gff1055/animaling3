@@ -172,16 +172,13 @@ class ModelAnimal
 	public function inserirAnimal($pAnimal){
 		$query = "insert into animal(nome,nick,descricao,senha,email)values(?,?,?,?,?)";
 		$pAnimal->setNick($this->geraNick());
-		$insercao = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
-
-		
-		return $insercao;
-		/*if($this->createFolder($pAnimal->getNick)){
-			
+		$newUser = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
+		if($this->createFolder($newUser)){
+			return $newUser;
 		}
 		else{
 			return false;
-		}*/
+		}
 	}
 
 
@@ -222,14 +219,16 @@ class ModelAnimal
 		try{
 			$result = $this->conex->prepare("select codigo from animal where nick=?");
 			$result->bindValue(1,$pNick);
-			if($result->rowCount>0){
-				while($row = $result->fetch(\PDO::FETCH_ASSOC)){
-					$userFolder = "teste/";
+			$result->execute();
+			echo $result->rowCount(); 
+			if($result->rowCount()>0){
+				$row = $result->fetch(\PDO::FETCH_ASSOC);
+					$userFolder = "../src/img/data_users/".$row["codigo"];
 					if(!file_exists($userFolder)){
 						mkdir($userFolder,0775);
 						return true;
 					}
-				}	
+					
 			}
 		}catch(PDOException $e){
 			echo $e->getMessage();
@@ -256,7 +255,8 @@ class ModelAnimal
 		$excluido = false;
 		
 		try{
-			$resultado=$this->conex->getConnection()->prepare("delete from animal where codigo = ?");
+			//$resultado=$this->conex->getConnection()->prepare("delete from animal where codigo = ?");
+			$resultado=$this->conex->prepare("delete from animal where codigo = ?");
 			$resultado->bindValue(1,$pAnimal->getCodigo());
 			$resultado->execute();
 			$excluido = true;
@@ -290,8 +290,7 @@ class ModelAnimal
 		return $this->buscarAnimal($termo, $query);					
 	}
 
-	public function buscarAnimal($termo, $query)
-	{
+	public function buscarAnimal($termo, $query){
 		$resultado=$this->conex->prepare($query);
 		//preparando a query do banco de dados
 

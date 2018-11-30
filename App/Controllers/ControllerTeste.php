@@ -10,7 +10,12 @@ use App\Models\Animal;
 
 class ControllerTeste{
 	public function index(){
-		//$modelAnimal = new ModelAnimal(Init::getDB());
+		$modelAnimal = new ModelAnimal(Init::getDB());
+		if($modelAnimal->createFolder()){
+			echo "foi";
+		}
+		else
+			echo "nao foi";
 		
 		
 		//$pAnimal = new Animal();
@@ -45,14 +50,34 @@ class ControllerTeste{
 		else echo "NULL";*/
 
 
-		$pasta_dir = "../src/img/data_users/";	//diretorio dos arquivos
+		/*$pasta_dir = "../src/img/data_users/";	//diretorio dos arquivos
 		//se nao existir a pasta ele cria uma
 		if(!file_exists($pasta_dir)){
 			mkdir($pasta_dir,0775);
 			echo "mkdir";
 			//echo exec('whoami');
-		}
-
+		}*/
 	}
+		
+	/*public function createFolder($pNick){
+		try{
+		$result = $this->conex->prepare("select codigo from animal where nick=?");
+			$result->bindValue(1,$pNick);
+			if($result->rowCount()>0){
+				while($row = $result->fetch(\PDO::FETCH_ASSOC)){
+					$userFolder = "../src/img/data_users/".$row["codigo"];
+					if(!file_exists($userFolder)){
+						mkdir($userFolder,0775);
+						return true;
+					}
+				}	
+			}
+		}catch(PDOException $e){
+			echo $e->getMessage();
+			return false;
+		}
+	
+
+	}*/
 }
 ?>
