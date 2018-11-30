@@ -33,7 +33,7 @@ use App\Init;
 			<br>
 <!--			<div class="divPostBtnFollow">-->
 				<form method="post" action="" class="formToPost">
-					<textarea rows="5" cols="50" name="novoPot" placeholder="O que está acontecendo?"></textarea>
+					<textarea rows="5" cols="50" name="novoPost" placeholder="O que está acontecendo?"></textarea>
 					<br>
 					<input type="submit" value="Postar" class="styleButton">
 	

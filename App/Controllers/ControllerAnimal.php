@@ -274,12 +274,12 @@ class ControllerAnimal{
 
 		/* Carregando os novos dados inseridos*/
 		$objUser->setCodigo($_SESSION['id']);
-		$objUser->setNick($pArrayDataUser['nick']);
+		$objUser->setNick($_SESSION['login']);
 		$objUser->setNome($pArrayDataUser['name']);
 		$objUser->setDescricao($pArrayDataUser['description']);
 		$objUser->setEmail($pArrayDataUser['email']);
 		//$objUser->setSexo($pArrayDataUser['genre']);
-		$objUser->setSenha($pArrayDataUser['password']);
+		$objUser->setSenha($_SESSION['senha']);
 		//$objUser->setNascimento($pArrayDataUser['birthDate']);
 
 		// Testando se os dados foram alterados

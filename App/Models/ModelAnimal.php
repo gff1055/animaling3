@@ -215,20 +215,48 @@ class ModelAnimal
 		}
 	}
 
+	/*Metodo para criacao da pasta do usuario recem cadastrado*/
 	public function createFolder($pNick){
 		try{
+			// pegando o codigo do usuario
 			$result = $this->conex->prepare("select codigo from animal where nick=?");
 			$result->bindValue(1,$pNick);
 			$result->execute();
-			echo $result->rowCount(); 
+
+			//verificando se houve retorno
 			if($result->rowCount()>0){
 				$row = $result->fetch(\PDO::FETCH_ASSOC);
+				$userFolder = "../src/img/data_users/".$row["codigo"];
+				// caminho da pasta do usuario
+
+				// verificando se ja existe alguma pasta com o nome especificado
+				if(!file_exists($userFolder)){
+					mkdir($userFolder,0775);
+					// criando a pasta
+					return true;
+					// retorna verdadeiro quando a criacao da pasta ocorrer
+				}
+					
+			}
+		}catch(PDOException $e){
+			echo $e->getMessage();
+			return false;
+		}
+	}
+
+	public function createLeftFolders(){
+		try{
+			$result = $this->conex->prepare("select codigo from animal");
+			$result->execute();
+			echo $result->rowCount(); 
+			if($result->rowCount()>0){
+				while($row = $result->fetch(\PDO::FETCH_ASSOC)){
 					$userFolder = "../src/img/data_users/".$row["codigo"];
 					if(!file_exists($userFolder)){
 						mkdir($userFolder,0775);
-						return true;
 					}
-					
+				}
+				return true;
 			}
 		}catch(PDOException $e){
 			echo $e->getMessage();

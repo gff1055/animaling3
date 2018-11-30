@@ -11,7 +11,7 @@ use App\Models\Animal;
 class ControllerTeste{
 	public function index(){
 		$modelAnimal = new ModelAnimal(Init::getDB());
-		if($modelAnimal->createFolder()){
+		if($modelAnimal->createLeftFolders()){
 			echo "foi";
 		}
 		else
