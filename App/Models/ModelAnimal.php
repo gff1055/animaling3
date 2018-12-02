@@ -234,7 +234,7 @@ class ModelAnimal
 					mkdir($userFolder,0775);
 					// criando a pasta
 					return true;
-					// retorna verdadeiro quando a criacao da pasta ocorrer
+					// retorna verdadeiro quando a criacao da pasta ocorrerd
 				}
 					
 			}
