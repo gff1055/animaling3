@@ -1,0 +1,17 @@
+.areaSubmitUpdateForm{
+	display: grid;
+	grid-template-areas:
+	"submitUpdateForm deleteAccount";
+	grid-template-columns: 50% 50%;
+	grid-template-areas: auto;
+}
+
+.submitUpdadeForm{
+	grid-area: submitUpdateForm;
+}
+
+.deleteAccount{
+	grid-area: deleteAccount;
+	text-align: right;
+	font-weight: none;
+}

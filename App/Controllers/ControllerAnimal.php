@@ -253,10 +253,10 @@ class ControllerAnimal{
 		session_start();
 		$cab = new Cabecalho();
 		if(isset($_SESSION['login']) && $_SESSION['login'] == $pNick){	// verificando se o usuario esta logado
-			$cab->abertura($pNick." - Configurações");
-			include_once "../App/Views/mostraUsuario.php";
 			$modelAnimal = new ModelAnimal(Init::getDB());
 			$dadosAnimal = $modelAnimal->exibirDadosAnimal($pNick);	// carregando informacoes do animal
+			$cab->abertura($dadosAnimal['nome']." - Configurações");
+			include_once "../App/Views/mostraUsuario.php";
 			include_once "../App/Views/formUpdateData.php";	// exibinindo os dados do usuario no formulario para atualizacao
 		}
 		else{
@@ -316,6 +316,12 @@ class ControllerAnimal{
 		}
 		else
 			echo "ERRO INTERNO";
+	}
+
+	public function deleteUser($pNick){
+		session_start();
+		/*AQUI*/
+		$modelUser = new ModelAnimal(Init::getDB());
 	}
 
 	public function opSeguindo(){

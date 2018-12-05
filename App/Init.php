@@ -146,6 +146,13 @@ class Init{
 			'value' => $_POST
 		);
 
+		$arrayRotasAux['deleteUser'] = array(
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/delete',
+			'controller' => 'controllerAnimal',
+			'action' => 'deleteUser',
+			'value' => $pUrlDividida[3]
+		);
+
 		/*$arrayRotasAux['admSeguidos'] = array(
 			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',
 			'controller'=> 'controllerAnimal',
