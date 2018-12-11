@@ -318,10 +318,14 @@ class ControllerAnimal{
 			echo "ERRO INTERNO";
 	}
 
-	public function deleteUser($pNick){
+	public function deleteUser(){
 		session_start();
-		/*AQUI*/
+		/*javascript need to confirm */
 		$modelUser = new ModelAnimal(Init::getDB());
+		if($modelUser->excluir($_SESSION['id']))
+			header("location: ".Init::$urlRoot.'/logout');
+		else
+			header("location: http://hardware.com");
 	}
 
 	public function opSeguindo(){

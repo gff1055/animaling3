@@ -32,7 +32,7 @@ class ModelAnimal
 
 		//preparando a query do banco de dados
 		$resultado=$this->conex->prepare(
-			"select codigo,nome,nick,descricao,email,senha
+			"select codigo,nome,nick,descricao,foto,email,senha
 			from animal
 			where nick=?"
 			);
@@ -170,9 +170,11 @@ class ModelAnimal
 
 
 	public function inserirAnimal($pAnimal){
-		$query = "insert into animal(nome,nick,descricao,senha,email)values(?,?,?,?,?)";
+		$query = "insert into animal(nome,nick,foto,descricao,senha,email)values(?,?,?,?,?,?)";
 		$pAnimal->setNick($this->geraNick());
 		$newUser = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
+
+		// Criando a pasta do usuario
 		if($this->createFolder($newUser)){
 			return $newUser;
 		}
@@ -198,13 +200,14 @@ class ModelAnimal
 				$result = null;
 				$result = $this->conex->prepare($query);
 				if($op == ModelAnimal::ALTERACAO_DADOS){
-					$result->bindValue(6,$pAnimal->getCodigo());
+					$result->bindValue(7,$pAnimal->getCodigo());
 				}
 				$result->bindValue(1,$pAnimal->getNome());
 				$result->bindValue(2,$pAnimal->getNick());
-				$result->bindValue(3,$pAnimal->getDescricao());
-				$result->bindValue(4,$pAnimal->getSenha());
-				$result->bindValue(5,$pAnimal->getEmail());
+				$result->bindValue(3,$pAnimal->getFoto());
+				$result->bindValue(4,$pAnimal->getDescricao());
+				$result->bindValue(5,$pAnimal->getSenha());
+				$result->bindValue(6,$pAnimal->getEmail());
 				$result->execute();
 				return $pAnimal->getNick();
 			}
@@ -278,27 +281,62 @@ class ModelAnimal
 		}
 	}
 
-	public function excluir($pAnimal)
+	public function excluir($codigo)
 	{
-		$excluido = false;
-		
 		try{
 			//$resultado=$this->conex->getConnection()->prepare("delete from animal where codigo = ?");
 			$resultado=$this->conex->prepare("delete from animal where codigo = ?");
-			$resultado->bindValue(1,$pAnimal->getCodigo());
+			$resultado->bindValue(1,$codigo);
 			$resultado->execute();
-			$excluido = true;
+			if($this->deleteUserFolder($codigo)){
+				return true;
+			}
 		}catch(PDOException $erro){
-			return "Erro inesperado da aplicacao";
-		}
-	
-		if($excluido){
-			return "Animal excluido";
+			return false;
 		}
 	}
-	
-	
 
+
+	/*Metodo para apagar a pasta do usuario do site*/
+	public function deleteUserFolder($pCode){
+		
+		$pathFolder = "../src/img/data_users/".$pCode;
+
+		// verifica se o caminho colocado é um diretorio
+		if(is_dir($pathFolder)){
+			$directory = dir($pathFolder);
+			// variavel diretorio recebe a instancia 'diretorio' associada ao caminho colocado
+
+			// lendo cada um dos arquvos do diretorio
+			while($file = $directory->read()){
+				if(($file != '.') && ($file != '..')){
+					unlink($pathFolder.$file);
+					// apagando o arquivo da pasta
+					echo 'Arquivo '.$arquivo.' foi apagado com sucesso. <br />';
+					// exibindo confimacao
+				}
+			}
+			$directory->close();
+			// fechando o diretorio
+
+			// removendo a pasta
+			if(rmdir($pathFolder)){	
+				return true;
+				// a pasta foi excluida
+			}
+
+			else{
+				return false;
+				// o comando nao funcionou
+			}
+		}
+		else{
+			return false;
+			// a pasta nao existe
+		}
+	}
+
+	
 	public function buscarPrincipaisAnimais($termo){
 		$query = "
 			select nome,descricao,nick

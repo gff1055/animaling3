@@ -6,7 +6,7 @@ class Animal{
 	//private $codigoDono;
 	private $codigo;
 	private $nome;
-	//private $nascimento;
+	private $foto;
 	private $descricao;
 	//private $sexo;
 	private $nick;
@@ -26,6 +26,9 @@ class Animal{
 
 	public function getNome(){return $this->nome;}
 	public function setNome($pNome){$this->nome = ucfirst($pNome);}
+
+	public function getFoto(){return $this->foto;}
+	public function setFoto($pFoto){$this->foto = $pFoto;}
 
 	public function getDescricao(){return $this->descricao;}
 	public function setDescricao($pDescricao){$this->descricao = $pDescricao;}

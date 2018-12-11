@@ -5,6 +5,7 @@ use App\Init;
 ?>
 
 <div>
+	<?php echo $dadosAnimal['foto']; ?> 
 	<span id = "nameUser"><?php echo $dadosAnimal['nome']?></span>
 	<br>
 	<br>

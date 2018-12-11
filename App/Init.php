@@ -150,7 +150,7 @@ class Init{
 			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/delete',
 			'controller' => 'controllerAnimal',
 			'action' => 'deleteUser',
-			'value' => $pUrlDividida[3]
+			'value' => ''
 		);
 
 		/*$arrayRotasAux['admSeguidos'] = array(

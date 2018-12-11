@@ -10,35 +10,28 @@ use App\Models\Animal;
 
 class ControllerTeste{
 	public function index(){
-		$modelAnimal = new ModelAnimal(Init::getDB());
+	/*	$modelAnimal = new ModelAnimal(Init::getDB());
 		if($modelAnimal->createLeftFolders()){
 			echo "foi";
 		}
 		else
-			echo "nao foi";
+			echo "nao foi";*/
 		
 		
-		//$pAnimal = new Animal();
+		$pAnimal = new Animal();
+		$modelAnimal = new ModelAnimal(Init::getDB());
 		
-		//$animal->setNick("fidoumaegua");
-		//$animal->setEmail("fidoumageua@gmail.com");
+		$pAnimal->setCodigo(01);
+		$pAnimal->setNick("um");
+		$pAnimal->setSenha("um");
+		$pAnimal->setNome("1");
+		$pAnimal->setFoto("../src/img/data_users/profile_photo_default");
+		$pAnimal->setEmail("um1@gmail.com");
+		$pAnimal->setDescricao("eu sou o um (1)");
 
-		//echo $modelAnimal->existe("nick","Fido",ModelAnimal::NOVO_CADASTRO);
-		//echo $modelAnimal->verifica($animal, ModelAnimal::NOVO_CADASTRO);
+		echo $modelAnimal->InserirAnimal($pAnimal);
 
-		//echo $modelAnimal->geraUsuario();
-
-//		$pAnimal->setCodigo(30);
-//		$pAnimal->setNick("Veludo");
-//		$pAnimal->setSenha("veludo2");
-//		$pAnimal->setNome("Veludo");
-//		$pAnimal->setNascimento("2011-07-01");
-//		$pAnimal->setSexo("M");
-//		$pAnimal->setEmail("veludo2@gmail.com");
-//		$pAnimal->setDescricao("sou peludo a beça");
-
-		//echo $modelAnimal->changePassword("Fido",88888);
-
+		
 		/*$modelStatus = new ModelStatus(Init::getDB());
 		$status = new Status();
 		$status->setCodigo(14);

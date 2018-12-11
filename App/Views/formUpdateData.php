@@ -43,7 +43,7 @@ use App\Init;
 				<input type="submit" value="Atualizar Dados" class="styleButton"/>
 			</div>
 			<div class="deleteAccount">
-				<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/excluir' ?>"> Excluir conta permanentemente</a>
+				<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/delete' ?>"> Excluir conta permanentemente</a>
 			</div>
 		</div>
 	</form>
