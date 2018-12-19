@@ -55,7 +55,11 @@ use App\Init;
 	<h2>Usuario e Senha</h2>
 	<br>
 
-	<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatepassword" method="post">
+	<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatecredentials" method="post">
+
+		<label for="user" class="formField">Usuario:</label>
+		<input type="text" id="user" name="user" value="<?php echo $dadosAnimal['nick']?>"/>
+		<br><br>
 
 		<label for="oldPassword" class="formField">Senha atual:</label>
 		<input type="text" id="oldPassword" name="oldPassword"/>

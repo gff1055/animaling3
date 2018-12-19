@@ -4,12 +4,16 @@ use App\Init;
 
 ?>
 
-<div>
-	<?php echo $dadosAnimal['foto']; ?> 
-	<span id = "nameUser"><?php echo $dadosAnimal['nome']?></span>
-	<br>
-	<br>
-	<?php echo $dadosAnimal['descricao']?><br>
+<div class="photoUserDescDiv">
+	<div class="photoDiv">
+		<img src="<?php echo $dadosAnimal['foto']?>" /> 
+	</div>
+	<div class="userDiv">
+		<span id = "nameUser"><?php echo $dadosAnimal['nome']?></span>
+	</div>
+	<div class="descriptionDiv">
+		<?php echo $dadosAnimal['descricao']?><br>
+	</div>
 </div>
 
 <div class="generalStyle followBar">
@@ -34,7 +38,7 @@ use App\Init;
 			<br>
 <!--			<div class="divPostBtnFollow">-->
 				<form method="post" action="" class="formToPost">
-					<textarea rows="5" cols="50" name="novoPost" placeholder="O que está acontecendo?"></textarea>
+					<textarea rows="4" name="novoPost" placeholder="O que está acontecendo?"></textarea>
 					<br>
 					<input type="submit" value="Postar" class="styleButton">
 	

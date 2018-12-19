@@ -292,13 +292,19 @@ class ControllerAnimal{
 			echo "erro";
 	}
 
-	/* metodo quando é acessado a URL /updatepassword (atualizacao de senha) */
-	public function updatePassword($pArrayDataUser){
+	/* metodo para atualizacao de credenciais do usuario (user e senha) */
+	public function updateCredentials($pArrayDataUser){
 		session_start();
 		$modelUser = new ModelAnimal(Init::getDB());
-		$modelUser->changePassword($pArrayDataUser['newPassword'], $_SESSION['id']);	// mudando a senha do usuario no BD
+		$modelUser->changeCredentials($pArrayDataUser['user'], $pArrayDataUser['newPassword'], $_SESSION['id']);	// mudando a senha do usuario no BD
+
+		/*atualizando as novas credenciais*/
 		$_SESSION['senha'] = $pArrayDataUser['newPassword'];
-		header("location: ".Init::$urlRoot."/".$_SESSION['login']);	// encaminhamento para a pagina de perfil
+		$_SESSION['login'] = $pArrayDataUser['user'];
+
+
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+		// encaminhamento para a pagina de perfil
 	}
 
 	/* metodo que encaminha os novos dados para atualização no banco*/

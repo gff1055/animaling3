@@ -3,22 +3,6 @@
 	margin: 1px;
 }*/
 
-@media only screen and (max-width:900px){
-	body{
-		background-color: #eeeeee;
-	}
-}
-
-@media only screen and (max-width:700px){
-	body{
-		background-color: #eeeeee;
-	}
-
-		.nameImage{
-		display: none;
-	}
-}
-
 body{
 	margin: 10px;
 	background-color: #eeeeee;
@@ -44,9 +28,9 @@ body{
 div{
 	background-color: white;
 	padding: 10px;
-	margin-bottom: 5px;
-	margin-top: 5px;
-	border-radius: 20px;
+	margin-bottom: 2px;
+	margin-top: 2px;
+	border-radius: 5px;
 }
 
 
@@ -86,7 +70,7 @@ a:hover{
 	color:white;
 	font-weight: bolder;
 	cursor: pointer;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 
 .generalStyle{
@@ -117,4 +101,18 @@ input{
 .footer{
 	text-align: center;
 	background-color: rgba(0,0,0,0);
+}
+
+@media only screen and (min-width:900px){
+	
+}
+
+/*@media only screen and (max-width:700px){
+	body{
+		background-color: #00F;
+	}
+
+		.nameImage{
+		display: none;
+	}*/
 }

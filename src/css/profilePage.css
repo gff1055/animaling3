@@ -11,16 +11,22 @@
 /*publicacoes*/
 .divCountPublications{
 	grid-area: countPublications;
+	text-align: center;
+	font-weight: bold;
 }
 
 /*seguidores*/
 .divCountFollowers{
 	grid-area: countFollowers;
+	text-align: center;
+	font-weight: bold;
 }
 
 /*seguidos*/
 .divCountFollowing{
 	grid-area: countFollowing;
+	text-align: center;
+	font-weight: bold;
 }
 
 /*botao seguir*/
@@ -29,28 +35,62 @@
 	text-align:center;
 }
 
+.photoUserDescDiv{
+	display: grid;
+	grid-template-areas:
+		"photo user"
+		"photo description";
+
+	grid-template-columns: 25% 75%;
+	grid-template-rows: auto auto;
+}
+
+.photoDiv{grid-area: photo; border-color: #ddd; border: 2px; text-align: right;}
+
+.photoDiv img{
+	max-width: 100%;
+	width: auto;
+	max-height: 100%;
+	height: auto;
+	border-radius: 25px;
+
+}
+
+.userDiv{grid-area: user;}
+
+.descriptionDiv{grid-area: description;}
+
 .formToPost input{
 	width: 100%;
+	height: auto;
+	font-size: 25px;
 	/*border-radius: 20px;
 	border-color: lightgray;
 	margin: 1px;*/
 }
 
+/*Propriedades do textarea de post*/
+.formToPost textarea{
+	width: 100%;
+}
+
 /*Estilizando os botoes dentro do form de postagem*/
 .formToPost .styleButton{
-	width: 13%;
-	height: 50px;
-	margin: 5px;
-	border-radius: 20px;
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
 
 }
 
 /* propriedades da area onde é mostrado os posts */
 div.postArea{ /*area of posts*/
+	min-width: 50px;
 	margin-bottom: 1px;
 	margin-top: 2px;
 	border-radius: 0px;
 }
+
+
 
 
 

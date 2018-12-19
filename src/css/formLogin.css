@@ -1,6 +1,6 @@
 
 /*Estilo em telas menores do que 700 px*/
-@media only screen and (max-width:700px){
+/*@media only screen and (max-width:700px){*/
 	#mainImageDiv{
 		display: none;
 	}
@@ -62,14 +62,13 @@
 		text-align: center;
 	}
 
-}
-
-body{
+/*}*/
+/*body{
 	background-color: #D8E6DB;
-}
+}*/
 
 /*Estilo em telas maiores od que 700 px*/
-@media only screen and (min-width:701px){
+@media only screen and (min-width:900px){
 
 /*div principal*/
 #pageLoginDiv{ /*Bar who contains the followers/following counter*/

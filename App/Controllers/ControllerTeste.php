@@ -21,15 +21,23 @@ class ControllerTeste{
 		$pAnimal = new Animal();
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		
-		$pAnimal->setCodigo(01);
-		$pAnimal->setNick("um");
-		$pAnimal->setSenha("um");
-		$pAnimal->setNome("1");
-		$pAnimal->setFoto("../src/img/data_users/profile_photo_default");
-		$pAnimal->setEmail("um1@gmail.com");
-		$pAnimal->setDescricao("eu sou o um (1)");
+		$pAnimal->setCodigo(6);
+		$pAnimal->setNick("tigo");
+		$pAnimal->setSenha("tigo");
+		//$pAnimal->setNome("1");
+		//$pAnimal->setFoto("../src/img/data_users/profile_photo_default/profile.jpg");
+		//$pAnimal->setEmail("um1@gmail.com");
+		//$pAnimal->setDescricao("eu sou o um (1)");
 
-		echo $modelAnimal->InserirAnimal($pAnimal);
+		if($modelAnimal->changeCredentials(
+			$pAnimal->getNick(),
+			$pAnimal->getSenha(),
+			$pAnimal->getCodigo()
+		)){
+			echo "FUNCIONOU :-)";
+		}
+
+		else echo "NAO FUNCIONOU :-(";
 
 		
 		/*$modelStatus = new ModelStatus(Init::getDB());

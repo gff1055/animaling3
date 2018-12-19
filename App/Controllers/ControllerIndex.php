@@ -72,6 +72,7 @@ class ControllerIndex{
 		$dataUser->setSenha($password);
 		//$dataUser->setNascimento($birthDate);
 		$dataUser->setDescricao("");
+		$dataUser->setFoto("../src/img/data_users/profile_photo_default/profile.jpg");
 
 		// inserindo os dados e retornando o resultado da insercao
 		$isItSuccess = $modelAnimal->inserirAnimal($dataUser);

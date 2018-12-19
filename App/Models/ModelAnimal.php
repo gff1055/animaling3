@@ -157,6 +157,7 @@ class ModelAnimal
 		
 	}
 
+	/*metodo para gerar o nick(user) para um usuario*/
 	public function geraNick(){
 		//preparando e executando a query
 		$result = $this->conex->prepare("select max(codigo) as maiorCodigo from animal");
@@ -267,12 +268,14 @@ class ModelAnimal
 		}
 	}
 
-	public function changePassword($password, $code){
+/*metodo para alteracao das credenciais (usuario e senha)*/
+	public function changeCredentials($nick, $password, $code){
 		try{
 			$result = null;
-			$result = $this->conex->prepare("update animal set senha=? where codigo=?");
+			$result = $this->conex->prepare("update animal set senha=?,nick=? where codigo=?");
 			$result->bindValue(1,$password);
-			$result->bindValue(2,$code);	
+			$result->bindValue(2,$nick);
+			$result->bindValue(3,$code);	
 			$result->execute();
 			return true;
 		}catch(PDOException $erro){
@@ -281,6 +284,7 @@ class ModelAnimal
 		}
 	}
 
+/*metodo para exclusao de usuarios*/
 	public function excluir($codigo)
 	{
 		try{
@@ -288,6 +292,8 @@ class ModelAnimal
 			$resultado=$this->conex->prepare("delete from animal where codigo = ?");
 			$resultado->bindValue(1,$codigo);
 			$resultado->execute();
+
+			/* excluindo a pasta associada ao usuario */
 			if($this->deleteUserFolder($codigo)){
 				return true;
 			}

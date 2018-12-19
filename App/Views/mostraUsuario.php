@@ -2,11 +2,13 @@
 
 use App\Init;
 
-// mostra o nome do usuario logado
+/* Mostra o termo inserido na barra de busca */
 if (isset($_GET["pesquisa"])){
 	$showTerm = $_GET["pesquisa"];
 }
 else $showTerm = "";
+
+// mostra o nome do usuario logado ou uma mensagem de acesso nao logado
 
 if (isset($_SESSION['login'])){?>
 	<div class="topMenu">

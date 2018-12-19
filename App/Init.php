@@ -139,10 +139,10 @@ class Init{
 			'value' => $_POST
 		);
 
-		$arrayRotasAux['updatePassword'] = array(
-			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/updatepassword',
+		$arrayRotasAux['updateCredentials'] = array(
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/updatecredentials',
 			'controller' => 'controllerAnimal', 
-			'action' => 'updatePassword',
+			'action' => 'updateCredentials',
 			'value' => $_POST
 		);
 
