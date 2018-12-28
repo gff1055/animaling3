@@ -72,10 +72,11 @@ class ControllerIndex{
 		$dataUser->setSenha($password);
 		//$dataUser->setNascimento($birthDate);
 		$dataUser->setDescricao("");
-		$dataUser->setFoto("../src/img/data_users/profile_photo_default/profile.jpg");
+		$dataUser->setFoto(Init::$urlSources."/src/img/data_users/profile_photo_default/profile.jpg");
 
 		// inserindo os dados e retornando o resultado da insercao
 		$isItSuccess = $modelAnimal->inserirAnimal($dataUser);
+
 		
 
 		// verificando se os dados foram salvos
@@ -86,8 +87,11 @@ class ControllerIndex{
 			$this->logon($post);	// efetuando o logon
 		}
 
-		else
+		else{
 			header("location: facebook.com");
+			//echo $isItSuccess;
+		}
+		
 
 		//include_once "../App/Views/sohcriapasta.php";
 	}

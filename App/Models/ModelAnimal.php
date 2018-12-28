@@ -170,8 +170,22 @@ class ModelAnimal
 	}
 
 
+	/*public function inserirAnimal($pAnimal){
+		$query = "insert into animal(nome,nick,descricao,senha,email,foto)values(?,?,?,?,?,?)";
+		$pAnimal->setNick($this->geraNick());
+		$newUser = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
+
+		// Criando a pasta do usuario
+		if($this->createFolder($newUser)){
+			return $newUser;
+		}
+		else{
+			return false;
+		}
+	}*/
+
 	public function inserirAnimal($pAnimal){
-		$query = "insert into animal(nome,nick,foto,descricao,senha,email)values(?,?,?,?,?,?)";
+		$query = "insert into animal(nome,nick,descricao,senha,email,foto)values(?,?,?,?,?,?)";
 		$pAnimal->setNick($this->geraNick());
 		$newUser = $this->gerenciarAnimal($pAnimal,$query,$this::NOVO_CADASTRO);
 
@@ -186,7 +200,7 @@ class ModelAnimal
 
 
 	public function alterarDadosAnimal($pAnimal){
-		$query = "update animal set nome=?,nick=?,descricao=?,senha=?,email=? where codigo=?";
+		$query = "update animal set nome=?,nick=?,descricao=?,senha=?,email=?,foto=? where codigo=?";
 		$alteracao = $this->gerenciarAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
 		return $alteracao;
 	}
@@ -205,10 +219,10 @@ class ModelAnimal
 				}
 				$result->bindValue(1,$pAnimal->getNome());
 				$result->bindValue(2,$pAnimal->getNick());
-				$result->bindValue(3,$pAnimal->getFoto());
-				$result->bindValue(4,$pAnimal->getDescricao());
-				$result->bindValue(5,$pAnimal->getSenha());
-				$result->bindValue(6,$pAnimal->getEmail());
+				$result->bindValue(3,$pAnimal->getDescricao());
+				$result->bindValue(4,$pAnimal->getSenha());
+				$result->bindValue(5,$pAnimal->getEmail());
+				$result->bindValue(6,$pAnimal->getFoto());
 				$result->execute();
 				return $pAnimal->getNick();
 			}
@@ -218,6 +232,37 @@ class ModelAnimal
 			return false;
 		}
 	}
+
+	/*private function gerenciarAnimal($pAnimal, $query, $op){
+		try{
+			$haErro = $this->verifica($pAnimal, $op);
+			if($haErro)
+				//return $haErro;
+				return false;
+			else{
+				$result = null;
+				$result = $this->conex->prepare($query);
+				if($op == ModelAnimal::ALTERACAO_DADOS){
+					$result->bindValue(6,$pAnimal->getCodigo());
+				}
+				elseif($op == ModelAnimal::NOVO_CADASTRO){
+						
+				}
+				$result->bindValue(1,$pAnimal->getNome());
+				$result->bindValue(2,$pAnimal->getNick());
+				$result->bindValue(3,$pAnimal->getDescricao());
+				$result->bindValue(4,$pAnimal->getSenha());
+				$result->bindValue(5,$pAnimal->getEmail());
+				$result->bindValue(6,$pAnimal->getFoto());
+				$result->execute();
+				return $pAnimal->getNick();
+			}
+
+		}catch(PDOException $erro){
+			echo "erro: ".$erro->getMessage();
+			return false;
+		}
+	}*/
 
 	/*Metodo para criacao da pasta do usuario recem cadastrado*/
 	public function createFolder($pNick){
@@ -306,13 +351,13 @@ class ModelAnimal
 	/*Metodo para apagar a pasta do usuario do site*/
 	public function deleteUserFolder($pCode){
 		
-		$pathFolder = "../src/img/data_users/".$pCode;
+		$pathFolder = "../src/img/data_users/".$pCode."/";
 
 		// verifica se o caminho colocado é um diretorio
 		if(is_dir($pathFolder)){
-			$directory = dir($pathFolder);
 			// variavel diretorio recebe a instancia 'diretorio' associada ao caminho colocado
-
+			$directory = dir($pathFolder);
+			
 			// lendo cada um dos arquvos do diretorio
 			while($file = $directory->read()){
 				if(($file != '.') && ($file != '..')){
@@ -322,23 +367,25 @@ class ModelAnimal
 					// exibindo confimacao
 				}
 			}
-			$directory->close();
+
 			// fechando o diretorio
+			$directory->close();
 
 			// removendo a pasta
 			if(rmdir($pathFolder)){	
-				return true;
 				// a pasta foi excluida
+				return true;
 			}
 
 			else{
-				return false;
 				// o comando nao funcionou
+				return false;
 			}
 		}
 		else{
-			return false;
 			// a pasta nao existe
+			return false;
+			
 		}
 	}
 
@@ -356,7 +403,7 @@ class ModelAnimal
 
 	public function buscarTodosAnimais($termo){
 		$query = "
-			select nome,descricao,nick
+			select nome,descricao,nick,foto
 			from animal
 			where upper(nome) like ?";
 		return $this->buscarAnimal($termo, $query);					

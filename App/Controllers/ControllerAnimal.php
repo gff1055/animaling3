@@ -78,7 +78,6 @@ class ControllerAnimal{
 			//include_once "../App/Views/formBusca.php";
 			include_once "../App/Views/animalIndex.php";
 		}
-
 		$cab->fechamento();
 
 	}
@@ -101,7 +100,6 @@ class ControllerAnimal{
 
 	//metodo para visualizacao dos posts
 	public function verPost($codigo){
-
 		session_start();
 
 		//preparacao dos dados para exibicao
@@ -140,6 +138,7 @@ class ControllerAnimal{
 		//echo "deletando post ".$pCodigo;
 		//include_once "../App/Views/excluiPost.php";		
 	}
+
 
 	/* metodo ao acessar a pagina /edit do usuario (edição de posts) */
 	public function editPost($pCode){
@@ -204,7 +203,6 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 
-
 	/* metodo acionado quando o usuario acessa '/followstate' */
 	public function followstate(){
 		$modelInteracao = new ModelInteracao(Init::getDB());
@@ -248,6 +246,7 @@ class ControllerAnimal{
 
 	}
 
+
 	// executa quando o usuario entra na pagina /setup do usuario
 	public function setup($pNick){
 		session_start();
@@ -267,30 +266,51 @@ class ControllerAnimal{
 		$cab->fechamento();
 	}
 
+
+	/* Metodo que recebe os dados inseridos e gerencia a atualizacao dos dados */
 	public function updateData($pArrayDataUser){
 		session_start();
 		$modelUser = new ModelAnimal(Init::getDB());
 		$objUser = new Animal();
 
-		/* Carregando os novos dados inseridos*/
 		$objUser->setCodigo($_SESSION['id']);
+		// atribuindo o caminho da pasta do usuario
+		$folderUser = "/src/img/data_users/".$objUser->getCodigo()."/";
+		// variavel para acesso local ao servidor
+		$serverLocalDir = "..";
+		// atribuindo o caminho (endereco da pasta + endereco da foto)
+		$photoPath = $folderUser.$_FILES['foto']['name'];
+		// movendo a foto para a pasta local do usuario
+		move_uploaded_file($_FILES['foto']['tmp_name'],$serverLocalDir.$photoPath);
+		
+		/* Carregando os dados digitados pelo usuario*/
 		$objUser->setNick($_SESSION['login']);
 		$objUser->setNome($pArrayDataUser['name']);
 		$objUser->setDescricao($pArrayDataUser['description']);
 		$objUser->setEmail($pArrayDataUser['email']);
-		//$objUser->setSexo($pArrayDataUser['genre']);
+		$objUser->setFoto(Init::$urlSources.$photoPath);
 		$objUser->setSenha($_SESSION['senha']);
 		//$objUser->setNascimento($pArrayDataUser['birthDate']);
 
 		// Testando se os dados foram alterados
 		if($modelUser->alterarDadosAnimal($objUser)){
-			echo "perfil salvo";
-			$_SESSION['login'] = $objUser->getNick();	// Atualizando o novo login
-			header("location: ".Init::$urlRoot."/".$_SESSION['login']);	// redirecionamento para a pagina do usuario
+
+			/*if(!file_exists($folderUser)){
+				mkdir($folderUser, 0775);
+			}*/
+		//	$folderUser = "../src/img/data_users/".$_SESSION['id'];
+			//echo "perfil salvo";
+		//	move_uploaded_file($_FILES['foto']['tmp_name'],$folderUser);
+
+			// Atualizando o novo login
+			$_SESSION['login'] = $objUser->getNick();
+			// redirecionamento para a pagina do usuario
+			header("location: ".Init::$urlRoot."/".$_SESSION['login']);
 		}
 		else 
 			echo "erro";
 	}
+
 
 	/* metodo para atualizacao de credenciais do usuario (user e senha) */
 	public function updateCredentials($pArrayDataUser){
@@ -302,9 +322,8 @@ class ControllerAnimal{
 		$_SESSION['senha'] = $pArrayDataUser['newPassword'];
 		$_SESSION['login'] = $pArrayDataUser['user'];
 
-
-		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
 		// encaminhamento para a pagina de perfil
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
 	}
 
 	/* metodo que encaminha os novos dados para atualização no banco*/
@@ -338,6 +357,4 @@ class ControllerAnimal{
 		echo "seguido";
 	}
 }
-
-
 ?>

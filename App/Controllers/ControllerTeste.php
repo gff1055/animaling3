@@ -9,7 +9,83 @@ use App\Models\Animal;
 
 
 class ControllerTeste{
-	public function index(){
+
+	public function front(){
+		?>
+		<form action="<?php echo Init::$urlRoot?>/teste" method="post" enctype = "multipart/form-data">
+
+			<label for="name" class="formField">Nome para exibição:</label>
+			<input type="text" id="name" name="name" value = ""/>
+			<br><br>
+	
+			<label for="email" class="formField">Email:</label>
+			<input type="text"  id="email" name="email" value = "@gmail.com"/>
+			<br><br>
+	
+			<label for="description" class="formField">Descrição:</label>
+			<textarea id="description" name="description" rows="10" cols="50"></textarea>
+			<br><br>
+	
+			<label for="nick" class="formField">Usuario:</label>
+			<input type="text" id="nick" name="nick" value = ""/>
+			<br><br>
+	
+			<label for="password" class="formField">Senha:</label>
+			<input type="text" id="password" name="password" value = ""/>
+			<br><br>
+		
+			<label for="codigo" class="formField">Codigo:</label>
+			<input type="input" id="codigo" name="codigo" value = ""/>
+			<br><br>
+	
+			<label for="foto" class="formField">Foto de perfil:</label>
+			<input type="file" id="foto" name="foto"/>
+			<br><br>
+
+			<input type="submit" value="Cadastrar" class="submitFormLogin" id="btnRegister"/>
+
+		<br><br>-->
+	</form>
+		<?php
+	}
+
+	public function index($pArrayDataUser){
+
+		$modelUser = new ModelAnimal(Init::getDB());
+		$objUser = new Animal();
+
+		print_r($pArrayDataUser);
+		print_r($_FILES);
+
+		/* Carregando os novos dados inseridos*/
+		$objUser->setCodigo($pArrayDataUser['codigo']);
+		$folderUser = "../src/img/data_users/".$objUser->getCodigo()."/";
+		$photoPath = $folderUser.$_FILES['foto']['name'];
+		move_uploaded_file($_FILES['foto']['tmp_name'],$photoPath);
+
+
+		$objUser->setNick($pArrayDataUser['nick']);
+		$objUser->setNome($pArrayDataUser['name']);
+		$objUser->setDescricao($pArrayDataUser['description']);
+		$objUser->setEmail($pArrayDataUser['email']);
+		$objUser->setFoto($photoPath);
+		$objUser->setSenha($pArrayDataUser['password']);
+		//$objUser->setNascimento($pArrayDataUser['birthDate']);
+
+		// Testando se os dados foram alterados
+		if($modelUser->alterarDadosAnimal($objUser)){
+			
+			if(!file_exists($folderUser)){
+				mkdir($folderUser, 0775);
+			}
+
+			//echo "perfil salvo";
+			
+			//header("location: ".Init::$urlRoot."/".$_SESSION['login']);	// redirecionamento para a pagina do usuario
+			echo "FUNCIONOU :-D";
+		}
+		else 
+			echo "erro";
 	/*	$modelAnimal = new ModelAnimal(Init::getDB());
 		if($modelAnimal->createLeftFolders()){
 			echo "foi";
@@ -18,18 +94,18 @@ class ControllerTeste{
 			echo "nao foi";*/
 		
 		
-		$pAnimal = new Animal();
+		/*$pAnimal = new Animal();
 		$modelAnimal = new ModelAnimal(Init::getDB());
 		
-		$pAnimal->setCodigo(6);
-		$pAnimal->setNick("tigo");
-		$pAnimal->setSenha("tigo");
-		//$pAnimal->setNome("1");
-		//$pAnimal->setFoto("../src/img/data_users/profile_photo_default/profile.jpg");
-		//$pAnimal->setEmail("um1@gmail.com");
-		//$pAnimal->setDescricao("eu sou o um (1)");
+		$pAnimal->setCodigo(66);
+		$pAnimal->setNick("user66");
+		$pAnimal->setSenha("dois");
+		$pAnimal->setNome("Kyuminha");
+		$pAnimal->setFoto("../src/img/data_users/66/mypic.jpg");
+		$pAnimal->setEmail("dois@gmail.com");
+		$pAnimal->setDescricao("Eletrica, atletica, ama tênis e futebol americano");
 
-		if($modelAnimal->changeCredentials(
+		/*if($modelAnimal->changeCredentials(
 			$pAnimal->getNick(),
 			$pAnimal->getSenha(),
 			$pAnimal->getCodigo()
@@ -37,9 +113,14 @@ class ControllerTeste{
 			echo "FUNCIONOU :-)";
 		}
 
-		else echo "NAO FUNCIONOU :-(";
+		else echo "NAO FUNCIONOU :-(";*/
 
-		
+		/*if($modelAnimal->alterarDadosAnimal($pAnimal)){
+			echo "FUNCIONOU :-D";
+		}
+		else{
+			echo "Nao funcionou :-/";
+		}
 		/*$modelStatus = new ModelStatus(Init::getDB());
 		$status = new Status();
 		$status->setCodigo(14);
@@ -58,7 +139,7 @@ class ControllerTeste{
 			echo "mkdir";
 			//echo exec('whoami');
 		}*/
-	}
+	/*}*/
 		
 	/*public function createFolder($pNick){
 		try{
@@ -76,9 +157,9 @@ class ControllerTeste{
 		}catch(PDOException $e){
 			echo $e->getMessage();
 			return false;
-		}
+		}*/
 	
 
-	}*/
+	}
 }
 ?>

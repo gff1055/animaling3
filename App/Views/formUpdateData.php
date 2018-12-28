@@ -5,7 +5,13 @@ use App\Init;
 	<br>
 	<h2> Dados do Perfil </h2>
 	<br>
-	<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatedata" method="post">
+	<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatedata" method="post" enctype = "multipart/form-data">
+
+		<div>
+			<label for="foto" class="formField"> Foto de Perfil</label><br>
+			<img src="<?php echo $dadosAnimal['foto']?>" /> 
+			<input type="file" name="foto" id="foto" value="<?php echo $dadosAnimal['foto']?>" />
+		</div>
 
 		<label for="name" class="formField">Nome para exibição:</label>
 		<input type="text" id="name" name="name" value = "<?php echo $dadosAnimal['nome']?>"/>

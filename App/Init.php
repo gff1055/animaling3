@@ -13,6 +13,9 @@ class Init{
 	function __construct(){
 		$urlAcessada=$this->urlDigit();
 		$urlDividida = $this->getParamRoute($urlAcessada);
+		//print_r($_POST);
+		//echo "<br>";
+		
 		$this->inicializarRotas($urlDividida);
 		$this->run($urlAcessada);
 	}
@@ -59,6 +62,13 @@ class Init{
 			'route'=>Init::$urlRoot.'/teste',
 			'controller'=>'controllerTeste',
 			'action'=>'index',
+			'value'=>$_POST
+		);
+
+		$arrayRotasAux['fronttest'] = array(
+			'route'=>Init::$urlRoot.'/front',
+			'controller'=>'controllerTeste',
+			'action'=>'front',
 			'value'=>''
 		);
 
