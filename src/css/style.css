@@ -66,11 +66,16 @@ a:hover{
 	/*display: inline-block;
 	text-align: right;*/
 	border: none;
-	background-color: #449d44;
+	background-color: #227b22;
 	color:white;
 	font-weight: bolder;
 	cursor: pointer;
 	border-radius: 10px;
+}
+
+.styleButton:hover{
+	background-color: #449d44;
+	/*transition: 5s;*/
 }
 
 .generalStyle{

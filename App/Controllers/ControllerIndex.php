@@ -132,6 +132,10 @@ class ControllerIndex{
 		unset($_SESSION['id']);
 		header("location: ".Init::$urlRoot);
 	}
+
+	public function error(){
+		echo "Ocorreu um erro interno :(";
+	}
 }
 
 ?>

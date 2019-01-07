@@ -14,26 +14,7 @@ class ControllerTeste{
 		?>
 		<form action="<?php echo Init::$urlRoot?>/teste" method="post" enctype = "multipart/form-data">
 
-			<label for="name" class="formField">Nome para exibição:</label>
-			<input type="text" id="name" name="name" value = ""/>
-			<br><br>
-	
-			<label for="email" class="formField">Email:</label>
-			<input type="text"  id="email" name="email" value = "@gmail.com"/>
-			<br><br>
-	
-			<label for="description" class="formField">Descrição:</label>
-			<textarea id="description" name="description" rows="10" cols="50"></textarea>
-			<br><br>
-	
-			<label for="nick" class="formField">Usuario:</label>
-			<input type="text" id="nick" name="nick" value = ""/>
-			<br><br>
-	
-			<label for="password" class="formField">Senha:</label>
-			<input type="text" id="password" name="password" value = ""/>
-			<br><br>
-		
+			
 			<label for="codigo" class="formField">Codigo:</label>
 			<input type="input" id="codigo" name="codigo" value = ""/>
 			<br><br>
@@ -54,30 +35,27 @@ class ControllerTeste{
 		$modelUser = new ModelAnimal(Init::getDB());
 		$objUser = new Animal();
 
-		print_r($pArrayDataUser);
-		print_r($_FILES);
+/*		print_r($pArrayDataUser);
+		print_r($_FILES);*/
 
 		/* Carregando os novos dados inseridos*/
 		$objUser->setCodigo($pArrayDataUser['codigo']);
-		$folderUser = "../src/img/data_users/".$objUser->getCodigo()."/";
+		/*$folderUser = "../src/img/data_users/".$objUser->getCodigo()."/";
 		$photoPath = $folderUser.$_FILES['foto']['name'];
 		move_uploaded_file($_FILES['foto']['tmp_name'],$photoPath);
+*/
 
-
-		$objUser->setNick($pArrayDataUser['nick']);
-		$objUser->setNome($pArrayDataUser['name']);
-		$objUser->setDescricao($pArrayDataUser['description']);
-		$objUser->setEmail($pArrayDataUser['email']);
-		$objUser->setFoto($photoPath);
-		$objUser->setSenha($pArrayDataUser['password']);
+		//$objUser->setEmail($pArrayDataUser['email']);
+		//$objUser->setFoto($photoPath);
+		//$objUser->setSenha($pArrayDataUser['password']);
 		//$objUser->setNascimento($pArrayDataUser['birthDate']);
 
 		// Testando se os dados foram alterados
-		if($modelUser->alterarDadosAnimal($objUser)){
+		if($modelUser->changeProfilePhoto($pArrayDataUser)){
 			
-			if(!file_exists($folderUser)){
-				mkdir($folderUser, 0775);
-			}
+			//if(!file_exists($folderUser)){
+			//	mkdir($folderUser, 0775);
+			//}
 
 			//echo "perfil salvo";
 			
@@ -86,6 +64,7 @@ class ControllerTeste{
 		}
 		else 
 			echo "erro";
+
 	/*	$modelAnimal = new ModelAnimal(Init::getDB());
 		if($modelAnimal->createLeftFolders()){
 			echo "foi";

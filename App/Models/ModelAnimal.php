@@ -200,7 +200,7 @@ class ModelAnimal
 
 
 	public function alterarDadosAnimal($pAnimal){
-		$query = "update animal set nome=?,nick=?,descricao=?,senha=?,email=?,foto=? where codigo=?";
+		$query = "update animal set nome=?,nick=?,descricao=?,senha=?,email=? where codigo=?";
 		$alteracao = $this->gerenciarAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
 		return $alteracao;
 	}
@@ -215,14 +215,19 @@ class ModelAnimal
 				$result = null;
 				$result = $this->conex->prepare($query);
 				if($op == ModelAnimal::ALTERACAO_DADOS){
-					$result->bindValue(7,$pAnimal->getCodigo());
+					$result->bindValue(6,$pAnimal->getCodigo());
+				}
+				elseif($op == ModelAnimal::NOVO_CADASTRO){
+					$result->bindValue(6, $pAnimal->getFoto());
+				}
+				else{
+					header("location: ".Init::$urlRoot."/error");
 				}
 				$result->bindValue(1,$pAnimal->getNome());
 				$result->bindValue(2,$pAnimal->getNick());
 				$result->bindValue(3,$pAnimal->getDescricao());
 				$result->bindValue(4,$pAnimal->getSenha());
 				$result->bindValue(5,$pAnimal->getEmail());
-				$result->bindValue(6,$pAnimal->getFoto());
 				$result->execute();
 				return $pAnimal->getNick();
 			}
@@ -312,6 +317,50 @@ class ModelAnimal
 			return false;
 		}
 	}
+
+	/*Metodo para alterar a foto de perfil do usuario*/
+	public function changeProfilePhoto($data, $codeUser){
+		
+		// atribuindo o caminho da pasta do usuario
+		$folderUser = "/src/img/data_users/".$codeUser."/";
+		// variavel para acesso local do servidor
+		$serverLocalDir = "..";
+		// atribuindo o caminho da foto (endereco da pasta + endereco da foto)
+		$photoPath = $folderUser.$_FILES['foto']['name'];
+		// movendo a foto para a pasta local do usuario
+		move_uploaded_file($_FILES['foto']['tmp_name'],$serverLocalDir.$photoPath);
+		try{
+			$result = null;
+			$result = $this->conex->prepare("update animal set foto=? where codigo=?");
+			$result->bindValue(1,Init::$urlSources.$photoPath);
+			$result->bindValue(2,$codeUser);
+			$result->execute();
+			return true;
+		}catch(PDOException $erro){
+			return false;
+		}
+	}
+
+	/*public function changeProfilePhoto($infoPhotoNew, $codeUser){
+		// atribuindo o caminho da pasta do usuario
+		$folderUser = "/src/img/data_users/".$codeUser."/";
+		// variavel para acesso local do servidor
+		$serverLocalDir = "..";
+		// atribuindo o caminho (endereco da pasta + endereco da foto)
+		$photoPath = $folderUser.$infoPhotoNew['foto']['name'];
+		// movendo a foto para a pasta local do usuario
+		move_uploaded_file($infoPhotoNew['foto']['tmp_name'],$serverLocalDir.$photoPath);
+		try{
+			$result = null;
+			$result = $this->conex->prepare("update animal set foto=? where codigo=?");
+			$result->bindValue(1,$codeUser);
+			$result->bindValue(2,Init::$urlSources.$photoPath);
+			$result->execute();
+			return true;
+		}catch(PDOException $erro){
+			return false;
+		}
+	}*/
 
 /*metodo para alteracao das credenciais (usuario e senha)*/
 	public function changeCredentials($nick, $password, $code){

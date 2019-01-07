@@ -86,6 +86,13 @@ class Init{
 			'value' => ''
 		);
 
+		$arrayRotasAux['error'] = array(
+			'route' => Init::$urlRoot.'/error',
+			'controller' => 'controllerIndex',
+			'action' => 'error',
+			'value' => ''	
+		);
+
 		/*$arrayRotasAux['buscaTemp'] = array(
 			'route'=>Init::$urlRoot.'/',
 			'controller'=>'controllerBusca',
@@ -149,6 +156,13 @@ class Init{
 			'value' => $_POST
 		);
 
+		$arrayRotasAux['updatePhoto'] = array(
+			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/updatephoto',
+			'controller' => 'controllerAnimal', 
+			'action' => 'updatePhoto',
+			'value' => $_POST
+		);
+
 		$arrayRotasAux['updateCredentials'] = array(
 			'route' => Init::$urlRoot.'/'.$pUrlDividida[Init::$rotaVar].'/updatecredentials',
 			'controller' => 'controllerAnimal', 
@@ -162,6 +176,8 @@ class Init{
 			'action' => 'deleteUser',
 			'value' => ''
 		);
+
+		
 
 		/*$arrayRotasAux['admSeguidos'] = array(
 			'route'=> Init::$urlRoot.'/'.$pUrlDividida[3].'/opseguindo',

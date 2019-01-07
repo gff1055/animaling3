@@ -214,12 +214,18 @@ class ControllerAnimal{
 	/*metodo acionado quando o usuario acessa /someactionfollow */
 	public function someactionfollow(){
 		
-		$sessionUser = $_GET['user'];	// recebendo o codigo do usuario da sessao
-		$profileUser = $_GET['prof'];	// recebendo o codigo do usuario do perfil
-		$usersState = $_GET['state'];	// recebendo o status do relacionamento dos dois usuarios
-		$arrayData = null;	// array responsavel por armazenar os dados requisitados pelos clientes
-		$modelFollow = new ModelInteracao(Init::getDB());	// declaracao de objeto para acesso à classe model
-		$relation = new Interacao();	// declaracao de variavel para acesso aos registros
+		$sessionUser = $_GET['user'];
+		// recebendo o codigo do usuario da sessao
+		$profileUser = $_GET['prof'];
+		// recebendo o codigo do usuario do perfil
+		$usersState = $_GET['state'];
+		// recebendo o status do relacionamento dos dois usuarios
+		$arrayData = null;
+		// array responsavel por armazenar os dados requisitados pelos clientes
+		$modelFollow = new ModelInteracao(Init::getDB());
+		// declaracao de objeto para acesso à classe model
+		$relation = new Interacao();
+		// declaracao de variavel para acesso aos registros
 		
 		/*Setando o codigo do seguidor e do seguido no objeto*/
 			$relation->setCodigoSeguido($profileUser);
@@ -227,10 +233,12 @@ class ControllerAnimal{
 
 		/* Verificando o status dos usuarios (se eles seguem entre si ou nao) */
 		if($usersState == "Seguindo"){
-			$modelFollow->excluirSeguidor($relation);	//adicionando a nova ligacao no banco de dados
+			$modelFollow->excluirSeguidor($relation);
+			//adicionando a nova ligacao no banco de dados
 		}
 		elseif($usersState == "Seguir" || $usersState == "Seguir de volta"){
-			$modelFollow->adicionarSeguidor($relation);	//adicionando a nova ligacao no banco de dados
+			$modelFollow->adicionarSeguidor($relation);
+			//adicionando a nova ligacao no banco de dados
 		}
 		else{
 			echo "ERROR: Erro interno do servidor";
@@ -241,8 +249,10 @@ class ControllerAnimal{
 			'indexNewState' => $this->labelSituationUsers($sessionUser, $profileUser),
 			'indexCountFollowers' => $modelFollow->contSeguidores($profileUser)
 		);
-		$arrayJsonData = json_encode($arrayData);	//	codificando array que enviará os dados em formato JSON
-		echo $arrayJsonData; // array em formato JSON sendo apresentada
+		$arrayJsonData = json_encode($arrayData);
+		//	codificando array que enviará os dados em formato JSON
+		echo $arrayJsonData;
+		// array em formato JSON sendo apresentada
 
 	}
 
@@ -274,7 +284,8 @@ class ControllerAnimal{
 		$objUser = new Animal();
 
 		$objUser->setCodigo($_SESSION['id']);
-		// atribuindo o caminho da pasta do usuario
+		
+		/*// atribuindo o caminho da pasta do usuario
 		$folderUser = "/src/img/data_users/".$objUser->getCodigo()."/";
 		// variavel para acesso local ao servidor
 		$serverLocalDir = "..";
@@ -282,13 +293,13 @@ class ControllerAnimal{
 		$photoPath = $folderUser.$_FILES['foto']['name'];
 		// movendo a foto para a pasta local do usuario
 		move_uploaded_file($_FILES['foto']['tmp_name'],$serverLocalDir.$photoPath);
-		
+		*/
 		/* Carregando os dados digitados pelo usuario*/
 		$objUser->setNick($_SESSION['login']);
 		$objUser->setNome($pArrayDataUser['name']);
 		$objUser->setDescricao($pArrayDataUser['description']);
 		$objUser->setEmail($pArrayDataUser['email']);
-		$objUser->setFoto(Init::$urlSources.$photoPath);
+		//$objUser->setFoto(Init::$urlSources.$photoPath);
 		$objUser->setSenha($_SESSION['senha']);
 		//$objUser->setNascimento($pArrayDataUser['birthDate']);
 
@@ -309,6 +320,19 @@ class ControllerAnimal{
 		}
 		else 
 			echo "erro";
+	}
+
+	/* Metodo para atualizar a foto de perfil */
+	public function updatePhoto($pNewData){
+		session_start();
+		$modelUser = new ModelAnimal(Init::getDB());
+		
+		/* Testando se a foto foi efetivamente atualizada */
+		if($modelUser->changeProfilePhoto($pNewData, $_SESSION['id'])){
+			header("location: ".Init::$urlRoot."/".$_SESSION['login']);	
+		}else{
+			header("location: ".Init::$urlRoot."/error");
+		}
 	}
 
 
