@@ -68,25 +68,30 @@ use App\Init;
 		foreach($posts as $post){
 		// exibindo as opções de edicao, exclusão e o post?>
 		<div class="postArea">
-			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>" class="generalStyle">
-				<?php echo $post['nomeAnimal']?>
-			</a>
-			<br>
-			<br>
-			<?php
-			if($acessoUsuarioSessao){?>
-				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/edit'?>">Editar</a>
-				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/delete'?>">Excluir</a><br>
-			<?php } ?>
-			<?php echo $post['conteudo']?>
-			<br>
-			<br>
-			<br>
-			<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>" class="postDate">
-				<?php echo "Postado em ".$post['dataStatus']?>
-			</a><br>
+			<div class="divUserPhotoPost">
+				<img src="<?php echo $dadosAnimal['foto']?>" /> 
+			</div>
+			<div class="divUserNameDatePost">
+				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick']?>" class="generalStyle">
+					<?php echo $post['nomeAnimal']?>
+				</a>
+				<br>
+				<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost']?>" class="infoSecond">
+				<?php echo  date('d/m/Y H:i:s', strtotime($post['dataStatus']))?></a>
+			</div>
+			<div class="divContentPost">
+				<?php echo $post['conteudo']?>
+				<br>
+				<?php
+				if($acessoUsuarioSessao){?>
+					<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/edit'?>" class="infoSecond">Editar</a>
+					<a href="<?php echo Init::$urlRoot.'/'.$dadosAnimal['nick'].'/'.$post['codigoPost'].'/delete'?>" class="infoSecond">Excluir</a><br>
+				<?php } ?>
+				
+				
+			</div>
 		</div>
-			<?php
+		<?php
 		}
 	}
 	else{ // no caso de nao haver postagens?>

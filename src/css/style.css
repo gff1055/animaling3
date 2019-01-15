@@ -8,6 +8,10 @@ body{
 	background-color: #eeeeee;
 }
 
+.topMenu{
+	
+}
+
 /*#logo{
 	font-family: "Snap ITC";
 	font-size: 20px;
@@ -44,6 +48,14 @@ a{
 a:hover{
 	color: #006600;
 	text-decoration: underline;	
+}
+
+/* usado em links dentro do post */
+a.infoSecond{
+	color: gray;
+	font-size: 0.9rem;
+	font-family: sans-serif;
+	text-decoration: none;
 }
 
 /*.headPage{

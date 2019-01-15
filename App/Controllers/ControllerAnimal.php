@@ -316,7 +316,8 @@ class ControllerAnimal{
 			// Atualizando o novo login
 			$_SESSION['login'] = $objUser->getNick();
 			// redirecionamento para a pagina do usuario
-			header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+			//header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+			header("location: ".Init::$urlRoot."/".$_SESSION['login']."/setup");
 		}
 		else 
 			echo "erro";
@@ -329,7 +330,8 @@ class ControllerAnimal{
 		
 		/* Testando se a foto foi efetivamente atualizada */
 		if($modelUser->changeProfilePhoto($pNewData, $_SESSION['id'])){
-			header("location: ".Init::$urlRoot."/".$_SESSION['login']);	
+			//header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+			header("location: ".Init::$urlRoot."/".$_SESSION['login']."/setup");
 		}else{
 			header("location: ".Init::$urlRoot."/error");
 		}
@@ -347,7 +349,8 @@ class ControllerAnimal{
 		$_SESSION['login'] = $pArrayDataUser['user'];
 
 		// encaminhamento para a pagina de perfil
-		header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+		//header("location: ".Init::$urlRoot."/".$_SESSION['login']);
+		header("location: ".Init::$urlRoot."/".$_SESSION['login']."/setup");
 	}
 
 	/* metodo que encaminha os novos dados para atualização no banco*/

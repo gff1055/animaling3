@@ -7,8 +7,9 @@ use App\Init;
 		<h2> Foto de perfil </h2>
 		<br>
 		<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatephoto" method="post" enctype = "multipart/form-data">
-			<img src="<?php echo $dadosAnimal['foto']?>" /> 
-			<label for="foto" class="labelUpdatePhoto">Carregar foto</label><br>
+			<img src="<?php echo $dadosAnimal['foto']?>" />
+			<br><br>
+			<label for="foto" class="labelUpdatePhoto">Carregar foto</label>
 			<input type="file" id="foto" name='foto'/>
 			<input type="submit" value="Atualizar Foto" class="styleButton"/>
 		</form>
@@ -19,15 +20,15 @@ use App\Init;
 	<h2> Dados do Perfil </h2>
 	<br>
 		<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatedata" method="post">
-			<label for="name" class="formField">Nome para exibição:</label>
+			<label for="name">Nome para exibição:</label><br>
 			<input type="text" id="name" name="name" value = "<?php echo $dadosAnimal['nome']?>"/>
 			<br><br>
 	
-			<label for="email" class="formField">Email:</label>
+			<label for="email">Email:</label><br>
 			<input type="text"  id="email" name="email" value = "<?php echo $dadosAnimal['email']?>"/>
 			<br><br>
 	
-			<label for="description" class="formField">Descrição:</label>
+			<label for="description">Descrição:</label>
 			<textarea id="description" name="description" rows="10" cols="50"><?php echo $dadosAnimal['descricao']?></textarea>
 			<br><br>
 	
@@ -53,9 +54,10 @@ use App\Init;
 		</div>
 	</form>
 	<br>
-	<a href="<?php echo Init::$urlRoot.'/'?>">&laquo; Voltar para Home</a>
 </div>
 <div>
+<a href="<?php echo Init::$urlRoot.'/'?>">&laquo; Voltar para Home</a></div>
+<div class = "divUpdateCredentials">
 	<br>
 	<h2>Usuario e Senha</h2>
 	<br>

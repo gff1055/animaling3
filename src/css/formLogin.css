@@ -68,7 +68,7 @@
 }*/
 
 /*Estilo em telas maiores od que 700 px*/
-@media only screen and (min-width:900px){
+@media only screen and (min-width:800px){
 
 /*div principal*/
 #pageLoginDiv{ /*Bar who contains the followers/following counter*/

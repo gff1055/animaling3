@@ -163,6 +163,24 @@ class ModelStatus{
 	}
 
 	
+	public function deleteAllPosts($codeUser){
+
+		try{
+
+			$resultado=$this->conex->prepare("delete from status where codigoAnimal=?");
+			$resultado->bindValue(1,$codeUser);
+			$resultado->execute();
+			return true;
+
+
+		}catch(PDOException $erro){
+
+			echo "Erro: ".$erro.getMessage();
+			return false;
+		}
+	}
+
+
 	public function excluirStatus($pStatus){
 
 		try{

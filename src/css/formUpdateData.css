@@ -1,6 +1,6 @@
 .divUpdate{
 	display: grid;
-	grid-template-areas: "photo form";
+	grid-template-areas: "form photo";
 	grid-template-columns: 50% 50%;
 	grid-template-rows: auto;
 }
@@ -9,8 +9,40 @@
 	grid-area: photo;
 }
 
+.divPhotoUpdate form{
+	text-align: center;
+}
+
+/* Propriedades da label para atualizar foto */
+.labelUpdatePhoto{
+	/*display: inline-block;
+	text-align: right;*/
+	border-width: 3px;
+	border-style: solid;
+	background-color: white;
+	color:#227b22;
+	font-weight: bolder;
+	cursor: pointer;
+	border-radius: 10px;
+	padding-left: 6px;
+	padding-right:6px;
+}
+
+
+/* Propriedades da foto de perfil atual */
+.divPhotoUpdate img{
+	max-width: 200px;
+	width: 20em;
+	height: auto;
+}
+
 .divDataFormUpdate{
 	grid-area: form;
+	text-align: left;
+}
+
+#description{
+	width: 100%;
 }
 /*.areaSubmitUpdateForm{
 	display: grid;
@@ -32,18 +64,14 @@ input[type='file']{
 	display: none;
 }
 
-.labelUpdatePhoto{
-	/*display: inline-block;
-	text-align: right;*/
-	border-width: 3px;
-	border-style: solid;
-	background-color: white;
-	color:#227b22;
-	font-weight: bolder;
-	cursor: pointer;
-	border-radius: 10px;
-	padding-left: 6px;
-	padding-right:6px;
+
+
+
+
+@media only screen and (max-width:400px){
+	.divUpdate{
+		display: block;
+	}
 }
 
 /* Aparencia do seletor, nesse caso utilizando um label */
