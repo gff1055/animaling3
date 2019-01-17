@@ -383,14 +383,18 @@ class ModelAnimal
 	{
 		try{
 			//$resultado=$this->conex->getConnection()->prepare("delete from animal where codigo = ?");
-			$resultado=$this->conex->prepare("delete from animal where codigo = ?");
-			$resultado->bindValue(1,$codigo);
-			$resultado->execute();
-
-			/* excluindo a pasta associada ao usuario */
-			if($this->deleteUserFolder($codigo)){
-				return true;
+			$modelPosts = new ModelStatus(Init::getDB());
+			$deletedPosts=$modelPosts->deleteAllPosts($codigo);
+			if($deletedPosts){
+				$resultado=$this->conex->prepare("delete from animal where codigo = ?");
+				$resultado->bindValue(1,$codigo);
+				$resultado->execute();
+				/* excluindo a pasta associada ao usuario */
+				if($this->deleteUserFolder($codigo)){
+					return true;
+				}
 			}
+			else return false;
 		}catch(PDOException $erro){
 			return false;
 		}

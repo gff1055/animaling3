@@ -162,7 +162,7 @@ class ModelStatus{
 		}
 	}
 
-	
+	/*Metodo que apaga todas as postagens de um usuario*/
 	public function deleteAllPosts($codeUser){
 
 		try{
