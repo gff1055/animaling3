@@ -12,6 +12,37 @@ body{
 	
 }
 
+.topMenu{
+	display: grid;
+	grid-template-areas:
+		"logo searchBar myIcon";
+	grid-template-columns: 33% 34% 33%;
+	grid-template-rows: auto;
+}
+
+.divLogo{
+	grid-area: logo;
+}
+
+.divSearchForm{
+	grid-area:searchBar;
+}
+
+.divIcons{
+	grid-area: myIcon;
+	background-color: cyan;
+	text-align: center;
+}
+
+.divIcons ul li{
+	display: inline;
+	padding: 1em;
+}
+
+.divIcons ul li a{
+	text-decoration:none;
+}
+
 /*#logo{
 	font-family: "Snap ITC";
 	font-size: 20px;
@@ -35,6 +66,11 @@ div{
 	margin-bottom: 2px;
 	margin-top: 2px;
 	border-radius: 5px;
+}
+
+.imgIcon{
+	width: 2em;
+	height: auto;
 }
 
 
@@ -62,10 +98,9 @@ a.infoSecond{
 	display: inline;
 }*/
 
-.topMenu{
-	display: grid;
-	grid-template-columns: 20% 50% 10% 10% 10%;
-}
+
+
+
 
 .formField{
 	display: inline-block;

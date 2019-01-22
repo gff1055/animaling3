@@ -12,20 +12,35 @@ else $showTerm = "";
 
 if (isset($_SESSION['login'])){?>
 	<div class="topMenu">
-		<div>
+		<div class="divLogo">
 			<a href="<?php echo Init::$urlRoot.'/'?>">
 				<img src="<?php echo Init::$urlSources?>/src/img/title-image.png" class="nameImage">
 			</a>
 		</div>
-		<div><form method="get" action="<?php echo Init::$urlRoot?>/busca">
+		<div class="divSearchForm">
+			<form method="get" action="<?php echo Init::$urlRoot?>/busca">
 			<input type="text" name="pesquisa" value="<?php echo $showTerm ?>" id="txtTerm"/>
 
 			<input type="submit" value="Buscar" id = "btnSearch" class="styleButton"/>
 			<!--<input type="hidden" name="tipoPesquisa" value="Tudo"> -->
 		</form></div>
-		<div><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>"><?php echo $_SESSION['name']?></a></div>
-		<div><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">Configurações</a></div>
-		<div><a href="<?php echo Init::$urlRoot?>/logout">Fazer Logoff</a></div>
+		<div class="divIcons">
+			<ul>
+				<li><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>">
+				<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon"/>
+				<?php /*echo $_SESSION['name']*/?></a></li>
+				<li>
+				<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">
+				<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon"/>
+				<!--Configurações--></a>
+				</li>
+				<li>
+				<a href="<?php echo Init::$urlRoot?>/logout">
+				<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon"/>
+			<!--Fazer Logoff--></a>
+				</li>
+			</ul>
+		</div>
 	</div>
 		
 	<?php
