@@ -12,6 +12,7 @@ body{
 	
 }
 
+/* propriedades da barra superior */
 .topMenu{
 	display: grid;
 	grid-template-areas:
@@ -20,14 +21,17 @@ body{
 	grid-template-rows: auto;
 }
 
+/* div que contem a logo do site */
 .divLogo{
 	grid-area: logo;
 }
 
+/* div que contem a barra de busca*/
 .divSearchForm{
 	grid-area:searchBar;
 }
 
+/* div que contem os icones */
 .divIcons{
 	grid-area: myIcon;
 	background-color: cyan;

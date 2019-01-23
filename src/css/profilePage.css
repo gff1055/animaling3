@@ -45,6 +45,7 @@
 	grid-template-rows: auto auto;
 }
 
+/*div que contem a foto de perfil*/
 .photoDiv{
 	grid-area: photo;
 	border-color: #ddd;
@@ -52,6 +53,7 @@
 	text-align: right;
 }
 
+/* propriedades da foto de perfil */
 .photoDiv img{
 	max-width: 100%;
 	width: auto;
@@ -61,6 +63,7 @@
 
 }
 
+/* div que contem o nome de usuario */
 .userDiv{
 	grid-area: user;
 }
