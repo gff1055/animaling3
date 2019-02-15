@@ -99,7 +99,7 @@ class ModelInteracao{
 
 	public function listarSeguidores($codigoAnimal){
 			$query = "
-				select i.codSeguidor as codigoSeguidor, a.nome as nomeSeguidor, a.descricao as descricaoSeguidor, a.nick as nickAnimal
+				select i.codSeguidor as codigoSeguidor, a.nome as nomeSeguidor, a.descricao as descricaoSeguidor, a.nick as nickAnimal, a.foto as fotoSeguidor
 				from interacao as i
 				inner JOIN animal as a
 				on i.codSeguido=? and a.codigo=i.codSeguidor";
@@ -113,7 +113,7 @@ class ModelInteracao{
 
 	public function listarSeguidos($codigoAnimal){
 		$query = "
-				select i.codSeguido as seguido, a.nome as nomeSeguido, a.descricao as descricaoSeguido, a.nick as nickAnimal
+				select i.codSeguido as seguido, a.nome as nomeSeguido, a.descricao as descricaoSeguido, a.nick as nickAnimal, a.foto as fotoSeguido
 				from interacao as i
 				inner JOIN animal as a
 				on i.codSeguidor=? and a.codigo=i.codSeguido";
@@ -175,7 +175,6 @@ class ModelInteracao{
 	}
 
 	public function excluirSeguidor($pInteracao){
-
 		try{
 
 			$query = "
@@ -195,6 +194,19 @@ class ModelInteracao{
 
 		}catch(PDOException $e){
 			return "<br>ERRO: ".$e->getMessage();
+		}
+	}
+
+	public function deleteAllConnections($pCode){
+		try{
+			$query = "delete from interacao where codSeguido = ? or codSeguidor=?";
+			$resultado = $this->conex->prepare($query);
+			$resultado->bindValue(1,$pCode);
+			$resultado->bindValue(2,$pCode);
+			$resultado->execute();
+			return true;
+		}catch(PDOException $e){
+			return false;
 		}
 	}
 }

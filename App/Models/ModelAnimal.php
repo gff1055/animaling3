@@ -184,6 +184,7 @@ class ModelAnimal
 		}
 	}*/
 
+	/* Metodo para inserir animais */
 	public function inserirAnimal($pAnimal){
 		$query = "insert into animal(nome,nick,descricao,senha,email,foto)values(?,?,?,?,?,?)";
 		$pAnimal->setNick($this->geraNick());
@@ -198,28 +199,37 @@ class ModelAnimal
 		}
 	}
 
-
+	/* Metodo para alterar dados de animais */
 	public function alterarDadosAnimal($pAnimal){
 		$query = "update animal set nome=?,nick=?,descricao=?,senha=?,email=? where codigo=?";
 		$alteracao = $this->gerenciarAnimal($pAnimal,$query,$this::ALTERACAO_DADOS);
 		return $alteracao;
 	}
 
+
 	private function gerenciarAnimal($pAnimal, $query, $op){
 		try{
+
+			// verifica se as informacoes de um usuario sao validas
 			$haErro = $this->verifica($pAnimal, $op);
+
+			// verifica se os dados inseridos são validos (duplicados)
 			if($haErro)
-				//return $haErro;
 				return false;
 			else{
 				$result = null;
 				$result = $this->conex->prepare($query);
+
+				// testando se a operacao é uma atualizacao
 				if($op == ModelAnimal::ALTERACAO_DADOS){
 					$result->bindValue(6,$pAnimal->getCodigo());
 				}
+
+				// testando se a operação é um novo cadastro
 				elseif($op == ModelAnimal::NOVO_CADASTRO){
 					$result->bindValue(6, $pAnimal->getFoto());
 				}
+
 				else{
 					header("location: ".Init::$urlRoot."/error");
 				}
@@ -237,37 +247,6 @@ class ModelAnimal
 			return false;
 		}
 	}
-
-	/*private function gerenciarAnimal($pAnimal, $query, $op){
-		try{
-			$haErro = $this->verifica($pAnimal, $op);
-			if($haErro)
-				//return $haErro;
-				return false;
-			else{
-				$result = null;
-				$result = $this->conex->prepare($query);
-				if($op == ModelAnimal::ALTERACAO_DADOS){
-					$result->bindValue(6,$pAnimal->getCodigo());
-				}
-				elseif($op == ModelAnimal::NOVO_CADASTRO){
-						
-				}
-				$result->bindValue(1,$pAnimal->getNome());
-				$result->bindValue(2,$pAnimal->getNick());
-				$result->bindValue(3,$pAnimal->getDescricao());
-				$result->bindValue(4,$pAnimal->getSenha());
-				$result->bindValue(5,$pAnimal->getEmail());
-				$result->bindValue(6,$pAnimal->getFoto());
-				$result->execute();
-				return $pAnimal->getNick();
-			}
-
-		}catch(PDOException $erro){
-			echo "erro: ".$erro->getMessage();
-			return false;
-		}
-	}*/
 
 	/*Metodo para criacao da pasta do usuario recem cadastrado*/
 	public function createFolder($pNick){
@@ -332,6 +311,7 @@ class ModelAnimal
 		try{
 			$result = null;
 			$result = $this->conex->prepare("update animal set foto=? where codigo=?");
+			// usando constante $urlSources usada para acesso aos recursos (resources)
 			$result->bindValue(1,Init::$urlSources.$photoPath);
 			$result->bindValue(2,$codeUser);
 			$result->execute();
@@ -340,27 +320,6 @@ class ModelAnimal
 			return false;
 		}
 	}
-
-	/*public function changeProfilePhoto($infoPhotoNew, $codeUser){
-		// atribuindo o caminho da pasta do usuario
-		$folderUser = "/src/img/data_users/".$codeUser."/";
-		// variavel para acesso local do servidor
-		$serverLocalDir = "..";
-		// atribuindo o caminho (endereco da pasta + endereco da foto)
-		$photoPath = $folderUser.$infoPhotoNew['foto']['name'];
-		// movendo a foto para a pasta local do usuario
-		move_uploaded_file($infoPhotoNew['foto']['tmp_name'],$serverLocalDir.$photoPath);
-		try{
-			$result = null;
-			$result = $this->conex->prepare("update animal set foto=? where codigo=?");
-			$result->bindValue(1,$codeUser);
-			$result->bindValue(2,Init::$urlSources.$photoPath);
-			$result->execute();
-			return true;
-		}catch(PDOException $erro){
-			return false;
-		}
-	}*/
 
 /*metodo para alteracao das credenciais (usuario e senha)*/
 	public function changeCredentials($nick, $password, $code){
@@ -384,11 +343,14 @@ class ModelAnimal
 		try{
 			//$resultado=$this->conex->getConnection()->prepare("delete from animal where codigo = ?");
 			$modelPosts = new ModelStatus(Init::getDB());
+			$modelConnections = new ModelInteracao(Init::getDB());
 			$deletedPosts=$modelPosts->deleteAllPosts($codigo);
-			if($deletedPosts){
+			$deletedConnections = $modelConnections->deleteAllConnections($codigo);
+			if($deletedPosts and $deletedConnections){
 				$resultado=$this->conex->prepare("delete from animal where codigo = ?");
 				$resultado->bindValue(1,$codigo);
 				$resultado->execute();
+
 				/* excluindo a pasta associada ao usuario */
 				if($this->deleteUserFolder($codigo)){
 					return true;

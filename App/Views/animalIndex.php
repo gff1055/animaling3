@@ -36,6 +36,8 @@ use App\Init;
 		<?php // verificando se quem esta acessando o perfil é o proprio usuario
 		if($acessoUsuarioSessao) {?>
 			<br>
+			<fieldset>
+				<legend>t</legend>
 <!--			<div class="divPostBtnFollow">-->
 				<form method="post" action="" class="formToPost">
 					<textarea rows="4" name="novoPost" placeholder="O que está acontecendo?"></textarea>
@@ -43,6 +45,7 @@ use App\Init;
 					<input type="submit" value="Postar" class="styleButton">
 	
 				</form>
+			</fieldset>
 				<!--</div>-->
 		<?php
 		}

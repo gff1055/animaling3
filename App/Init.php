@@ -58,6 +58,7 @@ class Init{
 			'value'=>$_POST
 		);
 
+		/* Url para testes - Inicio */
 		$arrayRotasAux['teste'] = array(
 			'route'=>Init::$urlRoot.'/teste',
 			'controller'=>'controllerTeste',
@@ -71,6 +72,16 @@ class Init{
 			'action'=>'front',
 			'value'=>''
 		);
+
+		$arrayRotasAux['listtest'] = array(
+			'route'=>Init::$urlRoot.'/list',
+			'controller'=> 'controllerTeste',
+			'action'=>'testList',
+			'value'=>''
+		);
+
+		/* Url para testes - Inicio */
+		
 
 		$arrayRotasAux['buscaIndex'] = array(
 			'route'=>Init::$urlRoot.'/busca',

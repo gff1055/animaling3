@@ -30,7 +30,7 @@ class ModelStatus{
 		try{
 
 			$resultado=$this->conex->prepare("
-				select s.codigo as codigoPost, a.nome as nomeAnimal, s.conteudo as conteudo, s.dataStatus as dataStatus 
+				select s.codigo as codigoPost, a.nome as nomeAnimal, s.conteudo as conteudo, s.dataStatus as dataStatus, s.fotoPost as fotoPost 
 				from animal as a
 				inner join status as s 
 				on a.codigo=s.codigoAnimal
@@ -98,7 +98,8 @@ class ModelStatus{
 		}
 	}
 
-	public function IsThereUserPost($codeUser, $codePost){
+	/* metodo que verifica se um post pertence a um usuario */
+	public function isItUserPost($codeUser, $codePost){
 		$query = "select * from status where codigo = ? and codigoAnimal = ?";
 		try{
 			$result = $this->conex->prepare($query);
@@ -117,7 +118,7 @@ class ModelStatus{
 
 	public function inserirStatus($pStatus){
 	
-		$query = "insert into status(conteudo, codigoAnimal, dataStatus) values (?,?,?)";
+		$query = "insert into status(conteudo, fotopost, codigoAnimal, dataStatus) values (?,?,?,?)";
 		$novoStatus = $this->gerenciarStatus($pStatus, $query, true);		
 		return $novoStatus;
 	}
@@ -132,19 +133,22 @@ class ModelStatus{
 
 
 	private function gerenciarStatus($pStatus,$query,$novoStatus){
-	
 		try{
+
+			print_r($pStatus);
 
 			//preparacao a query
 			$resultado=$this->conex->prepare($query);
 
-			//fazendo o binding do codigo, data de status e do conteudo
+			//fazendo o binding da foto e da descricao
 			$resultado->bindValue(1,$pStatus->getConteudo());
+			
 			
 			// se for um novo status śerá preciso a data e o "animal" que postou
 			if($novoStatus){
-				$resultado->bindValue(2,$pStatus->getCodigoAnimal());	
-				$resultado->bindValue(3,$pStatus->getDataStatus());
+				$resultado->bindValue(2,$pStatus->getFoto());
+				$resultado->bindValue(3,$pStatus->getCodigoAnimal());	
+				$resultado->bindValue(4,$pStatus->getDataStatus());
 			}
 
 			// se for editar um status já existente é necessario apenas o codigo
@@ -158,7 +162,8 @@ class ModelStatus{
 			return $this::OK;
 
 		}catch(PDOException $erro){
-			return "Erro:".$erro->getMessage();
+			echo "Erro:".$erro->getMessage();
+			return false;
 		}
 	}
 

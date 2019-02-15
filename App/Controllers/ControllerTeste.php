@@ -14,14 +14,21 @@ class ControllerTeste{
 		?>
 		<form action="<?php echo Init::$urlRoot?>/teste" method="post" enctype = "multipart/form-data">
 
-			
-			<label for="codigo" class="formField">Codigo:</label>
-			<input type="input" id="codigo" name="codigo" value = ""/>
-			<br><br>
-	
-			<label for="foto" class="formField">Foto de perfil:</label>
+			<input type="hidden" name="codeUserTemp" value="83">
+
+			<label for="foto" class="formField">Inserir foto:</label>
 			<input type="file" id="foto" name="foto"/>
 			<br><br>
+
+			<label for="conteudo" class="formField">Descricao:</label>
+			<input type="text" id="conteudo" name="conteudo" value = ""/>
+			<br><br>
+
+			<label for="codigo" class="formField">codigo:</label>
+			<input type="number" id="codigo" name="codigo" value = ""/>
+			<br><br>
+			
+			
 
 			<input type="submit" value="Cadastrar" class="submitFormLogin" id="btnRegister"/>
 
@@ -30,16 +37,71 @@ class ControllerTeste{
 		<?php
 	}
 
+	public function testList(){
+		$modelPost = new ModelStatus(Init::getDB());
+		$userPosts = $modelPost->exibirTodosStatus("user83");
+		if($userPosts){
+		foreach($userPosts as $userPost){
+			echo "<br> <b>Codigo: </b>".$userPost["codigoPost"]."<br>";
+			echo "<br> <b>Nome do Animal: </b>".$userPost["nomeAnimal"]."<br>";
+			echo "<br> <b>Conteudo: </b>".$userPost["conteudo"]."<br>";
+			echo "<br> <b>Data de envio: </b>".$userPost["dataStatus"]."<br>";
+			echo "<br> <img src=".$userPost["fotoPost"]." /><br>";
+		}
+		}
+		else echo "ocorreu algo";
+	}
+
 	public function index($pArrayDataUser){
 
-		$modelUser = new ModelAnimal(Init::getDB());
-		$objUser = new Animal();
+		$modelPost = new ModelStatus(Init::getDB());
+		$objStatus = new Status();
+
+		if($_FILES['foto']['error']!="4"){
+
+			// caminho da pasta do usuario
+			$userFolder = "src/img/data_users/".$pArrayDataUser['codeUserTemp']."/";
+
+			// caminho para acesso local para a pasta do usuario
+			$localPathUserFolder = "../".$userFolder;
+			// caminho para acesso local para a foto postada pelo usuario
+			$localPathUserPhoto = $localPathUserFolder.$_FILES['foto']['name'];
+		
+			// url para a pasta do usuario para acesso via BD
+			$urlUserFolder = Init::$urlSources."/".$userFolder;
+			// url para a pasta do usuario para acesso via BD
+			$urlUserPhoto = $urlUserFolder.$_FILES['foto']['name'];
+		
+
+			// movendo a foto do usuario para a sua pasta		
+			move_uploaded_file($_FILES['foto']['tmp_name'], $localPathUserPhoto);
+
+			// setando os objetos
+			$objStatus->setFoto($urlUserPhoto);
+			$objStatus->setConteudo($pArrayDataUser['conteudo']);
+			$objStatus->setCodigoAnimal($pArrayDataUser['codeUserTemp']);
+			// setando e atribuindo a data atual
+			$objStatus->setDataStatus(Status::NOVO_STATUS);
+
+			if($modelPost->inserirStatus($objStatus)){
+				echo "<br> FUNCIONOU :D";
+			}
+			else
+				echo "<br> NAO DUNCIONOU :(";
+		}
+		
+		else echo "vc nao carregou foto alguma";
+
+
+
+//		$modelUser = new ModelAnimal(Init::getDB());
+//		$objUser = new Animal();
 
 /*		print_r($pArrayDataUser);
 		print_r($_FILES);*/
 
 		/* Carregando os novos dados inseridos*/
-		$objUser->setCodigo($pArrayDataUser['codigo']);
+//		$objUser->setCodigo($pArrayDataUser['codigo']);
 		/*$folderUser = "../src/img/data_users/".$objUser->getCodigo()."/";
 		$photoPath = $folderUser.$_FILES['foto']['name'];
 		move_uploaded_file($_FILES['foto']['tmp_name'],$photoPath);
@@ -51,7 +113,7 @@ class ControllerTeste{
 		//$objUser->setNascimento($pArrayDataUser['birthDate']);
 
 		// Testando se os dados foram alterados
-		if($modelUser->changeProfilePhoto($pArrayDataUser)){
+		/*if($modelUser->changeProfilePhoto($pArrayDataUser)){
 			
 			//if(!file_exists($folderUser)){
 			//	mkdir($folderUser, 0775);
@@ -63,7 +125,7 @@ class ControllerTeste{
 			echo "FUNCIONOU :-D";
 		}
 		else 
-			echo "erro";
+			echo "erro";*/
 
 	/*	$modelAnimal = new ModelAnimal(Init::getDB());
 		if($modelAnimal->createLeftFolders()){

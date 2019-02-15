@@ -1,18 +1,31 @@
-<div>
 <?php
-
-if (!$seguidos)
-	echo "<br>Ninguem segue esta conta<br><br>";
-else{
-	?>
-	<h3>Animais que <?php echo $dadosAnimal['nome']?> segue</h3>
-	<?php
-	foreach($seguidos as $seguindo){?>
-		<a href="../<?php echo $seguindo['nickAnimal']?>"><?php echo "<b>".$seguindo['nomeSeguido']."</b><br>";?></a>
-		<?php echo $seguindo['descricaoSeguido']."<br>";
-		echo "<br><br>";
-	}
-}
-
+	use App\Init
 ?>
+
+<div>
+	<?php
+	if (!$seguidos)
+		echo "<br>Ninguem segue esta conta<br><br>";
+	else{?>
+		<br>
+		<h3>Animais que <?php echo $dadosAnimal['nome']?> segue</h3>
+		<div class="divUserListing">
+			<?php
+			foreach($seguidos as $seguido){?>
+				<div class="divUserListPhoto">
+					<img src="<?php echo $seguido['fotoSeguido'] ?>" />
+				</div>
+				<div class="divUserListName">
+					<a href="<?php echo Init::$urlRoot.'/'.$seguido['nickAnimal']?>" class="generalStyle">
+						<?php echo $seguido['nomeSeguido'] ?>
+					</a>
+				</div>
+				<div class="divUserListDesc">
+					<a href="<?php echo Init::$urlRoot.'/'.$seguido['nickAnimal']?>" class="infoSecond">
+						<?php echo $seguido['descricaoSeguido'] ?>
+					</a>
+				</div>
+			<?php }?>
+		</div>
+	<?php }?>
 </div>

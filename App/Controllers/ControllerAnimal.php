@@ -357,14 +357,20 @@ class ControllerAnimal{
 	public function updatePost($arrayDataPost){
 		session_start();
 		$modelPost = new ModelStatus(Init::getDB());
-		$post = new Status();	// declaracao do objeto que conterá os novos dados
-		$post->setCodigo($arrayDataPost['formCodePost']);	// setando codigo do post
-		$post->setConteudo($arrayDataPost['formContentPost']);	// setando o novo conteudo
-		$check = $modelPost->isThereUserPost($_SESSION['id'], $arrayDataPost['formCodePost']);	// verificando se o post pertence ao usuario corrente
+		// declaracao do objeto que conterá os novos dados
+		$post = new Status();
+		// setando codigo do post
+		$post->setCodigo($arrayDataPost['formCodePost']);
+		// setando o novo conteudo do post
+		$post->setConteudo($arrayDataPost['formContentPost']);
+		// verificando se o post a ser atualizado pertence mesmo ao usuario corrente
+		$check = $modelPost->isItUserPost($_SESSION['id'], $arrayDataPost['formCodePost']);	
 		
 		if($check){
-			$modelPost->atualizarStatus($post);	// post atualizado
-			header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);	// usuario é encaminhado para a pagina inicial
+			// post atualizado
+			$modelPost->atualizarStatus($post);
+			// usuario é encaminhado para a pagina inicial
+			header("location: ".Init::$urlRoot.'/'.$_SESSION['login']);
 		}
 		else
 			echo "ERRO INTERNO";

@@ -25,21 +25,41 @@ if (isset($_SESSION['login'])){?>
 			<!--<input type="hidden" name="tipoPesquisa" value="Tudo"> -->
 		</form></div>
 		<div class="divIcons">
-			<ul>
-				<li><a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>">
-				<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon"/>
-				<?php /*echo $_SESSION['name']*/?></a></li>
-				<li>
-				<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">
-				<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon"/>
-				<!--Configurações--></a>
-				</li>
-				<li>
-				<a href="<?php echo Init::$urlRoot?>/logout">
-				<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon"/>
-			<!--Fazer Logoff--></a>
-				</li>
-			</ul>
+			<div>
+				<ul>
+					<li>
+						<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>">
+						<img src="<?php echo Init::$urlSources.'/src/img/profile.png' ?>" class="imgIcon" alt="Meu perfil"/>
+						<?php /*echo $_SESSION['name']*/?>
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/setup'?>">
+						<img src="<?php echo Init::$urlSources.'/src/img/setting.png' ?>" class="imgIcon" alt="Editar atualizações"/>
+						<!--Configurações--></a>
+					</li>
+					<li>
+						<a href="<?php echo Init::$urlRoot?>/logout">
+						<img src="<?php echo Init::$urlSources.'/src/img/logout.png' ?>" class="imgIcon" alt="Sair"/>
+						<!--Fazer Logoff--></a>
+					</li>
+				</ul>
+			</div>
+			
+			<!-- <div class="min">
+				<ul class="menuIcon">
+					<li>
+						<div class="menuIconPart"></div>
+						<div class="menuIconPart"></div>
+						<div class="menuIconPart"></div>
+						<ul class="submenuIcon">
+    						<li>opcao a</li>
+        					<li>opca b</li>
+        					<li>opc c</li>
+    					</ul>
+					</li>
+				</ul>
+			</div>-->
 		</div>
 	</div>
 		

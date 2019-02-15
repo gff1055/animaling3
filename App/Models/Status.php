@@ -7,6 +7,7 @@ class Status{
 	private $codigoAnimal;
 	private $conteudo;
 	private $dataStatus;
+	private $foto;
 	
 
 	const NOVO_STATUS = -1;
@@ -32,6 +33,14 @@ class Status{
 	
 	public function setCodigoAnimal($pCodigoAnimal){
 		$this->codigoAnimal = $pCodigoAnimal;
+	}
+
+	public function getFoto(){
+		return $this->foto;
+	}
+
+	public function setFoto($pFoto){
+		$this->foto = $pFoto;
 	}
 	
 	public function getConteudo(){
