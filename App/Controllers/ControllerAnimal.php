@@ -38,15 +38,58 @@ class ControllerAnimal{
 			/*Testando se é o usuario da sessão esta acessando o proprio perfil*/
 			if((strtolower($_SESSION['login']) == strtolower($dadosAnimal['nick']))){
 				$acessoUsuarioSessao = true;
-				
-								
+												
 				/*Testando se o usuario postou novas mesnagens*/
 				if(!empty($_POST['novoPost'])){
-					$status = new Status();
-					$status->setCodigoAnimal($dadosAnimal['codigo']);	// setando codigo do usuario
-					$status->setConteudo($_POST['novoPost']);	// setando conteudo do post
-					$status->setDataStatus(Status::NOVO_STATUS);	// setando a data do post
-					$modelStatus->inserirStatus($status);	// inserindo o status
+					/*$status = new Status();
+					// setando codigo do usuario
+					$status->setCodigoAnimal($dadosAnimal['codigo']);
+					// setando conteudo do post
+					$status->setConteudo($_POST['novoPost']);
+					// setando a data do post	
+					$status->setDataStatus(Status::NOVO_STATUS);
+					// inserindo o status
+					$modelStatus->inserirStatus($status);*/
+
+					print_r($_POST);
+					print_r($_FILES);
+					if($_FILES['postPhoto']['error']!="4"){
+
+						// caminho (generico) da pasta do usuario
+						$userFolder = "src/img/data_users/".$_SESSION['id']."/";
+
+						// caminho para acesso local à pasta do usuario
+						$localPathUserFolder = "../".$userFolder;
+						// caminho para acesso local à foto postada pelo usuario
+						$localPathUserPhoto = $localPathUserFolder.$_FILES['postPhoto']['name'];
+		
+						// url para acesso à pasta do usuario para acesso pelo BD
+						$urlUserFolder = Init::$urlSources."/".$userFolder;
+						// url para acesso à foto postada para acesso pelo BD
+						$urlUserPhoto = $urlUserFolder.$_FILES['postPhoto']['name'];
+		
+
+						// movendo a foto do usuario para a sua pasta		
+						move_uploaded_file($_FILES['postPhoto']['tmp_name'], $localPathUserPhoto);
+
+						$status = new Status();
+						// setando codigo do usuario
+						$status->setCodigoAnimal($dadosAnimal['codigo']);
+						// setando conteudo do post
+						$status->setConteudo($_POST['novoPost']);
+						//setando a foto
+						$status->setFoto($urlUserPhoto);
+						// setando a data do post	
+						$status->setDataStatus(Status::NOVO_STATUS);
+						
+						// inserindo o status
+						/*$modelStatus->inserirStatus($status);*/
+
+						if(!$modelStatus->inserirStatus($status)){
+							header("Location: ".Init::$urlRoot.'/error');
+						}
+					}
+
 				}
 			}
 

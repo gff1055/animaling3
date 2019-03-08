@@ -29,9 +29,17 @@
 	font-weight: bold;
 }
 
-/*botao seguir*/
 .divPostBtnFollow{
 	grid-area: postBtnFollow;
+}
+
+/* propriedades do borao de SEGUIR/DEIXAR DE SEGUIR */
+.divPostBtnFollow form{
+	text-align:center;
+}
+
+/* propriedades do formulario de postagem */
+.divPostBtnFollow .formToPost{
 	text-align:center;
 }
 
@@ -59,7 +67,7 @@
 	width: auto;
 	max-height: 100%;
 	height: auto;
-	border-radius: 200px;
+	border-radius: 100%;
 
 }
 
@@ -83,15 +91,18 @@
 
 /*Propriedades do textarea de post*/
 .formToPost textarea{
-	width: 100%;
+	width: 400px;
 }
 
 /*Estilizando os botoes dentro do form de postagem*/
 .formToPost .styleButton{
-	width: 100%;
+	width: 25%;
 	height: auto;
 	border-radius: 10px;
+}
 
+.formToPost div{
+	text-align: center;
 }
 
 /* propriedades da area onde é mostrado os posts */
@@ -128,24 +139,151 @@ div.postArea{ /*area of posts*/
 /*Propriedades da div que contem o post*/
 .divContentPost{
 	grid-area: post;
+  text-align: center;
+}
+
+.imgFotoPost{
+  text-align: center;
+}
+
+.divContentPost img{
+max-width: 400px;
 }
 
 
 
-
-
-/*#formToPost{
-	text-align: center;
-	background-color: #D8E6DB;
-	border-radius: 20px;
-	
+/* estilo do container */
+.photo_submit-container {
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
 }
 
-#formToPost form{
-	/*padding: 5px;
-	margin: 5px;*/
-	width: auto;
-	/*border-radius: 5px;*/
-/*}*/
+/* estilo da label que contem a foto*/
+.photo_submit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 300px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
 
-/* propriedades da data de postagem */
+/* estilo da label que contem a foto quando o mouse passa por cima */
+.photo_submit:hover {
+  cursor: pointer;
+  background: #ebebeb;
+}
+
+/*estilos das outras areas de insercao*/
+/*.photo_submit:nth-child(2),
+.photo_submit:nth-child(4) {
+  margin-left: 1rem;
+}
+.photo_submit:nth-child(3),
+.photo_submit:nth-child(4) {
+  margin-top: 1rem;
+}*/
+
+/* estilo da imagemn de fundo inserida */
+.photo_submit.photo_submit--image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* estilo da imagem quando se passa o mouse por cima */
+.photo_submit.photo_submit--image:hover {
+  cursor: default;
+}
+
+/*estilo da area de upload da foto*/
+.photo_submit-input {
+  display: none;
+}
+
+/* estilo da area onde fica o sinal de + */
+.photo_submit-plus {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: cadetblue;
+  pointer-events: none;
+}
+
+/* estilo da area onde fica o sinal de + quando o mouse passa por cima */
+.photo_submit-plus:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-46%, -52%);
+  content: '+';
+  font-size: 36px;
+  color: #fff;
+}
+
+/**/
+.photo_submit--image .photo_submit-plus {
+  display: none;
+}
+
+/* Estilo da area onde fica o label "upload de foto" */
+.photo_submit-uploadLabel {
+  margin-top: 1rem;
+  font-size: 21px;
+  color: cadetblue;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+}
+
+/**/
+.photo_submit--image .photo_submit-uploadLabel {
+  display: none;
+}
+
+/* estilo da area onde fica o "x" (para excluir a foto) */
+.photo_submit-delete {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background: #f8f8f8;
+  border-radius: 50%;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.photo_submit-delete:before,
+.photo_submit-delete:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 12px;
+  background-color: cadetblue;
+  content: '';
+}
+.photo_submit-delete:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.photo_submit-delete:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Estilo da area de exclusao de foto quando se passa o mouse por cima */
+.photo_submit-delete:hover {
+  background: #ccc;
+}
+
+.photo_submit--image .photo_submit-delete {
+  display: inline-block;
+}

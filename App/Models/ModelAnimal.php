@@ -305,9 +305,9 @@ class ModelAnimal
 		// variavel para acesso local do servidor
 		$serverLocalDir = "..";
 		// atribuindo o caminho da foto (endereco da pasta + endereco da foto)
-		$photoPath = $folderUser.$_FILES['foto']['name'];
+		$photoPath = $folderUser.$_FILES['fileFoto']['name'];
 		// movendo a foto para a pasta local do usuario
-		move_uploaded_file($_FILES['foto']['tmp_name'],$serverLocalDir.$photoPath);
+		move_uploaded_file($_FILES['fileFoto']['tmp_name'],$serverLocalDir.$photoPath);
 		try{
 			$result = null;
 			$result = $this->conex->prepare("update animal set foto=? where codigo=?");

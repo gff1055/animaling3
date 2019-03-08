@@ -36,17 +36,29 @@ use App\Init;
 		<?php // verificando se quem esta acessando o perfil é o proprio usuario
 		if($acessoUsuarioSessao) {?>
 			<br>
-			<fieldset>
-				<legend>t</legend>
-<!--			<div class="divPostBtnFollow">-->
-				<form method="post" action="" class="formToPost">
-					<textarea rows="4" name="novoPost" placeholder="O que está acontecendo?"></textarea>
-					<br>
-					<input type="submit" value="Postar" class="styleButton">
-	
-				</form>
-			</fieldset>
-				<!--</div>-->
+			<form method="post" action="" class="formToPost" enctype = "multipart/form-data">
+				<div class="photo_submit-container">
+					<div class="photo_submit-container">
+						<!-- Componente (encapsulada em um label) que mostra a  primeira foto enviada-->
+        				<label class="photo_submit js-photo_submit1">
+        					<!-- Input para envio da foto -->
+            				<input class="photo_submit-input js-photo_submit-input" type="file" accept="image/*" id="postPhoto" name="postPhoto">
+            				
+                			<!-- simbolo de + -->
+            				<span class="photo_submit-plus"></span>
+                			<span class="photo_submit-uploadLabel">Adicionar Foto</span>
+               				<!-- Opcao de excluir foto -->
+            				<span class="photo_submit-delete"></span>
+        				</label>
+    				</div>
+				</div>
+				<textarea rows="1" name="novoPost" placeholder="O que está acontecendo?"></textarea>
+				<br>
+				<div>
+				<input type="submit" value="Publicar" class="styleButton">
+				</div>
+			</form>
+			
 		<?php
 		}
 
@@ -83,6 +95,10 @@ use App\Init;
 				<?php echo  date('d/m/Y H:i:s', strtotime($post['dataStatus']))?></a>
 			</div>
 			<div class="divContentPost">
+				
+				<img  src="<?php echo $post['fotoPost']?>"/>
+				
+				<br>
 				<?php echo $post['conteudo']?>
 				<br>
 				<?php
@@ -102,6 +118,6 @@ use App\Init;
 		<?php echo "<br>Nenhuma postagem<br>";?>
 		</div>
 	<?php } ?>
-<script src="<?php echo Init::$urlSources.'/src/js/support.js'?>">
-</script>
+<script src="<?php echo Init::$urlSources.'/src/js/support.js'?>"></script>
+<script src="<?php echo Init::$urlSources.'/src/js/supportUploadPhoto.js'?>"></script>
 

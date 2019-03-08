@@ -21,7 +21,6 @@ class Init{
 	}
 
 	public function inicializarRotas($pUrlDividida){
-		
 
 		$arrayRotasAux['iniciando'] = array(
 			'route'=>Init::$urlRoot.'/',

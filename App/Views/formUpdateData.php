@@ -7,10 +7,10 @@ use App\Init;
 		<h2> Foto de perfil </h2>
 		<br>
 		<form action="<?php echo Init::$urlRoot.'/'.$_SESSION['login']?>/updatephoto" method="post" enctype = "multipart/form-data">
-			<img src="<?php echo $dadosAnimal['foto']?>" />
+			<img src="<?php echo $dadosAnimal['foto']?>" id="foto"/>
 			<br><br>
-			<label for="foto" class="labelUpdatePhoto">Carregar foto</label>
-			<input type="file" id="foto" name='foto'/>
+			<label for="fileFoto" class="labelUpdatePhoto">Carregar foto</label>
+			<input type="file" id="fileFoto" name='fileFoto' onchange="previewFile()"/>
 			<input type="submit" value="Atualizar Foto" class="styleButton"/>
 		</form>
 	</div>
@@ -91,3 +91,4 @@ use App\Init;
 	<a href="<?php echo Init::$urlRoot.'/'.$_SESSION['login'].'/delete' ?>">Excluir conta permanentemente</a>
 </div>
 <br>
+<script src="<?php echo Init::$urlSources.'/src/js/formUpdateData.js' ?>"></script>
